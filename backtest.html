@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>16년 백테스트 성과 · Ghost.AI</title>
+  <meta name="description" content="Ghost.AI 퀀트 AI 전략(V2bc)의 16년 백테스트 결과 — $10,000이 약 $680만으로. 단순 TQQQ 장기보유 대비 더 높은 수익과 절반 수준의 최대낙폭. 과거 데이터 기반 시뮬레이션." />
+  <meta name="author" content="고스트에이아이 주식회사" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="16년 백테스트 성과 · Ghost.AI" />
+  <meta property="og:description" content="$10,000 → 약 $680만 (16년). 단순 TQQQ 장기보유 대비 더 높은 수익과 절반 수준의 최대낙폭. 과거 데이터 기반 시뮬레이션." />
+  <meta property="og:image" content="assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Ghost.AI — 16년 백테스트 성과" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="16년 백테스트 성과 · Ghost.AI" />
+  <meta name="twitter:description" content="$10,000 → 약 $680만 (16년). 단순 TQQQ 장기보유 대비 더 높은 수익과 절반 수준의 최대낙폭. 과거 데이터 기반 시뮬레이션." />
+  <meta name="twitter:image" content="assets/img/og-image.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png" />
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="assets/css/style.css?v=20260630f" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- ===================== Header ===================== -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Ghost.AI 홈">
+        <img src="assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="index.html">홈</a>
+        <a class="nav-signal" href="signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
+        <a href="backtest.html" class="active" aria-current="page">백테스트 성과</a>
+        <a data-link="blog" href="https://ghost-ai.tistory.com" target="_blank" rel="noopener">블로그</a>
+        <a data-link="youtube" href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener">유튜브</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===================== Core insight (top emphasis) ===================== -->
+    <section class="bt-insight">
+      <div class="wrap">
+        <span class="eyebrow reveal in"><span class="dot" aria-hidden="true"></span>핵심 인사이트 · 왜 Ghost.AI인가</span>
+
+        <h1 class="ins-headline reveal in d1">
+          3배의 상승 잠재력,<br /><span class="mark">1배 수준의 하락 고통.</span>
+        </h1>
+
+        <p class="ins-lede reveal in d1">
+          3배 레버리지(TQQQ)를 그냥 들고 있으면 한 번쯤 <b>-80%가 넘는 폭락</b>을 버텨야 합니다.
+          Ghost.AI 전략은 TQQQ로 매매하면서도, 감내해야 할 최대 낙폭은
+          <b>1배짜리 QQQ를 보유하는 수준(약 -38%)</b>에 그칩니다.
+        </p>
+
+        <!-- MDD three-way comparison -->
+        <div class="mdd-compare reveal in d2" role="group" aria-label="최대낙폭 3자 비교">
+          <div class="mdd-row strat">
+            <div class="mdd-head">
+              <span class="mdd-label">Ghost.AI 전략 <span class="mdd-tag">V2bc · TQQQ 매매</span></span>
+              <span class="mdd-val" id="ins-mdd-strategy">-38.06%</span>
+            </div>
+            <div class="mdd-bar" aria-hidden="true"><span style="width:46.6%"></span></div>
+          </div>
+          <div class="mdd-row qqq">
+            <div class="mdd-head">
+              <span class="mdd-label">1배 QQQ 단순보유 <span class="mdd-tag">기준선</span></span>
+              <span class="mdd-val" id="ins-mdd-qqq">-35.62%</span>
+            </div>
+            <div class="mdd-bar" aria-hidden="true"><span style="width:43.6%"></span></div>
+          </div>
+          <div class="mdd-row tqqq">
+            <div class="mdd-head">
+              <span class="mdd-label">3배 TQQQ 단순보유 <span class="mdd-tag">레버리지 폭락</span></span>
+              <span class="mdd-val" id="ins-mdd-tqqq">-81.75%</span>
+            </div>
+            <div class="mdd-bar" aria-hidden="true"><span style="width:100%"></span></div>
+          </div>
+          <p class="mdd-foot">
+            최대낙폭(MDD) 비교 · Ghost.AI 낙폭은
+            <b>1배 QQQ(-36%)와 같은 급</b>입니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Backtest hero ===================== -->
+    <section class="bt-hero">
+      <div class="wrap">
+        <span class="eyebrow reveal in"><span class="dot" aria-hidden="true"></span>16년 백테스트 · DeepGhost v0.3 (V2bc)</span>
+
+        <h1 class="bt-title reveal in d1">
+          <span class="mark">$10,000</span>이<br />16년 뒤 <span class="mark">$6,800,000</span>이 되기까지
+        </h1>
+        <p class="bt-sub reveal in d1">
+          Ghost.AI 퀀트 전략 (매매 시그널) 을 과거 시장 데이터에 그대로 적용했을 때의 성과입니다.
+          QQQ 신호로 TQQQ를 매매하되, 추세하락이 시작할때 현금화하여 손실을 최소로 유지합니다.
+        </p>
+        <div class="bt-meta reveal in d2">
+          <span>검증 기간 · <b id="bt-period">2010-02-11 ~ 2026-06-29</b></span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span id="bt-years">약 16.4년</span>
+          <span class="sep" aria-hidden="true">·</span>
+          <span id="bt-days">4,119 거래일</span>
+        </div>
+
+        <!-- Hypothetical / simulation notice -->
+        <div class="bt-notice reveal in d2" role="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" />
+          </svg>
+          <p>
+            아래 수치는 <b>과거 데이터로 전략을 재현한 가설적 시뮬레이션(백테스트)</b> 결과이며,
+            실제 운용 트랙레코드가 아닙니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Headline metric cards ===================== -->
+    <section class="bt-section">
+      <div class="wrap">
+        <div class="bt-cards reveal">
+          <div class="bt-card hero-stat">
+            <div class="k">전략 누적수익률</div>
+            <div class="v big up" id="bt-total-return">+67,868%</div>
+            <div class="sub">초기자본 <span data-fill="initial">$10,000</span> 기준</div>
+          </div>
+          <div class="bt-card hero-stat">
+            <div class="k">최종 자산</div>
+            <div class="v big" id="bt-final-value">$6,796,796</div>
+            <div class="sub"><span data-fill="initial">$10,000</span> → 약 680배</div>
+          </div>
+        </div>
+
+        <div class="bt-cards quad reveal d1">
+          <div class="bt-card">
+            <div class="k">연평균 수익률 (CAGR)</div>
+            <div class="v up" id="bt-cagr">+48.91%</div>
+          </div>
+          <div class="bt-card">
+            <div class="k">최대낙폭 (MDD)</div>
+            <div class="v down" id="bt-mdd">-38.06%</div>
+          </div>
+          <div class="bt-card">
+            <div class="k">Sharpe Ratio</div>
+            <div class="v" id="bt-sharpe">1.27</div>
+          </div>
+          <div class="bt-card">
+            <div class="k">Calmar Ratio</div>
+            <div class="v" id="bt-calmar">1.29</div>
+          </div>
+        </div>
+
+        <!-- <div class="bt-cards reveal d2">
+          <div class="bt-card">
+            <div class="k">거래 횟수</div>
+            <div class="v" id="bt-trades">85회</div>
+          </div>
+          <div class="bt-card">
+            <div class="k">시장 노출 (보유일 비중)</div>
+            <div class="v" id="bt-exposure">63.80%</div>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- ===================== Equity curve chart ===================== -->
+    <section class="bt-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">EQUITY CURVE</span>
+          <h2>16년 누적 자산 곡선</h2>
+          <p>전략과 단순 TQQQ 장기보유의 자산 성장을 같은 기간·같은 초기자본으로 비교했습니다.</p>
+        </div>
+
+        <div class="chart-block reveal d1">
+          <div class="chart-frame">
+            <img src="assets/img/v2bc_equity_curve.png"
+                 alt="DeepGhost v0.3 V2bc 전략과 TQQQ 단순보유의 16년 누적 자산 곡선 비교 차트. 전략이 더 높은 최종 자산에 도달하면서 낙폭은 더 얕다."
+                 loading="lazy" width="1560" height="806" />
+          </div>
+          <div class="chart-cap">
+            <span>Equity curve · DeepGhost v0.3 (V2bc) vs. Buy &amp; Hold TQQQ · 초기자본 <span data-fill="initial">$10,000</span></span>
+            <span class="conf">과거 데이터 기반 시뮬레이션</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Comparison table ===================== -->
+    <section class="bt-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">HEAD TO HEAD</span>
+          <h2>전략 vs. 단순 TQQQ 장기보유</h2>
+          <p>같은 기간, 같은 자산으로 비교한 핵심 지표입니다.</p>
+        </div>
+
+        <div class="bt-table-wrap reveal d1">
+          <table class="bt-table" aria-label="전략과 단순 TQQQ 장기보유 비교">
+            <thead>
+              <tr>
+                <th scope="col">지표</th>
+                <th scope="col" class="strat">Ghost.AI 전략 (V2bc)</th>
+                <th scope="col">단순 TQQQ 장기보유</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">누적수익률</th>
+                <td class="strat up" id="c-strat-return">+67,868%</td>
+                <td class="up" id="c-bh-return">+35,591%</td>
+              </tr>
+              <tr>
+                <th scope="row">최종 자산 (<span data-fill="initial">$10,000</span> 시작)</th>
+                <td class="strat" id="c-strat-final">$6,796,796</td>
+                <td id="c-bh-final">$3,569,051</td>
+              </tr>
+              <tr>
+                <th scope="row">연평균 수익률 (CAGR)</th>
+                <td class="strat up" id="c-strat-cagr">+48.91%</td>
+                <td class="up" id="c-bh-cagr">+43.17%</td>
+              </tr>
+              <tr>
+                <th scope="row">최대낙폭 (MDD)</th>
+                <td class="strat down" id="c-strat-mdd">-38.06%</td>
+                <td class="down strong" id="c-bh-mdd">-81.75%</td>
+              </tr>
+              <tr>
+                <th scope="row">시장 노출 기간</th>
+                <td class="strat" id="c-strat-exposure">63.80%</td>
+                <td id="c-bh-exposure">100%</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bt-highlights reveal d2">
+          <div class="hl">
+            <div class="hl-n up">약 1.9배</div>
+            <div class="hl-l">단순보유 대비 최종 자산</div>
+          </div>
+          <div class="hl">
+            <div class="hl-n">절반 수준</div>
+            <div class="hl-l">단순보유 -82% → 전략 -38% 낙폭</div>
+          </div>
+          <div class="hl">
+            <div class="hl-n">약 36%</div>
+            <div class="hl-l">기간은 현금으로 비켜서 있었음</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Long-hold zero-loss section ===================== -->
+    <section class="bt-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">TIME IN THE MARKET</span>
+          <h2>오래 들고 있을수록<br />손실 확률이 사라졌습니다</h2>
+          <p>
+            백테스트 기간 안의 <b>모든 시작 시점</b>을 기준으로, 보유기간별로
+            전략을 끝까지 들고 있었을 때의 수익률을 전수 집계했습니다.
+          </p>
+        </div>
+
+        <div class="zl-hero reveal d1">
+          <div class="zl-headline">
+            <span class="zl-big">손실률 <span class="mark">0%</span></span>
+            <p>
+              <b id="zl-min-years">3년</b> 이상 보유한 모든 구간(3,363개)에서
+              손실로 끝난 경우는 <b>0건</b>이었습니다.
+              그 구간들의 <b>가장 낮은 수익률조차 <span id="zl-worst-3y">+58.72%</span></b>였습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="zl-grid reveal d1">
+          <div class="zl-card">
+            <div class="zl-h">보유 1년</div>
+            <div class="zl-rate" id="zl-1y">10.32%</div>
+            <div class="zl-l">손실로 끝난 구간 비율</div>
+          </div>
+          <div class="zl-card">
+            <div class="zl-h">보유 2년</div>
+            <div class="zl-rate" id="zl-2y">0.58%</div>
+            <div class="zl-l">손실로 끝난 구간 비율</div>
+          </div>
+          <div class="zl-card best">
+            <div class="zl-h">보유 3년</div>
+            <div class="zl-rate zero" id="zl-3y">0.00%</div>
+            <div class="zl-l">손실로 끝난 구간 비율</div>
+          </div>
+        </div>
+
+        <p class="zl-precise reveal d2">
+          보유기간이 길수록 손실 확률이 빠르게 줄어듭니다 (1년 <b id="zl-1y-inline">10.32%</b>
+          → 2년 <b id="zl-2y-inline">0.58%</b> → 3년 <b>0%</b>). 더 정밀하게는,
+          약 <b><span id="zl-min-years-precise">2.2</span>년</b>(<span id="zl-min-days">561</span>거래일,
+          <span id="zl-min-months">26.7</span>개월) 이상 보유했을 때 역사적 손실 구간이 사라졌습니다.
+        </p>
+
+        <div class="zl-disclaimer reveal d2" role="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" />
+          </svg>
+          <p>
+            위 "손실률 제로"는 <b>백테스트 기간 기준의 과거 시뮬레이션 결과</b>이며,
+            미래의 손실 없음이나 수익을 보장하지 않습니다. 실제 시장에서는 동일한 결과가
+            재현되지 않을 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Plain-language explanation ===================== -->
+    <section class="bt-section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">왜 의미 있나요</span>
+          <h2>더 많이 벌려고가 아니라,<br />덜 깨지면서 복리를 지키는 전략</h2>
+        </div>
+
+        <div class="bt-explain reveal d1">
+          <article class="ex-card">
+            <h3>레버리지의 약점은 폭락</h3>
+            <p>
+              TQQQ 같은 3배 레버리지 ETF는 상승장에서 강력하지만, 한 번의 급락에서
+              자산이 크게 무너지면 회복까지 매우 오랜 시간이 걸립니다. 단순보유의
+              최대낙폭은 <b>-81.75%</b>에 달했습니다.
+            </p>
+          </article>
+          <article class="ex-card">
+            <h3>현금으로 비켜서기</h3>
+            <p>
+              Ghost.AI의 AI 시그널은 유리한 국면을 식별해 그때만 TQQQ를 보유하고,
+              그 외 기간에는 현금을 보유합니다. 전체 기간의 약 <b>36%</b>는 시장 밖에
+              머물렀고, 그 결과 최대낙폭을 <b>-38.06%</b>로 절반 가까이 줄였습니다.
+            </p>
+          </article>
+          <article class="ex-card">
+            <h3>덜 깨지는데 더 벌었다</h3>
+            <p>
+              낙폭을 줄이는 대신 수익을 포기한 게 아닙니다. 같은 16년 동안 전략의 최종
+              자산은 약 <b>$680만</b>으로, 단순보유(약 $357만)의 <b>1.9배</b>에
+              도달했습니다. 위험 대비 수익(Sharpe·Calmar)도 더 높습니다.
+            </p>
+          </article>
+          <article class="ex-card">
+            <h3>복리를 지키는 힘</h3>
+            <p>
+              큰 손실을 피하는 것은 단순한 방어가 아니라 복리를 지키는 일입니다.
+              깊게 무너지지 않으면 회복 구간을 건너뛰고 다음 상승을 온전히 누릴 수
+              있습니다. 그것이 16년의 격차를 만든 핵심입니다.
+            </p>
+          </article>
+        </div>
+
+        <p class="bt-method reveal d2">
+          전략의 구체적인 진입·청산 규칙과 모델 내부 지표는 Ghost.AI의 핵심 자산으로
+          공개하지 않습니다. 본 페이지는 공식 V2bc 백테스트 엔진으로 산출한 검증 수치만
+          표기하며, 검증 기준일은 <b id="bt-updated">2026-06-30</b>입니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== Bottom CTA ===================== -->
+    <section class="section-pad">
+      <div class="wrap">
+        <div class="sig-cta reveal">
+          <h2>오늘은 어떤 신호일까요?</h2>
+          <p>매일의 시그널 현황은 시그널 페이지에서, 깊은 분석과 영상 브리핑은 블로그·유튜브에서 만나보세요.</p>
+          <div class="cta-row">
+            <a class="btn btn-signal" href="signal.html">
+              <span class="live-dot" aria-hidden="true"></span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+              </svg>
+              오늘의 시그널
+            </a>
+            <a class="btn btn-secondary" data-link="blog"
+               href="https://ghost-ai.tistory.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+              블로그 보기
+            </a>
+            <a class="btn btn-secondary" data-link="youtube"
+               href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener">
+              <svg class="yt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
+              </svg>
+              유튜브 채널
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <a class="foot-brand" href="index.html" aria-label="Ghost.AI 홈">
+          <img src="assets/img/logo.png" alt="" aria-hidden="true" />
+          <b>Ghost<span>.AI</span></b>
+        </a>
+        <div class="foot-links">
+          <a href="index.html" aria-label="홈">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 22V12h6v10" /></svg>
+          </a>
+          <a data-link="blog" href="https://ghost-ai.tistory.com" target="_blank" rel="noopener" aria-label="블로그">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+          </a>
+          <a data-link="youtube" href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener" aria-label="유튜브">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" /></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="legal">
+        <p><strong>백테스트 고지</strong> &middot; 본 페이지의 모든 성과 수치는 과거 시장 데이터를 이용한 가설적 시뮬레이션(백테스트) 결과이며, 실제 운용 성과가 아닙니다. 시뮬레이션 결과는 실제 거래에서 재현되지 않을 수 있습니다.</p>
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <!-- <p>고스트에이아이 주식회사(Ghost.AI Inc.)는 「자본시장과 금융투자업에 관한 법률」에 따른 유사투자자문업자입니다. &middot; 유사투자자문업 신고번호: 제0000-000호</p> -->
+      </div>
+
+      <div class="copyright">© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Hardcoded fallback metrics (mirrors web/backtest.json). Lets the page render
+       correctly on file://; JS re-syncs from backtest.json when served over http(s). -->
+  <script>
+    window.BACKTEST_FALLBACK = {
+      "strategy_name": "v2bc",
+      "period_start": "2010-02-11",
+      "period_end": "2026-06-29",
+      "years": 16.38,
+      "trading_days": 4119,
+      "initial_capital": 10000.0,
+      "strategy": {
+        "total_return_pct": 67867.96,
+        "cagr_pct": 48.91,
+        "mdd_pct": -38.06,
+        "sharpe": 1.27,
+        "calmar": 1.29,
+        "final_value": 6796796.0
+      },
+      "buyhold_tqqq": {
+        "total_return_pct": 35590.51,
+        "cagr_pct": 43.17,
+        "mdd_pct": -81.75,
+        "final_value": 3569051.0
+      },
+      "trades": {
+        "num_trades": 85
+      },
+      "exposure_pct": 63.8,
+      "mdd_compare": {
+        "strategy_pct": -38.06,
+        "qqq_buyhold_pct": -35.62,
+        "tqqq_buyhold_pct": -81.75
+      },
+      "holding_zero_loss": {
+        "zero_loss_min_years": 3,
+        "zero_loss_min_trading_days": 561,
+        "zero_loss_min_months": 26.7,
+        "worst_3y_return_pct": 58.72,
+        "by_horizon": { "1y": 10.32, "2y": 0.58, "3y": 0.0 }
+      },
+      "updated_at": "2026-06-30"
+    };
+  </script>
+  <script src="assets/js/backtest.js" defer></script>
+</body>
+</html>

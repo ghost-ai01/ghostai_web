@@ -1,0 +1,46 @@
+{
+  "strategy_name": "v2bc",
+  "label": "DeepGhost v0.3 V2bc (Hybrid AND) — QQQ signal -> TQQQ trade",
+  "disclaimer": "Hypothetical backtest (historical simulation), not a live track record. Past performance does not guarantee future results.",
+  "period_start": "2010-02-11",
+  "period_end": "2026-06-29",
+  "years": 16.38,
+  "trading_days": 4119,
+  "initial_capital": 10000.0,
+  "strategy": {
+    "total_return_pct": 67867.96,
+    "cagr_pct": 48.91,
+    "mdd_pct": -38.06,
+    "sharpe": 1.27,
+    "calmar": 1.29,
+    "final_value": 6796796.0
+  },
+  "buyhold_tqqq": {
+    "total_return_pct": 35590.51,
+    "cagr_pct": 43.17,
+    "mdd_pct": -81.75,
+    "final_value": 3569051.0
+  },
+  "trades": {
+    "num_trades": 85
+  },
+  "exposure_pct": 63.8,
+  "mdd_compare": {
+    "strategy_pct": -38.06,
+    "qqq_buyhold_pct": -35.62,
+    "tqqq_buyhold_pct": -81.75
+  },
+  "holding_zero_loss": {
+    "zero_loss_min_years": 3,
+    "zero_loss_min_trading_days": 561,
+    "zero_loss_min_months": 26.7,
+    "worst_3y_return_pct": 58.72,
+    "by_horizon": {
+      "1y": 10.32,
+      "2y": 0.58,
+      "3y": 0.0
+    }
+  },
+  "chart_image": "assets/img/v2bc_equity_curve.png",
+  "updated_at": "2026-06-30"
+}

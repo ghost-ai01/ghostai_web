@@ -1,0 +1,17 @@
+{
+  "strategy": "v2bc",
+  "ticker": "TQQQ",
+  "tqqq": {
+    "label": "QQQ-signal → TQQQ-trade",
+    "asof": "2026-06-30",
+    "in_position": false,
+    "entry_price": null,
+    "entry_date": null,
+    "current_close": 81.0,
+    "pnl_pct": null,
+    "hold_days_calendar": null,
+    "today_action": "CASH",
+    "signal_today": null,
+    "pending_fill": null
+  }
+}

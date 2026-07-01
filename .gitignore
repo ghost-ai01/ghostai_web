@@ -1,0 +1,18 @@
+# --- Build scripts (run locally only; never publish) ---
+# These reference internal paths / model-internal indicator names.
+build_signal.py
+assets/gen_assets.py
+*.py
+__pycache__/
+*.pyc
+
+# --- OS / editor cruft ---
+.DS_Store
+Thumbs.db
+*.swp
+
+# --- Vercel local ---
+.vercel/
+
+# --- Node (in case a build step is added later) ---
+node_modules/

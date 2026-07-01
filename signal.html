@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>오늘의 시그널 · Ghost.AI</title>
+  <meta name="description" content="Ghost.AI 퀀트 AI의 오늘의 TQQQ 시그널 현황 — 매수·보유·매도·현금 상태를 매일 갱신합니다. 자세한 분석은 블로그와 유튜브에서 확인하세요." />
+  <meta name="author" content="고스트에이아이 주식회사" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="오늘의 시그널 · Ghost.AI" />
+  <meta property="og:description" content="Ghost.AI 퀀트 AI의 오늘의 TQQQ 시그널 현황. 매일 미장 마감 후 갱신." />
+  <meta property="og:image" content="assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Ghost.AI — 오늘의 시그널" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="오늘의 시그널 · Ghost.AI" />
+  <meta name="twitter:description" content="Ghost.AI 퀀트 AI의 오늘의 TQQQ 시그널 현황. 매일 미장 마감 후 갱신." />
+  <meta name="twitter:image" content="assets/img/og-image.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png" />
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="assets/css/style.css?v=20260630f" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <!-- ===================== Header ===================== -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="index.html" aria-label="Ghost.AI 홈">
+        <img src="assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="index.html">홈</a>
+        <a href="signal.html" class="active" aria-current="page">오늘의 시그널</a>
+        <a href="backtest.html">백테스트 성과</a>
+        <a data-link="blog" href="https://ghost-ai.tistory.com" target="_blank" rel="noopener">블로그</a>
+        <a data-link="youtube" href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener">유튜브</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ===================== Signal hero ===================== -->
+    <section class="sig-hero">
+      <div class="wrap">
+        <span class="eyebrow reveal in"><span class="dot" aria-hidden="true"></span>오늘의 시그널</span>
+
+        <h1 class="sig-title reveal in d1"><span class="ticker">TQQQ</span> 시그널 현황</h1>
+        <p class="sig-sub reveal in d1">
+          Ghost.AI 퀀트 AI가 QQQ 신호를 분석해 도출한 <b>TQQQ 전략의 매매 상태</b>입니다.
+          매일 미국 장 마감 후 자동으로 갱신되며, 특정인을 위한 투자 조언·매매 권유가 아닙니다.
+        </p>
+        <div class="sig-asof reveal in d2">
+          기준 거래일 (미국장) · <b id="sig-asof-date">2026-06-29</b>
+        </div>
+
+        <!-- Status panel (data-driven; fallback values rendered here) -->
+        <div class="status-panel reveal in d2" id="status-panel" data-action="CASH"
+             aria-live="polite" aria-label="오늘의 TQQQ 시그널 상태">
+          <div class="status-head">
+            <span class="status-chip" id="status-chip" data-action="CASH">
+              <span class="dot" aria-hidden="true"></span>
+              <span id="status-chip-label">현금 보유 중</span>
+            </span>
+          </div>
+
+          <p class="status-big" id="status-big" data-action="CASH">현금 보유 중</p>
+          <p class="status-note" id="status-note">Ghost.AI 전략은 현재 TQQQ 포지션 없이 관망 중입니다. 신규 매수 신호가 발생하면 이 페이지에 표시됩니다.</p>
+
+          <div class="metrics">
+            <div class="metric">
+              <div class="k">TQQQ 종가</div>
+              <div class="v" id="m-close">$77.19</div>
+            </div>
+          </div>
+
+          <!-- Holding-only detail block: shown only when today_action = HOLD.
+               Framed as the STRATEGY's hypothetical position, never a personal instruction. -->
+          <div class="metrics" id="metrics-entry" hidden>
+            <div class="metric">
+              <div class="k">전략 진입일</div><div class="v" id="m-entry-date">—</div>
+            </div>
+            <div class="metric">
+              <div class="k">전략 진입가</div><div class="v" id="m-entry-price">—</div>
+            </div>
+            <div class="metric">
+              <div class="k">전략 수익률</div><div class="v" id="m-pnl">—</div>
+            </div>
+            <div class="metric">
+              <div class="k">보유 기간</div><div class="v" id="m-hold">—</div>
+            </div>
+          </div>
+
+          <p class="status-frame">
+            여기 표시되는 신호와 수치(전략 진입가·전략 수익률·보유 기간 등)는
+            <b>Ghost.AI 전략이 시그널대로 매매했을 때의 상태이자 모델의 가상 포지션 기준</b>이며,
+            개인의 실제 매매 결과나 특정인을 향한 매매 지시·투자 권유가 아닙니다.
+            모든 투자 판단과 책임은 투자자 본인에게 있습니다.
+          </p>
+        </div>
+
+        <!-- ===================== CONFIDENTIAL chart ===================== -->
+        <div class="chart-block reveal d1">
+          <div class="chart-frame">
+            <img src="assets/img/TQQQ.png"
+                 alt="Ghost.AI TQQQ 시그널 차트 (모델 내부 지표는 기밀 처리됨)"
+                 loading="lazy" width="2160" height="1451" />
+          </div>
+          <div class="chart-cap">
+            <span>TQQQ 가격 차트 · DeepGhost v0.3 (V2bc 전략)</span>
+            <span class="conf">하단 모델 패널 CONFIDENTIAL</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Signal history (track record) ===================== -->
+    <section class="section-pad sig-hist-sec">
+      <div class="wrap">
+        <div class="sig-hist-head reveal">
+          <span class="eyebrow"><span class="dot" aria-hidden="true"></span>시그널 이력 · Track Record</span>
+          <h2>매일 게시된 시그널 기록</h2>
+          <p>
+            매 거래일 미국장 마감 후 게시된 Ghost.AI 전략의 상태를 게시 시각과 함께 누적합니다.
+            기록은 사후 수정 없이 보존되며, 어디까지나 전략의 상태 기록일 뿐 개인을 위한
+            매매 지시·투자 권유가 아닙니다.
+          </p>
+        </div>
+        <div class="sig-hist-wrap reveal d1">
+          <table class="sig-hist" id="sig-hist">
+            <thead>
+              <tr>
+                <th>거래일</th><th>상태</th><th>TQQQ 종가</th>
+                <th>전략 수익률</th><th>게시 시각 (KST)</th>
+              </tr>
+            </thead>
+            <tbody id="sig-hist-body">
+              <tr class="hist-empty"><td colspan="5">이력을 불러오는 중입니다…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Bottom CTA ===================== -->
+    <section class="section-pad">
+      <div class="wrap">
+        <div class="sig-cta reveal">
+          <h2>이 전략, 16년간 어땠을까요?</h2>
+          <p>같은 전략을 16년 시장 데이터에 적용한 백테스트 성과를 확인하고, 시황·종합 분석은 블로그·유튜브에서 매일 만나보세요.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="backtest.html">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" />
+              </svg>
+              16년 백테스트 성과
+            </a>
+            <a class="btn btn-secondary" data-link="blog"
+               href="https://ghost-ai.tistory.com" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+              </svg>
+              블로그 보기
+            </a>
+            <a class="btn btn-secondary" data-link="youtube"
+               href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener">
+              <svg class="yt" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" />
+              </svg>
+              유튜브 채널
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <a class="foot-brand" href="index.html" aria-label="Ghost.AI 홈">
+          <img src="assets/img/logo.png" alt="" aria-hidden="true" />
+          <b>Ghost<span>.AI</span></b>
+        </a>
+        <div class="foot-links">
+          <a href="index.html" aria-label="홈">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 22V12h6v10" /></svg>
+          </a>
+          <a href="backtest.html" aria-label="백테스트 성과">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
+          </a>
+          <a data-link="blog" href="https://ghost-ai.tistory.com" target="_blank" rel="noopener" aria-label="블로그">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+          </a>
+          <a data-link="youtube" href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener" aria-label="유튜브">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" /></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="legal">
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <!-- <p>고스트에이아이 주식회사(Ghost.AI Inc.)는 「자본시장과 금융투자업에 관한 법률」에 따른 유사투자자문업자입니다. &middot; 유사투자자문업 신고번호: 제0000-000호</p> -->
+      </div>
+
+      <div class="copyright">© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Hardcoded fallback snapshot (mirrors web/signal.json). Lets the page render
+       correctly on file://; JS re-syncs from signal.json when served over http(s). -->
+  <script>
+    window.SIGNAL_FALLBACK = {
+      "strategy": "v2bc",
+      "ticker": "TQQQ",
+      "tqqq": {
+        "label": "QQQ-signal → TQQQ-trade",
+        "asof": "2026-06-29",
+        "in_position": false,
+        "entry_date": null,
+        "entry_price": null,
+        "current_close": 77.19000244140625,
+        "pnl_pct": null,
+        "hold_days_calendar": null,
+        "today_action": "CASH",
+        "signal_today": null,
+        "pending_fill": null
+      }
+    };
+  </script>
+  <script src="assets/js/signal.js" defer></script>
+</body>
+</html>
