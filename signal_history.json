@@ -20,5 +20,16 @@
     "hold_days": null,
     "note": "현금 보유 중 (관망)",
     "published_at": "2026-07-01T07:59:40+09:00"
+  },
+  {
+    "date": "2026-07-01",
+    "action": "CASH",
+    "close": 77.45999908447266,
+    "entry_date": null,
+    "entry_price": null,
+    "pnl_pct": null,
+    "hold_days": null,
+    "note": "현금 보유 중 (관망)",
+    "published_at": "2026-07-02T07:35:46+09:00"
   }
 ]
