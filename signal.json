@@ -3,11 +3,11 @@
   "ticker": "TQQQ",
   "tqqq": {
     "label": "QQQ-signal → TQQQ-trade",
-    "asof": "2026-07-08",
+    "asof": "2026-07-09",
     "in_position": false,
     "entry_price": null,
     "entry_date": null,
-    "current_close": 72.72000122070312,
+    "current_close": 76.33999633789062,
     "pnl_pct": null,
     "hold_days_calendar": null,
     "today_action": "CASH",
