@@ -99,12 +99,29 @@
 
   /* ---------- signal history (track record) table ---------- */
   var HIST_LABEL = { CASH: "현금 보유 중", HOLD: "보유 중", NEW_BUY: "매수 신호", SELL: "매도 신호" };
+  var HIST_COLLAPSE_N = 8; // rows shown before "전체 보기"; rest collapse behind the toggle
 
   function fmtPublished(s) {
     if (!s) return "—";
     // "2026-06-30T20:46:54+09:00" -> "2026-06-30 20:46"
     var m = String(s).match(/^(\d{4}-\d{2}-\d{2})T(\d{2}:\d{2})/);
     return m ? m[1] + " " + m[2] : String(s);
+  }
+
+  // Sync the collapse toggle's label/visibility to the current row count.
+  function setHistToggle(expanded, total) {
+    var more = document.getElementById("sig-hist-more");
+    var btn = document.getElementById("sig-hist-toggle");
+    var table = document.getElementById("sig-hist");
+    if (!more || !btn || !table) return;
+    var hasExtra = total > HIST_COLLAPSE_N;
+    more.hidden = !hasExtra;
+    if (!hasExtra) { table.classList.remove("expanded"); return; }
+    btn.dataset.count = total;
+    table.classList.toggle("expanded", !!expanded);
+    btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    var lbl = btn.querySelector(".lbl");
+    if (lbl) lbl.textContent = expanded ? "접기" : "전체 이력 보기";
   }
 
   function renderHistory(list) {
@@ -115,12 +132,13 @@
         ? "이력은 서버로 페이지를 열었을 때 표시됩니다."
         : "아직 게시된 이력이 없습니다.";
       body.innerHTML = '<tr class="hist-empty"><td colspan="5">' + msg + "</td></tr>";
+      setHistToggle(false, 0);
       return;
     }
     var rows = list.slice().sort(function (a, b) {
       return String(b.date).localeCompare(String(a.date)); // newest first
     });
-    var html = rows.map(function (r) {
+    var html = rows.map(function (r, i) {
       var action = (r.action || "CASH").toUpperCase();
       var label = HIST_LABEL[action] || action;
       var pnl = r.pnl_pct;
@@ -130,7 +148,8 @@
       }
       var close = (r.close === null || r.close === undefined || isNaN(r.close))
         ? "—" : "$" + fmtPrice(r.close);
-      return "<tr>"
+      var trCls = (i >= HIST_COLLAPSE_N) ? ' class="hist-extra"' : "";
+      return "<tr" + trCls + ">"
         + "<td>" + fmtDate(r.date) + "</td>"
         + '<td><span class="hist-badge" data-action="' + action + '">' + label + "</span></td>"
         + "<td>" + close + "</td>"
@@ -139,7 +158,19 @@
         + "</tr>";
     }).join("");
     body.innerHTML = html;
+    setHistToggle(false, rows.length); // re-render always resets to collapsed
   }
+
+  // Bind the collapse toggle once (renderHistory may run twice: fallback + fetch).
+  (function () {
+    var btn = document.getElementById("sig-hist-toggle");
+    var table = document.getElementById("sig-hist");
+    if (!btn || !table) return;
+    btn.addEventListener("click", function () {
+      var expanded = !table.classList.contains("expanded");
+      setHistToggle(expanded, Number(btn.dataset.count || 0));
+    });
+  })();
 
   // 1) immediate render from hardcoded fallback (works on file://)
   if (window.SIGNAL_FALLBACK) render(window.SIGNAL_FALLBACK);

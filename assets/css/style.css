@@ -508,6 +508,22 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .hist-badge[data-action="NEW_BUY"] { --stat-fg: #4ad991;       --stat-edge: rgba(74,217,145,0.45); --stat-bg: rgba(74,217,145,0.1); }
 .hist-badge[data-action="SELL"]    { --stat-fg: #ff6b6b;       --stat-edge: rgba(255,107,107,0.45);--stat-bg: rgba(255,107,107,0.1); }
 
+/* Collapsible history: overflow rows stay hidden until the table is expanded */
+.sig-hist:not(.expanded) tbody tr.hist-extra { display: none; }
+.sig-hist-more { margin-top: 16px; display: flex; justify-content: center; }
+.sig-hist-more[hidden] { display: none; }
+.hist-toggle {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 10px 20px; border-radius: 999px; cursor: pointer;
+  font: inherit; font-size: 0.9rem; font-weight: 700;
+  color: var(--text); background: rgba(255,255,255,0.03);
+  border: 1px solid var(--line);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.hist-toggle:hover { background: rgba(255,255,255,0.06); border-color: var(--muted-2); }
+.hist-toggle .chev { width: 16px; height: 16px; transition: transform 0.2s ease; }
+.hist-toggle[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
 /* Metric grid (close / change / entry info) */
 .metrics {
   display: grid; gap: 14px;
