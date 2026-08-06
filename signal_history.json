@@ -295,5 +295,16 @@
     "hold_days": null,
     "note": "신규 매수 신호 발생",
     "published_at": "2026-08-06T07:03:30+09:00"
+  },
+  {
+    "date": "2026-08-06",
+    "action": "HOLD",
+    "close": 72.02999877929688,
+    "entry_date": "2026-08-06",
+    "entry_price": 70.83999633789062,
+    "pnl_pct": 1.679845430440463,
+    "hold_days": 0,
+    "note": "TQQQ 보유 중",
+    "published_at": "2026-08-07T07:45:32+09:00"
   }
 ]
