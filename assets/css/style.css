@@ -1095,3 +1095,21 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   .prem-hero { padding: 40px 0 4px; }
   .prem-panel { padding: 28px; }
 }
+
+/* 회원 베타 진입 — 카피라이트 줄에 작게 붙는 테스트 링크 (Phase 1 한정) */
+.copyright { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.beta-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.78rem; color: var(--muted-2);
+  padding: 4px 11px; border-radius: 999px; border: 1px solid var(--line);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+.beta-link svg { width: 13px; height: 13px; flex: none; }
+.beta-link .tag {
+  font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em;
+  padding: 1px 6px; border-radius: 999px;
+  color: var(--violet-ink); background: var(--violet-hi);
+}
+.beta-link:hover, .beta-link:focus-visible {
+  color: var(--text); border-color: var(--violet); background: rgba(139,108,246,0.1);
+}
