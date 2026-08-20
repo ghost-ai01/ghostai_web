@@ -948,3 +948,134 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* =========================================================================
+   Premium (premium.html) + premium entry points — "coming soon" state.
+   Gold accent so it reads as the paid tier next to the cyan signal CTA.
+   ========================================================================= */
+
+/* ---------- Nav pill ---------- */
+.nav-links a.nav-premium {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--gold-hi); font-weight: 700;
+  padding: 7px 13px;
+  border: 1px solid rgba(214,174,96,0.4);
+  background: rgba(214,174,96,0.08);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease),
+              border-color 0.2s var(--ease), box-shadow 0.2s var(--ease),
+              transform 0.2s var(--ease);
+}
+.nav-links a.nav-premium svg { width: 15px; height: 15px; flex: none; }
+.nav-links a.nav-premium:hover, .nav-links a.nav-premium:focus-visible {
+  color: #1a1305; border-color: transparent;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  transform: translateY(-1px);
+  box-shadow: 0 11px 26px -8px rgba(214,174,96,0.75);
+}
+
+/* "준비중" micro badge — nav pill + teaser kicker */
+.soon {
+  font-size: 0.64rem; font-weight: 700; letter-spacing: 0.02em;
+  padding: 2px 7px; border-radius: 999px; white-space: nowrap;
+  color: var(--gold-hi); background: rgba(214,174,96,0.18);
+}
+.nav-links a.nav-premium:hover .soon,
+.nav-links a.nav-premium:focus-visible .soon { color: #1a1305; background: rgba(26,19,5,0.18); }
+
+/* Footer icon */
+.foot-links a.prem-ico { color: var(--gold); border-color: rgba(214,174,96,0.35); }
+
+/* ---------- Landing teaser band ---------- */
+.prem-section { padding: 24px 0 0; }
+.prem-band {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 26px; flex-wrap: wrap;
+  padding: 32px 36px; border-radius: var(--radius);
+  border: 1px solid rgba(214,174,96,0.26);
+  background:
+    radial-gradient(560px 200px at 0% 0%, rgba(214,174,96,0.14), transparent 70%),
+    linear-gradient(180deg, var(--ink-3), var(--ink-2));
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.prem-band:hover, .prem-band:focus-visible {
+  transform: translateY(-4px); border-color: rgba(214,174,96,0.55);
+  box-shadow: 0 26px 60px -30px rgba(214,174,96,0.55);
+}
+.prem-kicker {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em;
+  color: var(--gold-hi);
+}
+.prem-copy h2 {
+  margin: 12px 0 0; font-size: clamp(1.3rem, 3.4vw, 1.8rem);
+  font-weight: 800; letter-spacing: -0.02em;
+}
+.prem-copy p { margin: 10px 0 0; color: var(--muted); font-size: 0.96rem; max-width: 560px; }
+.prem-band .go {
+  display: inline-flex; align-items: center; gap: 8px; flex: none;
+  font-weight: 700; color: var(--gold-hi);
+  transition: gap 0.25s var(--ease);
+}
+.prem-band:hover .go { gap: 14px; }
+.prem-band .go svg { width: 18px; height: 18px; }
+
+/* ---------- Premium page ---------- */
+.prem-hero { padding: 56px 0 8px; }
+.prem-hero .eyebrow { margin-bottom: 22px; }
+.prem-title {
+  margin: 0; font-size: clamp(2rem, 6vw, 3.4rem);
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.05;
+}
+.prem-title .mark { color: var(--gold); }
+.prem-sub { margin: 14px 0 0; color: var(--muted); max-width: 620px; font-size: clamp(0.98rem, 2.2vw, 1.1rem); }
+
+.prem-panel {
+  margin-top: 18px; padding: 40px;
+  border-radius: var(--radius); border: 1px solid rgba(214,174,96,0.22);
+  background:
+    radial-gradient(700px 260px at 10% 0%, rgba(214,174,96,0.12), transparent 70%),
+    linear-gradient(180deg, var(--ink-3), var(--ink-2));
+}
+.prem-panel-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.prem-chip {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 16px; border-radius: 999px;
+  font-size: 0.84rem; font-weight: 700; color: var(--gold-hi);
+  border: 1px solid rgba(214,174,96,0.4); background: rgba(214,174,96,0.08);
+}
+.prem-chip .dot {
+  width: 8px; height: 8px; border-radius: 50%; flex: none;
+  background: var(--gold-hi); animation: premPulse 2s ease-out infinite;
+}
+@keyframes premPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(240,208,138,0.55); }
+  70%  { box-shadow: 0 0 0 9px rgba(240,208,138,0); }
+  100% { box-shadow: 0 0 0 0 rgba(240,208,138,0); }
+}
+.prem-eta { font-size: 0.84rem; color: var(--muted-2); font-family: var(--f-mono); }
+.prem-big { margin: 20px 0 0; font-size: clamp(1.5rem, 4.6vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; }
+.prem-note { margin: 12px 0 0; color: var(--muted); max-width: 620px; }
+
+.prem-plan { padding-top: 20px; }
+.prem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.prem-card {
+  padding: 28px; border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--ink-2), rgba(13,18,29,0.6));
+}
+.prem-card .tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
+  padding: 3px 9px; border-radius: 999px;
+  color: var(--gold-hi); background: rgba(214,174,96,0.12);
+  border: 1px solid rgba(214,174,96,0.25);
+}
+.prem-card h3 { margin: 14px 0 0; font-size: 1.16rem; font-weight: 800; letter-spacing: -0.01em; }
+.prem-card p { margin: 10px 0 0; color: var(--muted); font-size: 0.95rem; line-height: 1.65; }
+
+@media (max-width: 880px) { .prem-grid { grid-template-columns: 1fr; } }
+@media (max-width: 760px) {
+  .prem-hero { padding: 40px 0 4px; }
+  .prem-panel { padding: 28px; }
+  .prem-band { padding: 26px; }
+  .prem-band .go { width: 100%; }
+}
