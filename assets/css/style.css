@@ -1055,7 +1055,7 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .prem-note { margin: 12px 0 0; color: var(--muted); max-width: 620px; }
 
 .prem-plan { padding-top: 20px; }
-.prem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.prem-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .prem-card {
   padding: 28px; border-radius: var(--radius);
   border: 1px solid var(--line);
@@ -1069,8 +1069,28 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 }
 .prem-card h3 { margin: 14px 0 0; font-size: 1.16rem; font-weight: 800; letter-spacing: -0.01em; }
 .prem-card p { margin: 10px 0 0; color: var(--muted); font-size: 0.95rem; line-height: 1.65; }
+.prem-card p b { color: var(--text); font-weight: 700; }
 
-@media (max-width: 880px) { .prem-grid { grid-template-columns: 1fr; } }
+/* top-priority card — full width, violet glow */
+.prem-card.feature {
+  grid-column: 1 / -1;
+  padding: 34px;
+  border-color: rgba(139,108,246,0.4);
+  background:
+    radial-gradient(640px 240px at 0% 0%, rgba(139,108,246,0.17), transparent 70%),
+    linear-gradient(180deg, var(--ink-3), var(--ink-2));
+}
+.prem-card.feature h3 { font-size: clamp(1.3rem, 3.4vw, 1.7rem); }
+.prem-card.feature p { font-size: 1rem; max-width: 740px; }
+.prem-card .tag.key {
+  color: var(--violet-ink); border-color: transparent;
+  background: linear-gradient(135deg, var(--violet-hi), var(--violet));
+}
+
+@media (max-width: 880px) {
+  .prem-grid { grid-template-columns: 1fr; }
+  .prem-card.feature { padding: 28px; }
+}
 @media (max-width: 760px) {
   .prem-hero { padding: 40px 0 4px; }
   .prem-panel { padding: 28px; }
