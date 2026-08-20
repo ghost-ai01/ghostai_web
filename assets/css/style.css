@@ -402,7 +402,7 @@ button { font-family: inherit; }
 .legal strong { color: var(--muted); font-weight: 600; }
 .legal .company {
   display: flex; flex-wrap: wrap; align-items: baseline;
-  gap: 2px 10px; margin-bottom: 12px;
+  gap: 2px 10px; margin: 16px 0 0;
 }
 .legal .company b { color: var(--muted); font-weight: 700; }
 .legal .company > span::before {
