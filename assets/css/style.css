@@ -12,6 +12,9 @@
   --gold:       #d6ae60;   /* primary accent */
   --gold-hi:    #f0d08a;   /* bright gold */
   --cyan:       #56ccde;   /* secondary accent */
+  --violet:     #8b6cf6;   /* premium tier */
+  --violet-hi:  #b9a3ff;   /* bright premium */
+  --violet-ink: #17093f;   /* text on a violet fill */
   --text:       #ecf0f8;   /* primary text */
   --muted:      #99a3b6;   /* secondary text */
   --muted-2:    #6b7589;   /* tertiary / legal */
@@ -951,54 +954,68 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 
 /* =========================================================================
    Premium (premium.html) + premium entry points — "coming soon" state.
-   Gold accent so it reads as the paid tier next to the cyan signal CTA.
+   Violet accent: a filled tier colour that stands out next to the gold
+   brand CTA and the cyan signal CTA without competing with either.
    ========================================================================= */
 
 /* ---------- Nav pill ---------- */
 .nav-links a.nav-premium {
   display: inline-flex; align-items: center; gap: 7px;
-  color: var(--gold-hi); font-weight: 700;
-  padding: 7px 13px;
-  border: 1px solid rgba(214,174,96,0.4);
-  background: rgba(214,174,96,0.08);
+  color: var(--violet-ink); font-weight: 700;
+  padding: 8px 15px;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, var(--violet-hi), var(--violet));
+  box-shadow: 0 6px 18px -8px rgba(139,108,246,0.75);
   transition: color 0.2s var(--ease), background 0.2s var(--ease),
               border-color 0.2s var(--ease), box-shadow 0.2s var(--ease),
               transform 0.2s var(--ease);
 }
 .nav-links a.nav-premium svg { width: 15px; height: 15px; flex: none; }
 .nav-links a.nav-premium:hover, .nav-links a.nav-premium:focus-visible {
-  color: #1a1305; border-color: transparent;
-  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  color: var(--violet-ink); border-color: transparent;
+  background: linear-gradient(135deg, #c9b8ff, #9a7dff);
   transform: translateY(-1px);
-  box-shadow: 0 11px 26px -8px rgba(214,174,96,0.75);
+  box-shadow: 0 12px 28px -8px rgba(139,108,246,0.95);
 }
 
 /* "준비중" micro badge — nav pill + teaser kicker */
 .soon {
   font-size: 0.64rem; font-weight: 700; letter-spacing: 0.02em;
   padding: 2px 7px; border-radius: 999px; white-space: nowrap;
-  color: var(--gold-hi); background: rgba(214,174,96,0.18);
+  color: var(--violet-ink); background: rgba(23,9,63,0.16);
 }
-.nav-links a.nav-premium:hover .soon,
-.nav-links a.nav-premium:focus-visible .soon { color: #1a1305; background: rgba(26,19,5,0.18); }
 
 /* Footer icon */
-.foot-links a.prem-ico { color: var(--gold); border-color: rgba(214,174,96,0.35); }
+.foot-links a.prem-ico { color: var(--violet-hi); border-color: rgba(123,92,240,0.45); }
+.foot-links a.prem-ico:hover, .foot-links a.prem-ico:focus-visible {
+  color: var(--text); border-color: var(--violet-hi); background: rgba(139,108,246,0.16);
+}
 
-/* ---------- Hero CTA button ---------- */
+/* ---------- Hero CTA button — filled, with a slow sheen sweep ---------- */
 .btn-premium {
-  color: var(--gold-hi);
-  background: rgba(214,174,96,0.08);
-  border-color: rgba(214,174,96,0.42);
+  position: relative; overflow: hidden;
+  color: var(--violet-ink);
+  background: linear-gradient(135deg, var(--violet-hi), var(--violet));
+  box-shadow: 0 10px 30px -10px rgba(139,108,246,0.75);
+}
+.btn-premium::after {
+  content: ""; position: absolute; top: 0; left: -60%;
+  width: 42%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,0.5), transparent);
+  transform: skewX(-18deg);
+  animation: premShine 4.2s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes premShine {
+  0%, 62% { left: -60%; }
+  100%    { left: 125%; }
 }
 .btn-premium:hover, .btn-premium:focus-visible {
-  color: #1a1305; border-color: transparent;
-  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  background: linear-gradient(135deg, #c9b8ff, #9a7dff);
   transform: translateY(-3px);
-  box-shadow: 0 18px 42px -12px rgba(214,174,96,0.7);
+  box-shadow: 0 18px 46px -12px rgba(139,108,246,0.95);
 }
 .btn-premium .soon { font-size: 0.68rem; margin-left: -3px; }
-.btn-premium:hover .soon, .btn-premium:focus-visible .soon { color: #1a1305; background: rgba(26,19,5,0.18); }
 
 /* ---------- Premium page ---------- */
 .prem-hero { padding: 56px 0 8px; }
@@ -1007,31 +1024,31 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   margin: 0; font-size: clamp(2rem, 6vw, 3.4rem);
   font-weight: 800; letter-spacing: -0.025em; line-height: 1.05;
 }
-.prem-title .mark { color: var(--gold); }
+.prem-title .mark { color: var(--violet-hi); }
 .prem-sub { margin: 14px 0 0; color: var(--muted); max-width: 620px; font-size: clamp(0.98rem, 2.2vw, 1.1rem); }
 
 .prem-panel {
   margin-top: 18px; padding: 40px;
-  border-radius: var(--radius); border: 1px solid rgba(214,174,96,0.22);
+  border-radius: var(--radius); border: 1px solid rgba(123,92,240,0.26);
   background:
-    radial-gradient(700px 260px at 10% 0%, rgba(214,174,96,0.12), transparent 70%),
+    radial-gradient(700px 260px at 10% 0%, rgba(123,92,240,0.16), transparent 70%),
     linear-gradient(180deg, var(--ink-3), var(--ink-2));
 }
 .prem-panel-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .prem-chip {
   display: inline-flex; align-items: center; gap: 9px;
   padding: 8px 16px; border-radius: 999px;
-  font-size: 0.84rem; font-weight: 700; color: var(--gold-hi);
-  border: 1px solid rgba(214,174,96,0.4); background: rgba(214,174,96,0.08);
+  font-size: 0.84rem; font-weight: 700; color: var(--violet-hi);
+  border: 1px solid rgba(123,92,240,0.45); background: rgba(123,92,240,0.1);
 }
 .prem-chip .dot {
   width: 8px; height: 8px; border-radius: 50%; flex: none;
-  background: var(--gold-hi); animation: premPulse 2s ease-out infinite;
+  background: var(--violet-hi); animation: premPulse 2s ease-out infinite;
 }
 @keyframes premPulse {
-  0%   { box-shadow: 0 0 0 0 rgba(240,208,138,0.55); }
-  70%  { box-shadow: 0 0 0 9px rgba(240,208,138,0); }
-  100% { box-shadow: 0 0 0 0 rgba(240,208,138,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(169,139,255,0.6); }
+  70%  { box-shadow: 0 0 0 9px rgba(169,139,255,0); }
+  100% { box-shadow: 0 0 0 0 rgba(169,139,255,0); }
 }
 .prem-eta { font-size: 0.84rem; color: var(--muted-2); font-family: var(--f-mono); }
 .prem-big { margin: 20px 0 0; font-size: clamp(1.5rem, 4.6vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; }
@@ -1047,8 +1064,8 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .prem-card .tag {
   display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em;
   padding: 3px 9px; border-radius: 999px;
-  color: var(--gold-hi); background: rgba(214,174,96,0.12);
-  border: 1px solid rgba(214,174,96,0.25);
+  color: var(--violet-hi); background: rgba(123,92,240,0.14);
+  border: 1px solid rgba(123,92,240,0.3);
 }
 .prem-card h3 { margin: 14px 0 0; font-size: 1.16rem; font-weight: 800; letter-spacing: -0.01em; }
 .prem-card p { margin: 10px 0 0; color: var(--muted); font-size: 0.95rem; line-height: 1.65; }
