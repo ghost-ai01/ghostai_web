@@ -985,39 +985,20 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 /* Footer icon */
 .foot-links a.prem-ico { color: var(--gold); border-color: rgba(214,174,96,0.35); }
 
-/* ---------- Landing teaser band ---------- */
-.prem-section { padding: 24px 0 0; }
-.prem-band {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 26px; flex-wrap: wrap;
-  padding: 32px 36px; border-radius: var(--radius);
-  border: 1px solid rgba(214,174,96,0.26);
-  background:
-    radial-gradient(560px 200px at 0% 0%, rgba(214,174,96,0.14), transparent 70%),
-    linear-gradient(180deg, var(--ink-3), var(--ink-2));
-  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
-}
-.prem-band:hover, .prem-band:focus-visible {
-  transform: translateY(-4px); border-color: rgba(214,174,96,0.55);
-  box-shadow: 0 26px 60px -30px rgba(214,174,96,0.55);
-}
-.prem-kicker {
-  display: inline-flex; align-items: center; gap: 10px;
-  font-size: 0.76rem; font-weight: 700; letter-spacing: 0.16em;
+/* ---------- Hero CTA button ---------- */
+.btn-premium {
   color: var(--gold-hi);
+  background: rgba(214,174,96,0.08);
+  border-color: rgba(214,174,96,0.42);
 }
-.prem-copy h2 {
-  margin: 12px 0 0; font-size: clamp(1.3rem, 3.4vw, 1.8rem);
-  font-weight: 800; letter-spacing: -0.02em;
+.btn-premium:hover, .btn-premium:focus-visible {
+  color: #1a1305; border-color: transparent;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  transform: translateY(-3px);
+  box-shadow: 0 18px 42px -12px rgba(214,174,96,0.7);
 }
-.prem-copy p { margin: 10px 0 0; color: var(--muted); font-size: 0.96rem; max-width: 560px; }
-.prem-band .go {
-  display: inline-flex; align-items: center; gap: 8px; flex: none;
-  font-weight: 700; color: var(--gold-hi);
-  transition: gap 0.25s var(--ease);
-}
-.prem-band:hover .go { gap: 14px; }
-.prem-band .go svg { width: 18px; height: 18px; }
+.btn-premium .soon { font-size: 0.68rem; margin-left: -3px; }
+.btn-premium:hover .soon, .btn-premium:focus-visible .soon { color: #1a1305; background: rgba(26,19,5,0.18); }
 
 /* ---------- Premium page ---------- */
 .prem-hero { padding: 56px 0 8px; }
@@ -1076,6 +1057,4 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 @media (max-width: 760px) {
   .prem-hero { padding: 40px 0 4px; }
   .prem-panel { padding: 28px; }
-  .prem-band { padding: 26px; }
-  .prem-band .go { width: 100%; }
 }
