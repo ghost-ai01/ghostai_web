@@ -930,6 +930,7 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .reveal.d1 { transition-delay: 0.08s; }
 .reveal.d2 { transition-delay: 0.16s; }
 .reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
 
 /* ---------- Responsive (mobile-first verified) ---------- */
 @media (max-width: 760px) {
@@ -1080,6 +1081,7 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
     radial-gradient(640px 240px at 0% 0%, rgba(139,108,246,0.17), transparent 70%),
     linear-gradient(180deg, var(--ink-3), var(--ink-2));
 }
+.prem-card.wide { grid-column: 1 / -1; }
 .prem-card.feature h3 { font-size: clamp(1.3rem, 3.4vw, 1.7rem); }
 .prem-card.feature p { font-size: 1rem; max-width: 740px; }
 .prem-card .tag.key {
