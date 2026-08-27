@@ -413,6 +413,7 @@ button { font-family: inherit; }
 }
 .legal .company a { color: inherit; transition: color 0.2s var(--ease); }
 .legal .company a:hover, .legal .company a:focus-visible { color: var(--gold); }
+.legal .donate { margin-top: 14px; }
 .copyright { margin-top: 20px; font-size: 0.8rem; color: var(--muted-2); }
 
 /* =========================================================================
