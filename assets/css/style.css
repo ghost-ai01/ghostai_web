@@ -932,6 +932,8 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .reveal.d2 { transition-delay: 0.16s; }
 .reveal.d3 { transition-delay: 0.24s; }
 .reveal.d4 { transition-delay: 0.32s; }
+.reveal.d5 { transition-delay: 0.40s; }
+.reveal.d6 { transition-delay: 0.48s; }
 
 /* ---------- Responsive (mobile-first verified) ---------- */
 @media (max-width: 760px) {
