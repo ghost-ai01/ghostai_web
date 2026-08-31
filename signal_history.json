@@ -482,5 +482,16 @@
     "hold_days": 22,
     "note": "TQQQ 보유 중",
     "published_at": "2026-08-29T06:37:59+09:00"
+  },
+  {
+    "date": "2026-08-31",
+    "action": "CASH",
+    "close": 71.91999816894531,
+    "entry_date": null,
+    "entry_price": null,
+    "pnl_pct": null,
+    "hold_days": null,
+    "note": "현금 보유 중 (관망)",
+    "published_at": "2026-09-01T06:48:00+09:00"
   }
 ]
