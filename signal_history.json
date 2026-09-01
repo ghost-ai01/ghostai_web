@@ -493,5 +493,16 @@
     "hold_days": 25,
     "note": "TQQQ 보유 중",
     "published_at": "2026-09-01T06:48:00+09:00"
+  },
+  {
+    "date": "2026-09-01",
+    "action": "HOLD",
+    "close": 69.1500015258789,
+    "entry_date": "2026-08-06",
+    "entry_price": 70.8499984741211,
+    "pnl_pct": -2.399431171283839,
+    "hold_days": 26,
+    "note": "TQQQ 보유 중",
+    "published_at": "2026-09-02T07:46:31+09:00"
   }
 ]
