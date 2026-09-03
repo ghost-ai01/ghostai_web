@@ -42,6 +42,15 @@
         if (data.youtube_url) {
           document.querySelectorAll("[data-link='youtube']").forEach(function (a) { a.href = data.youtube_url; });
         }
+        if (data.member_url) {
+          document.querySelectorAll("[data-link='member']").forEach(function (a) { a.href = data.member_url; });
+        }
+        if (data.member_signup_url) {
+          document.querySelectorAll("[data-link='member-signup']").forEach(function (a) { a.href = data.member_signup_url; });
+        }
+        if (data.beta_seats) {
+          document.querySelectorAll("[data-beta-seats]").forEach(function (el) { el.textContent = data.beta_seats; });
+        }
       })
       .catch(function () { /* keep hardcoded fallback hrefs */ });
   }
