@@ -1128,7 +1128,9 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
    Violet is the member tier accent, same as the nav pill and .btn-premium.
    ========================================================================= */
 
-.beta-section { padding-top: 8px; }
+/* 히어로 바로 아래 첫 섹션 자리 — 이전에 .perf-section 이 쓰던 여백을 그대로 받는다.
+   아래쪽은 8px 만 두고 이어지는 .perf-section 의 40px 상단 여백이 간격을 만든다. */
+.beta-section { padding: 40px 0 8px; }
 
 .beta-card,
 .prem-beta {
