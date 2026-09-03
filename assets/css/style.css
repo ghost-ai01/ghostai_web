@@ -1212,8 +1212,8 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   .seat-n { font-size: 2.6rem; }
 }
 
-/* 배지가 "무료" 두 글자로 짧아져 좁은 화면에서도 접지 않는다 — 가격 정보가
-   헤더에서 사라지지 않는 편이 낫고, 폭도 한 줄에 들어간다. */
+/* 배지가 두 글자라 좁은 화면에서도 접지 않는다 — 헤더에서 사라지지 않는 편이
+   낫고, 폭도 한 줄에 들어간다. */
 @media (max-width: 480px) {
   .nav-links a.nav-premium { padding: 7px 11px; font-size: 0.84rem; }
 }
