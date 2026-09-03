@@ -1190,14 +1190,6 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 }
 .seat-l { font-size: 0.68rem; font-weight: 800; letter-spacing: 0.14em; color: var(--muted-2); }
 
-.seat-meta { display: grid; gap: 10px; }
-.seat-meta div {
-  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
-  padding: 11px 14px; border-radius: var(--radius-sm);
-  border: 1px solid var(--line); background: rgba(255,255,255,0.02);
-}
-.seat-meta b { font-size: 0.98rem; font-weight: 800; color: var(--text); }
-.seat-meta span { font-size: 0.76rem; color: var(--muted-2); text-align: right; }
 
 /* premium.html panel sits directly under the hero */
 .prem-beta-wrap { padding-top: 0; padding-bottom: 8px; }
@@ -1215,14 +1207,9 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   .beta-card,
   .prem-beta { grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; }
   .beta-side,
-  .prem-beta-side { order: -1; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .prem-beta-side { order: -1; }
   .seat-figure { padding: 20px 14px; }
   .seat-n { font-size: 2.6rem; }
-  .seat-meta { gap: 8px; }
-}
-@media (max-width: 520px) {
-  .beta-side,
-  .prem-beta-side { grid-template-columns: 1fr; }
 }
 
 /* 아주 좁은 화면에서는 배지를 접어 헤더가 두 줄로 깨지지 않게 한다 */
