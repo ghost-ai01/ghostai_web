@@ -937,7 +937,11 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 
 /* ---------- Responsive (mobile-first verified) ---------- */
 @media (max-width: 760px) {
-  .nav-links { display: none; }
+  /* 내비 항목은 감추되 회원 페이지 진입점 하나는 남긴다 — 히어로를 지나 스크롤하면
+     상단에 아무 CTA 도 남지 않아 베타 가입 경로가 끊긴다. */
+  .nav-links { display: inline-flex; align-items: center; gap: 0; }
+  .nav-links a:not(.nav-premium) { display: none; }
+  .nav-links a.nav-premium { padding: 7px 13px; font-size: 0.88rem; }
   .hero { min-height: auto; padding: 44px 0 56px; }
   .cards { grid-template-columns: 1fr; }
   .cta-row .btn { flex: 1 1 100%; justify-content: center; }
@@ -1217,4 +1221,10 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 @media (max-width: 520px) {
   .beta-side,
   .prem-beta-side { grid-template-columns: 1fr; }
+}
+
+/* 아주 좁은 화면에서는 배지를 접어 헤더가 두 줄로 깨지지 않게 한다 */
+@media (max-width: 480px) {
+  .nav-links a.nav-premium .soon { display: none; }
+  .nav-links a.nav-premium { padding: 7px 11px; font-size: 0.84rem; }
 }
