@@ -1035,31 +1035,12 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .prem-title .mark { color: var(--violet-hi); }
 .prem-sub { margin: 14px 0 0; color: var(--muted); max-width: 620px; font-size: clamp(0.98rem, 2.2vw, 1.1rem); }
 
-.prem-panel {
-  margin-top: 18px; padding: 40px;
-  border-radius: var(--radius); border: 1px solid rgba(123,92,240,0.26);
-  background:
-    radial-gradient(700px 260px at 10% 0%, rgba(123,92,240,0.16), transparent 70%),
-    linear-gradient(180deg, var(--ink-3), var(--ink-2));
-}
-.prem-panel-head { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-.prem-chip {
-  display: inline-flex; align-items: center; gap: 9px;
-  padding: 8px 16px; border-radius: 999px;
-  font-size: 0.84rem; font-weight: 700; color: var(--violet-hi);
-  border: 1px solid rgba(123,92,240,0.45); background: rgba(123,92,240,0.1);
-}
-.prem-chip .dot {
-  width: 8px; height: 8px; border-radius: 50%; flex: none;
-  background: var(--violet-hi); animation: premPulse 2s ease-out infinite;
-}
+/* premPulse 는 .beta-chip .dot 이 쓴다 — 상태 패널이 사라져도 남겨 둔다. */
 @keyframes premPulse {
   0%   { box-shadow: 0 0 0 0 rgba(169,139,255,0.6); }
   70%  { box-shadow: 0 0 0 9px rgba(169,139,255,0); }
   100% { box-shadow: 0 0 0 0 rgba(169,139,255,0); }
 }
-.prem-eta { font-size: 0.84rem; color: var(--muted-2); font-family: var(--f-mono); }
-.prem-big { margin: 20px 0 0; font-size: clamp(1.5rem, 4.6vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; }
 .prem-note { margin: 12px 0 0; color: var(--muted); max-width: 620px; }
 
 .prem-plan { padding-top: 20px; }
@@ -1102,10 +1083,9 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 }
 @media (max-width: 760px) {
   .prem-hero { padding: 40px 0 4px; }
-  .prem-panel { padding: 28px; }
 }
 
-/* 회원 베타 진입 — 카피라이트 줄에 작게 붙는 테스트 링크 (Phase 1 한정) */
+/* 회원 페이지 진입 — 카피라이트 줄에 작게 붙는 로그인 링크 */
 .copyright { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
 .beta-link {
   display: inline-flex; align-items: center; gap: 7px;
@@ -1194,9 +1174,6 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 /* premium.html panel sits directly under the hero */
 .prem-beta-wrap { padding-top: 0; padding-bottom: 8px; }
 
-/* Status panel supporting line */
-.prem-big-sub { margin: 10px 0 0; font-size: 0.9rem; color: var(--muted-2); line-height: 1.7; }
-.prem-big-sub b { color: var(--muted); font-weight: 700; }
 
 /* Footer login pill — now the live beta, not a test link */
 .beta-link.live { color: var(--muted); border-color: rgba(139,108,246,0.4); }
