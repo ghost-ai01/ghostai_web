@@ -1237,3 +1237,23 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   .post-list a { gap: 4px 14px; padding: 13px 15px; }
   .post h2 { margin-top: 32px; }
 }
+
+/* 강조된 "데일리 리포트" nav 항목 — 금색 외곽 알약.
+   시그널(시안)·회원(보라)은 이미 채워진 알약이라, 셋째까지 채우면 내비가 산만해진다.
+   테두리만 주어 한 단계 아래 강조로 두되 평범한 링크와는 확실히 구분되게 한다. */
+.nav-links a.nav-posts {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--gold-hi); font-weight: 700;
+  padding: 7px 15px;
+  border: 1px solid rgba(214,174,96,0.5);
+  background: rgba(214,174,96,0.08);
+  transition: color 0.2s var(--ease), background 0.2s var(--ease),
+              border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.nav-links a.nav-posts svg { width: 15px; height: 15px; flex: none; }
+.nav-links a.nav-posts:hover, .nav-links a.nav-posts:focus-visible {
+  color: #1c1406; border-color: transparent;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px -8px rgba(214,174,96,0.65);
+}
