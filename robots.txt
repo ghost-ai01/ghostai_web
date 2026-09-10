@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# 회원 앱으로 나가는 리다이렉트 — 색인할 내용이 없다.
+Disallow: /join
+Disallow: /login
+
+Sitemap: https://www.ghostai.co.kr/sitemap.xml
