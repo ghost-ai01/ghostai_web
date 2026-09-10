@@ -198,6 +198,10 @@
           document.querySelectorAll("[data-link='blog']").forEach(function (a) { a.href = data.blog_url; });
         if (data.youtube_url)
           document.querySelectorAll("[data-link='youtube']").forEach(function (a) { a.href = data.youtube_url; });
+        if (data.join_url)
+          document.querySelectorAll("[data-link='join']").forEach(function (a) { a.href = data.join_url; });
+        if (data.login_url)
+          document.querySelectorAll("[data-link='login']").forEach(function (a) { a.href = data.login_url; });
       })
       .catch(function () { /* keep hardcoded fallback hrefs */ });
   }

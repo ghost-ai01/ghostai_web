@@ -42,6 +42,12 @@
         if (data.youtube_url) {
           document.querySelectorAll("[data-link='youtube']").forEach(function (a) { a.href = data.youtube_url; });
         }
+        if (data.join_url) {
+          document.querySelectorAll("[data-link='join']").forEach(function (a) { a.href = data.join_url; });
+        }
+        if (data.login_url) {
+          document.querySelectorAll("[data-link='login']").forEach(function (a) { a.href = data.login_url; });
+        }
         if (data.member_url) {
           document.querySelectorAll("[data-link='member']").forEach(function (a) { a.href = data.member_url; });
         }

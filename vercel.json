@@ -1,0 +1,15 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/join",
+      "destination": "https://ghostai-member.vercel.app/signup",
+      "permanent": false
+    },
+    {
+      "source": "/login",
+      "destination": "https://ghostai-member.vercel.app",
+      "permanent": false
+    }
+  ]
+}
