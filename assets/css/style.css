@@ -1270,3 +1270,12 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   background: linear-gradient(135deg, var(--gold-hi), var(--gold));
   box-shadow: 0 12px 28px -10px rgba(214,174,96,0.7);
 }
+
+/* 포스트 상단의 두 인용문은 역할이 다르다 — 회원 안내(보라)와 그날 한 줄 요약(금색).
+   같은 색 막대로 나란히 두면 한 덩어리로 읽혀서 구분이 안 된다. */
+.post blockquote.q-notice { border-left-color: var(--violet); background: rgba(139,108,246,.07); }
+.post blockquote.q-lede {
+  border-left-color: var(--gold); background: rgba(214,174,96,.07);
+  margin-top: 14px;
+}
+.post blockquote.q-lede p { color: var(--text); font-size: 1.02rem; font-weight: 600; }
