@@ -1257,3 +1257,16 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   transform: translateY(-1px);
   box-shadow: 0 10px 24px -8px rgba(214,174,96,0.65);
 }
+
+/* 히어로의 "데일리 리포트" 버튼 — 내비의 .nav-posts 와 같은 금색 외곽 처리.
+   내부 콘텐츠로 보내는 버튼이라 외부 채널(.btn-secondary)과 구분한다. */
+.btn-posts {
+  color: var(--gold-hi);
+  border: 1px solid rgba(214,174,96,0.5);
+  background: rgba(214,174,96,0.08);
+}
+.btn-posts:hover, .btn-posts:focus-visible {
+  color: #1c1406; border-color: transparent;
+  background: linear-gradient(135deg, var(--gold-hi), var(--gold));
+  box-shadow: 0 12px 28px -10px rgba(214,174,96,0.7);
+}
