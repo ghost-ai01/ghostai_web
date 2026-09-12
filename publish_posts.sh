@@ -16,7 +16,7 @@ cd "$ROOT"
 MODE="--latest"
 [ "${1:-}" = "--all" ] && MODE=""
 
-python web/build_posts.py $MODE
+python script_web/build_posts.py $MODE
 
 if [ ! -d web/.git ]; then
   echo "[skip] web/.git 없음 — 커밋/푸시 건너뜀"
