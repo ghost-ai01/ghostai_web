@@ -18,6 +18,22 @@ MODE="--latest"
 
 python script_web/build_posts.py $MODE
 
+# 발행 대상 날짜. 아래 커밋 메시지에도 쓴다.
+LATEST="$(ls -1 web/posts/*.html 2>/dev/null | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | sort | tail -1)"
+
+# 네이버 블로그용 원고도 같이 만든다.
+#
+# 공개웹판은 완성된 페이지라 외부 CSS·상대경로 이미지로 서식과 그림이 다 깨져
+# 그대로 붙일 수 없다. 게다가 HTML 소스를 편집창에 붙이면 발행할 때 사라진다 —
+# 네이버는 글을 HTML 이 아니라 구성요소 목록으로 저장하기 때문이다. 그래서
+# 여기서 만드는 것은 **브라우저로 열어 화면을 복사할 페이지**다.
+#
+# 부가 산출물이라 실패해도 웹 발행을 멈추지 않는다.
+if [ -n "$LATEST" ]; then
+  python script_web/build_naver_post.py "$LATEST" \
+    || echo "[warn] 네이버 원고 생성 실패 (웹 발행은 계속)"
+fi
+
 if [ ! -d web/.git ]; then
   echo "[skip] web/.git 없음 — 커밋/푸시 건너뜀"
   exit 0
@@ -30,7 +46,6 @@ if git -C web diff --cached --quiet 2>/dev/null; then
   exit 0
 fi
 
-LATEST="$(ls -1 web/posts/*.html 2>/dev/null | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | sort | tail -1)"
 git -C web commit -q -m "Publish daily report ${LATEST}"
 if git -C web push -q; then
   echo "[web] 발행 완료 (${LATEST}) -> Vercel auto-deploy"
