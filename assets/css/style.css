@@ -1301,11 +1301,10 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   .nav-links a.nav-premium .soon { display: none; }
 }
 
-/* 채널 카드의 보조 링크 — 카드 전체를 덮는 .full-link 위에 떠야 클릭이 먹는다.
-   네이버가 주 채널이고 티스토리는 지난 글 보관함이라 작게 둔다. */
-.card .alt-link {
-  position: relative; z-index: 2; display: inline-block; margin-top: 10px;
-  font-size: .8rem; color: var(--muted-2); text-decoration: none;
-  border-bottom: 1px solid currentColor; padding-bottom: 1px;
+/* 푸터의 티스토리 링크. 네이버로 옮기기 전 글 89 편이 그쪽에 남아 있어
+   길을 끊지 않되, 아이콘들 사이에서 튀지 않게 작은 글자로 둔다. */
+.arch-link {
+  align-self: center; font-size: .78rem; color: var(--muted-2);
+  text-decoration: none; white-space: nowrap;
 }
-.card .alt-link:hover, .card .alt-link:focus-visible { color: var(--text); }
+.arch-link:hover, .arch-link:focus-visible { color: var(--text); text-decoration: underline; }
