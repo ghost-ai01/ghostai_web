@@ -103,6 +103,12 @@ button { font-family: inherit; }
   border-radius: 999px; transition: color 0.2s var(--ease), background 0.2s var(--ease);
 }
 .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); background: rgba(255,255,255,0.04); }
+/* "백테스트 성과"만 테두리가 없어 옆의 시그널·리포트·회원 항목보다 약해 보인다.
+   클래스가 없는 항목이라 href 로 집는다 — :not() 으로 묶으면 "홈"과 현재 페이지
+   표시(.active)까지 걸린다. 히어로의 보조 버튼과 같은 중립 테두리. */
+.nav-links a[href="backtest.html"] { border: 1px solid rgba(153,163,182,0.4); }
+.nav-links a[href="backtest.html"]:hover,
+.nav-links a[href="backtest.html"]:focus-visible { border-color: rgba(153,163,182,0.7); }
 /* emphasized "오늘의 시그널" nav item — cyan pill + live pulse, invites the click */
 .nav-links a.nav-signal {
   display: inline-flex; align-items: center; gap: 7px;
@@ -198,9 +204,12 @@ button { font-family: inherit; }
   box-shadow: 0 18px 42px -12px rgba(214,174,96,0.7);
 }
 .btn-secondary {
-  background: rgba(255,255,255,0.03);
+  /* --line(#1f2738)은 이 배경에서 대비 1.32:1 이라 테두리가 사실상 안 보였다.
+     중립색을 써서 금색·청록 버튼과 경쟁하지 않으면서 대비를 3.06:1 로 올린다
+     (.btn-posts 금색 테두리와 같은 값). */
+  background: rgba(255,255,255,0.055);
   color: var(--text);
-  border-color: var(--line);
+  border-color: rgba(153,163,182,0.55);
 }
 .btn-secondary:hover, .btn-secondary:focus-visible {
   transform: translateY(-3px);
