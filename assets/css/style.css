@@ -1311,9 +1311,9 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 }
 
 /* 푸터의 티스토리 링크. 네이버로 옮기기 전 글 89 편이 그쪽에 남아 있어
-   길을 끊지 않되, 아이콘들 사이에서 튀지 않게 작은 글자로 둔다. */
-.arch-link {
-  align-self: center; font-size: .78rem; color: var(--muted-2);
-  text-decoration: none; white-space: nowrap;
-}
-.arch-link:hover, .arch-link:focus-visible { color: var(--text); text-decoration: underline; }
+   길을 끊지 않되, 아이콘들 사이에서 튀지 않게 한 단계 흐린 색으로 둔다.
+   글자로 두면 .foot-links a 의 42x42 정사각 박스를 뚫고 나오므로 아이콘으로 쓴다. */
+.foot-links a.arch-link { color: var(--muted-2); }
+/* 위 규칙과 .foot-links a:hover 는 명시도가 같고 이쪽이 뒤라, 호버를 다시 적어 준다. */
+.foot-links a.arch-link:hover,
+.foot-links a.arch-link:focus-visible { color: var(--text); }
