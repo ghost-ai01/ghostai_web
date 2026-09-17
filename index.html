@@ -34,6 +34,7 @@
         "streetAddress": "흥덕3로 60"
       },
       "sameAs": [
+        "https://blog.naver.com/ghostai",
         "https://ghost-ai.tistory.com",
         "https://youtube.com/@ghostai-n7m"
       ]
@@ -111,7 +112,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
           회원 페이지<span class="soon">베타</span>
         </a>
-        <a data-link="blog" href="https://ghost-ai.tistory.com" target="_blank" rel="noopener">블로그</a>
+        <a data-link="blog" href="https://blog.naver.com/ghostai" target="_blank" rel="noopener">블로그</a>
         <a data-link="youtube" href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener">유튜브</a>
       </nav>
     </div>
@@ -278,8 +279,12 @@
             <span class="go">블로그 방문
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
             </span>
-            <a class="full-link" data-link="blog" href="https://ghost-ai.tistory.com"
-               target="_blank" rel="noopener" aria-label="Ghost.AI 블로그 새 창에서 열기"></a>
+            <a class="full-link" data-link="blog" href="https://blog.naver.com/ghostai"
+               target="_blank" rel="noopener" aria-label="Ghost.AI 네이버 블로그 새 창에서 열기"></a>
+            <!-- 티스토리는 지난 글 보관함. 카드 전체를 덮는 full-link 위로 올려야
+                 클릭이 먹어서 .alt-link 에 z-index 를 줬다. -->
+            <a class="alt-link" data-link="blog-tistory" href="https://ghost-ai.tistory.com"
+               target="_blank" rel="noopener">지난 글 보관함 (티스토리)</a>
           </article>
 
           <!-- YouTube card -->
@@ -318,7 +323,7 @@
           <a class="prem-ico" href="premium.html" aria-label="회원 페이지 (베타)">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
           </a>
-          <a data-link="blog" href="https://ghost-ai.tistory.com" target="_blank" rel="noopener" aria-label="블로그">
+          <a data-link="blog" href="https://blog.naver.com/ghostai" target="_blank" rel="noopener" aria-label="네이버 블로그">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
           </a>
           <a data-link="youtube" href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener" aria-label="유튜브">

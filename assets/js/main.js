@@ -39,6 +39,10 @@
         if (data.blog_url) {
           document.querySelectorAll("[data-link='blog']").forEach(function (a) { a.href = data.blog_url; });
         }
+        // 티스토리는 아카이브로 남긴다 — 글 89 편이 이미 색인돼 있어 끊을 이유가 없다.
+        if (data.blog_tistory_url) {
+          document.querySelectorAll("[data-link='blog-tistory']").forEach(function (a) { a.href = data.blog_tistory_url; });
+        }
         if (data.youtube_url) {
           document.querySelectorAll("[data-link='youtube']").forEach(function (a) { a.href = data.youtube_url; });
         }
