@@ -12,6 +12,17 @@
       "permanent": false
     },
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "ghostai-web.vercel.app"
+        }
+      ],
+      "destination": "https://www.ghostai.co.kr/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
