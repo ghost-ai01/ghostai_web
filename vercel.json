@@ -10,6 +10,17 @@
       "source": "/login",
       "destination": "https://ghostai-member.vercel.app",
       "permanent": false
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "ghostai-web.vercel.app"
+        }
+      ],
+      "destination": "https://www.ghostai.co.kr/:path*",
+      "permanent": true
     }
   ]
 }
