@@ -312,6 +312,11 @@ button { font-family: inherit; }
 .perf-stats .ps-n.up   { color: #4ad991; }
 .perf-stats .ps-n.down { color: #ff6b6b; }
 .perf-stats .ps-l { margin-top: 4px; font-size: 0.78rem; color: var(--muted-2); }
+/* 배너 아래 길 안내. 전 구간 매매 내역이 회원 페이지에만 있어 여기서 짚어 준다. */
+.perf-note { margin: 18px 0 0; text-align: center; font-size: .9rem; color: var(--muted); }
+.perf-note b { color: var(--text); }
+.perf-note a { color: var(--violet-hi); text-decoration: none; border-bottom: 1px solid rgba(185,163,255,.35); }
+.perf-note a:hover, .perf-note a:focus-visible { border-bottom-color: var(--violet-hi); }
 
 @media (max-width: 860px) {
   .perf-banner { grid-template-columns: 1fr; gap: 26px; padding: 32px; }
