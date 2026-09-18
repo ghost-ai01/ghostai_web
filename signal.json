@@ -10,6 +10,7 @@
     "current_close": 71.37999725341797,
     "pnl_pct": 0.7480575733399109,
     "hold_days_calendar": 42,
+    "hold_days_trading": 30,
     "today_action": "HOLD",
     "signal_today": null,
     "pending_fill": null

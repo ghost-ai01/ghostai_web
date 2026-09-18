@@ -92,8 +92,11 @@
       var pnl = t.pnl_pct;
       var pnlCls = (pnl === null || pnl === undefined) ? "muted" : (Number(pnl) >= 0 ? "up" : "down");
       setVal("m-pnl", fmtPct(pnl), pnlCls);
-      var hd = t.hold_days_calendar;
-      setVal("m-hold", (hd === null || hd === undefined) ? "—" : hd + "일");
+      // 거래일로 센다. 포스트·영상 본문이 거래일이라 여기만 달력일이면 같은
+      // 사이트 안에서 숫자가 어긋난다 (2026-09-17: 여기 42일 vs 글 30거래일).
+      var hd = t.hold_days_trading, unit = "거래일";
+      if (hd === null || hd === undefined) { hd = t.hold_days_calendar; unit = "일"; }
+      setVal("m-hold", (hd === null || hd === undefined) ? "—" : hd + unit);
     }
   }
 
