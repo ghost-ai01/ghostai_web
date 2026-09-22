@@ -1336,11 +1336,39 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 /* ===================== 소개 페이지 (about.html) =====================
    기존 토큰과 컴포넌트를 최대한 재사용하고, 이 페이지에만 필요한 블록만
    여기에 둔다. bt-cards·mdd-compare·zl-grid·sig-cta 는 그대로 쓴다. */
-/* 히어로의 소개 페이지 안내. 버튼이 이미 네 개라 문장으로 받는다. */
-.hero-intro { margin: 16px 0 0; font-size: .92rem; color: var(--muted-2); }
-.hero-intro a { color: var(--gold); text-decoration: none;
-  border-bottom: 1px solid rgba(214,174,96,.4); }
-.hero-intro a:hover, .hero-intro a:focus-visible { border-bottom-color: var(--gold); }
+/* 히어로의 소개 입구. CTA 버튼이 이미 네 개(보라·청록·금·중립)라 색을 하나 더
+   쓰면 주목도 경쟁이 된다. 그래서 색 대신 **형태와 위치**로 세운다 — 버튼 줄
+   위에 놓인 독립된 띠라 처음 온 사람의 눈이 먼저 닿는다. 채움은 거의 없고
+   테두리와 화살표만으로 눌리는 것임을 알린다. */
+.hero-about {
+  display: inline-flex; align-items: center; gap: 14px;
+  margin: 22px 0 0; padding: 14px 18px;
+  max-width: 560px; border-radius: 14px;
+  border: 1px solid rgba(153,163,182,0.3);
+  background: rgba(255,255,255,0.022);
+  transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease);
+}
+.hero-about:hover, .hero-about:focus-visible {
+  border-color: rgba(153,163,182,0.55);
+  background: rgba(255,255,255,0.045);
+  transform: translateY(-1px);
+}
+.hero-about .ha-i { flex: none; display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(214,174,96,0.1); color: var(--gold); }
+.hero-about .ha-i svg { width: 18px; height: 18px; }
+.hero-about .ha-t { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.hero-about .ha-t b { font-size: .95rem; font-weight: 700; color: var(--text); letter-spacing: -.01em; }
+.hero-about .ha-t span { font-size: .82rem; color: var(--muted-2); line-height: 1.5; }
+.hero-about .ha-go { flex: none; display: inline-flex; align-items: center; gap: 5px;
+  margin-left: auto; font-size: .86rem; font-weight: 700; color: var(--gold); white-space: nowrap; }
+.hero-about .ha-go svg { width: 15px; height: 15px; transition: transform .2s var(--ease); }
+.hero-about:hover .ha-go svg { transform: translateX(3px); }
+
+@media (max-width: 560px) {
+  .hero-about { display: flex; flex-wrap: wrap; gap: 10px 12px; }
+  .hero-about .ha-go { margin-left: 48px; }
+}
 
 .ab-hero { padding: 76px 0 8px; }
 .ab-title {
