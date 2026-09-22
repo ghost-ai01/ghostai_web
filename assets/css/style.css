@@ -1328,3 +1328,100 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 /* 위 규칙과 .foot-links a:hover 는 명시도가 같고 이쪽이 뒤라, 호버를 다시 적어 준다. */
 .foot-links a.arch-link:hover,
 .foot-links a.arch-link:focus-visible { color: var(--text); }
+
+/* ===================== 소개 페이지 (about.html) =====================
+   기존 토큰과 컴포넌트를 최대한 재사용하고, 이 페이지에만 필요한 블록만
+   여기에 둔다. bt-cards·mdd-compare·zl-grid·sig-cta 는 그대로 쓴다. */
+/* 히어로의 소개 페이지 안내. 버튼이 이미 네 개라 문장으로 받는다. */
+.hero-intro { margin: 16px 0 0; font-size: .92rem; color: var(--muted-2); }
+.hero-intro a { color: var(--gold); text-decoration: none;
+  border-bottom: 1px solid rgba(214,174,96,.4); }
+.hero-intro a:hover, .hero-intro a:focus-visible { border-bottom-color: var(--gold); }
+
+.ab-hero { padding: 76px 0 8px; }
+.ab-title {
+  margin: 18px 0 0; font-size: clamp(2rem, 6vw, 3.6rem);
+  font-weight: 800; letter-spacing: -0.03em; line-height: 1.08;
+}
+.ab-title .mark { color: var(--gold); }
+.ab-lede { margin: 20px 0 0; color: var(--muted); max-width: 660px;
+  font-size: clamp(1rem, 2.3vw, 1.15rem); line-height: 1.75; }
+.ab-lede b { color: var(--text); }
+
+.ab-facts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 34px; }
+.abf { flex: 1 1 150px; padding: 18px 20px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: var(--ink-2); }
+.abf-n { font-family: var(--f-mono); font-size: 1.6rem; font-weight: 700; color: var(--text); }
+.abf-n span { font-size: .9rem; font-weight: 600; color: var(--muted); margin-left: 2px; }
+.abf-l { margin-top: 4px; font-size: .8rem; color: var(--muted-2); }
+
+/* 섹션 배경을 번갈아 깔아 긴 페이지에 리듬을 준다 */
+.ab-alt { background: linear-gradient(180deg, transparent, rgba(19,26,40,.55) 12%, rgba(19,26,40,.55) 88%, transparent); }
+
+.ab-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.ab-two { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 22px; }
+.ab-card { padding: 26px 28px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--ink-2); }
+.ab-card h3 { margin: 0 0 10px; font-size: 1.08rem; font-weight: 800; letter-spacing: -.01em; }
+.ab-card p { margin: 0; color: var(--muted); line-height: 1.75; font-size: .95rem; }
+.ab-card p b, .ab-card li b { color: var(--text); }
+.ab-num { font-family: var(--f-mono); font-size: .82rem; color: var(--gold); margin-bottom: 10px; }
+.ab-card.in { border-color: rgba(86,204,222,.28); }
+.ab-card.out { border-color: rgba(214,174,96,.28); }
+.ab-card.prem { border-color: rgba(139,108,246,.3); background: rgba(139,108,246,.05); }
+
+.ab-card .tag { font-family: var(--f-mono); font-size: .72rem; padding: 3px 8px;
+  border-radius: 6px; margin-right: 8px; vertical-align: 2px; }
+.tag.buy { color: #34d399; background: rgba(52,211,153,.12); }
+.tag.sell { color: #f87171; background: rgba(248,113,113,.12); }
+
+.ab-body { margin: 24px auto 0; max-width: 700px; text-align: center;
+  color: var(--muted); line-height: 1.8; font-size: 1rem; }
+.ab-body b { color: var(--text); }
+.ab-note { margin: 22px auto 0; max-width: 760px; text-align: center;
+  font-size: .84rem; color: var(--muted-2); line-height: 1.7; }
+
+.ab-inputs { display: grid; gap: 12px; margin-top: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.abi { padding: 16px 18px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: var(--ink-2); }
+.abi-i { display: block; font-size: 1.2rem; margin-bottom: 8px; }
+.abi b { display: block; font-size: .94rem; }
+.abi span:last-child { display: block; margin-top: 3px; font-size: .8rem; color: var(--muted-2); line-height: 1.55; }
+
+.ab-flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; }
+.abfl { flex: 1 1 170px; padding: 18px 20px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: var(--ink-2); }
+.abfl.on { border-color: rgba(214,174,96,.45); background: rgba(214,174,96,.06); }
+.abfl-k { font-family: var(--f-mono); font-size: .74rem; color: var(--gold); }
+.abfl b { display: block; margin-top: 8px; font-size: .98rem; }
+.abfl span:last-child { display: block; margin-top: 3px; font-size: .8rem; color: var(--muted-2); }
+.abfl-a { align-self: center; color: var(--muted-2); font-size: 1.1rem; flex: none; }
+
+.ab-metrics { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
+.abm { padding: 24px 26px; border-radius: var(--radius);
+  border: 1px solid var(--line); background: var(--ink-2); }
+.abm-h b { font-size: 1rem; font-weight: 800; }
+.abm-h span { margin-left: 8px; font-size: .82rem; color: var(--muted-2); }
+.abm-v { margin: 10px 0 12px; font-family: var(--f-mono); font-size: 1.9rem;
+  font-weight: 700; color: var(--cyan); letter-spacing: -.02em; }
+.abm-v.down { color: #f87171; }
+.abm p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.75; }
+.abm p b { color: var(--text); }
+
+.ab-day { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+.abd { padding: 18px 20px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: var(--ink-2); }
+.abd-t { font-family: var(--f-mono); font-size: .76rem; color: var(--cyan); }
+.abd b { display: block; margin-top: 8px; font-size: .98rem; }
+.abd span:last-child { display: block; margin-top: 3px; font-size: .82rem; color: var(--muted-2); line-height: 1.55; }
+
+.ab-ul { margin: 0 0 20px; padding-left: 18px; }
+.ab-ul li { color: var(--muted); font-size: .94rem; line-height: 1.85; }
+
+@media (max-width: 760px) {
+  .ab-hero { padding: 48px 0 4px; }
+  .ab-card, .abm { padding: 22px; }
+  .ab-flow { flex-direction: column; }
+  .abfl-a { transform: rotate(90deg); align-self: flex-start; margin-left: 24px; }
+}
