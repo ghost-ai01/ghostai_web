@@ -1457,3 +1457,33 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   .ab-flow { flex-direction: column; }
   .abfl-a { transform: rotate(90deg); align-self: flex-start; margin-left: 24px; }
 }
+
+/* 소개 페이지 — 폭락장 사례. 표 대신 행마다 막대 두 줄을 쌓는다: 폭이 좁은
+   화면에서도 가로 스크롤 없이 두 숫자를 나란히 비교할 수 있다. 막대 길이는
+   가장 깊었던 TQQQ 낙폭(-81.8%)을 100% 로 둔 비율이다. */
+.cs-list { display: grid; gap: 12px; }
+.cs-row { padding: 18px 22px; border-radius: var(--radius-sm);
+  border: 1px solid var(--line); background: var(--ink-2); }
+.cs-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin-bottom: 12px; }
+.cs-head b { font-size: 1rem; font-weight: 800; }
+.cs-when { font-family: var(--f-mono); font-size: .76rem; color: var(--muted-2); }
+.cs-flag { font-size: .7rem; font-weight: 700; color: var(--cyan);
+  padding: 2px 8px; border-radius: 999px; background: rgba(86,204,222,.12); }
+.cs-bars { display: grid; gap: 7px; }
+.cs-bar { display: grid; grid-template-columns: 104px 1fr 62px; align-items: center; gap: 12px; }
+.cs-k { font-size: .8rem; color: var(--muted); }
+.cs-track { height: 10px; border-radius: 999px; background: rgba(255,255,255,.04); overflow: hidden; }
+.cs-track i { display: block; height: 100%; border-radius: 999px; }
+.cs-bar.tq .cs-track i { background: rgba(248,113,113,.55); }
+.cs-bar.st .cs-track i { background: var(--gold); }
+.cs-v { font-family: var(--f-mono); font-size: .86rem; font-weight: 700; text-align: right; }
+.cs-bar.tq .cs-v { color: #f87171; }
+.cs-bar.st .cs-v { color: var(--gold-hi); }
+.cs-exp { margin-top: 10px; font-size: .78rem; color: var(--muted-2); }
+.cs-exp b { color: var(--muted); font-family: var(--f-mono); }
+
+@media (max-width: 560px) {
+  .cs-row { padding: 16px; }
+  .cs-bar { grid-template-columns: 86px 1fr 54px; gap: 8px; }
+  .cs-k { font-size: .74rem; }
+}

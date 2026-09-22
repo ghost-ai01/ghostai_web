@@ -286,6 +286,132 @@
       </div>
     </section>
 
+    <!-- ===================== 폭락장 사례 =====================
+         주말특별호(2026-05-24)의 8개 사례를 v0.3 공식 경로로 다시 계산했다.
+         analysis/plot_portfolio_v2bc.py 와 같은 함수(gen_baseline · run_v2bc_combined ·
+         simulate_fractional)를 그대로 호출해 자산곡선을 만들었고, backtest.json 의
+         최종자산·CAGR·MDD 와 달러 단위까지 일치함을 확인한 뒤 뽑았다.
+         고점·저점은 구간 안 TQQQ 종가 기준, 전략 낙폭은 같은 고점→저점 구간 안의
+         최대 낙폭이다. TQQQ 쪽 8개 수치는 v0.2 원본과 소수점까지 같다. -->
+    <section class="section-pad">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <span class="kicker">STRESS TEST</span>
+          <h2>폭락장에서는 어땠나</h2>
+          <p>TQQQ 가 크게 빠진 여덟 번의 구간을 골라, 같은 기간 전략이 얼마나 빠졌는지 나란히 놓았습니다.</p>
+        </div>
+
+        <div class="cs-list reveal">
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>2022년 금리인상 약세장</b>
+              <span class="cs-when">2021.11.19 → 2022.12.28 · 278거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:100.0%"></i></span><span class="cs-v">-81.8%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:46.6%"></i></span><span class="cs-v">-38.1%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>17%</b></div>
+          </div>
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>COVID-19 팬데믹 충격</b>
+              <span class="cs-when">2020.02.19 → 2020.03.20 · 23거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:85.5%"></i></span><span class="cs-v">-69.9%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:23.2%"></i></span><span class="cs-v">-19.0%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>17%</b></div>
+          </div>
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>2025년 관세 충격</b>
+              <span class="cs-when">2024.12.16 → 2025.04.08 · 77거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:71.3%"></i></span><span class="cs-v">-58.3%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:28.4%"></i></span><span class="cs-v">-23.2%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>38%</b></div>
+          </div>
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>2018년 4분기 긴축 충격</b>
+              <span class="cs-when">2018.08.29 → 2018.12.24 · 81거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:71.0%"></i></span><span class="cs-v">-58.1%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:28.5%"></i></span><span class="cs-v">-23.3%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>35%</b></div>
+          </div>
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>2020년 9월 기술주 조정</b>
+              <span class="cs-when">2020.09.02 → 2020.09.23 · 15거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:43.3%"></i></span><span class="cs-v">-35.4%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:20.4%"></i></span><span class="cs-v">-16.7%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>13%</b></div>
+          </div>
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>2018년 미중 무역분쟁</b>
+              <span class="cs-when">2018.03.12 → 2018.04.02 · 15거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:36.3%"></i></span><span class="cs-v">-29.7%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:22.5%"></i></span><span class="cs-v">-18.4%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>60%</b></div>
+          </div>
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>2014년 글로벌 성장 우려</b> <span class="cs-flag">전 구간 현금</span>
+              <span class="cs-when">2014.09.18 → 2014.10.16 · 21거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:28.6%"></i></span><span class="cs-v">-23.4%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:0.6%"></i></span><span class="cs-v">0.0%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>0%</b></div>
+          </div>
+          <div class="cs-row">
+            <div class="cs-head">
+              <b>2021년 인플레이션 공포</b>
+              <span class="cs-when">2021.09.07 → 2021.10.04 · 20거래일</span>
+            </div>
+            <div class="cs-bars">
+              <div class="cs-bar tq"><span class="cs-k">TQQQ 단순보유</span><span class="cs-track"><i style="width:26.5%"></i></span><span class="cs-v">-21.7%</span></div>
+              <div class="cs-bar st"><span class="cs-k">Ghost.AI 전략</span><span class="cs-track"><i style="width:5.7%"></i></span><span class="cs-v">-4.7%</span></div>
+            </div>
+            <div class="cs-exp">그 기간 시장에 있던 비율 <b>5%</b></div>
+          </div>
+        </div>
+
+        <p class="ab-body reveal">
+          가장 깊었던 2022년 약세장에서 전략도 <b>-38.1%</b> 까지 빠졌습니다 — 16년 전체의
+          최대낙폭이 바로 이 구간입니다. 완전히 피한 폭락은 2014년 한 번뿐이고,
+          2018년 3월처럼 시장에 절반 넘게 머물다 함께 빠진 경우도 있습니다.
+          <b>피한 것이 아니라 덜 다친 것</b>이 정확한 표현입니다.
+        </p>
+
+        <div class="bt-notice reveal" role="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" /><path d="M12 16v-4" /><path d="M12 8h.01" />
+          </svg>
+          <p>
+            이 여덟 구간은 <b>TQQQ 가 크게 빠진 때를 골라 본 것</b>이라 전략에 유리한 장면이 모여 있습니다.
+            반대로 시장 노출이 63.8% 라서, 급반등 초입처럼 현금으로 있다가 상승을 놓친 구간도 있습니다.
+            모두 과거 데이터로 재현한 가설적 시뮬레이션이며 미래를 보장하지 않습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== 지표 해설 ===================== -->
     <section class="section-pad">
       <div class="wrap">
