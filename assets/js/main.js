@@ -58,8 +58,8 @@
         if (data.member_signup_url) {
           document.querySelectorAll("[data-link='member-signup']").forEach(function (a) { a.href = data.member_signup_url; });
         }
-        if (data.beta_seats) {
-          document.querySelectorAll("[data-beta-seats]").forEach(function (el) { el.textContent = data.beta_seats; });
+        if (data.member_count) {
+          document.querySelectorAll("[data-member-count]").forEach(function (el) { el.textContent = data.member_count; });
         }
       })
       .catch(function () { /* keep hardcoded fallback hrefs */ });
