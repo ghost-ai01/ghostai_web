@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>새 신호 고스트베타를 더한 V0.4.3, 26년 백테스트로 본 V0.3과의 차이 — Ghost.AI 특집 2026-10-21 · Ghost.AI</title>
+  <meta name="description" content="지금 운영 중인 TQQQ 전략은 V0.3입니다. 그 다음 버전 후보인 V0.4.3을 10월 20일부터 실제 매매 없이 기록만 하는 방식으로 관찰하기 시작했습니다. V0.4.3의 가장 큰 변화는 AI 모델의 새 신호 고스트베타GhostBeta를 매매에 더한 것입니다. 이" />
+  <meta name="author" content="고스트에이아이 주식회사" />
+  <meta name="naver-site-verification" content="eeaad327c6c18df3fdcdd2fba6c85007d1da6e06" />
+  <link rel="canonical" href="https://www.ghostai.co.kr/posts/v043-vs-v03.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="새 신호 고스트베타를 더한 V0.4.3, 26년 백테스트로 본 V0.3과의 차이 — Ghost.AI 특집 2026-10-21" />
+  <meta property="og:description" content="지금 운영 중인 TQQQ 전략은 V0.3입니다. 그 다음 버전 후보인 V0.4.3을 10월 20일부터 실제 매매 없이 기록만 하는 방식으로 관찰하기 시작했습니다. V0.4.3의 가장 큰 변화는 AI 모델의 새 신호 고스트베타GhostBeta를 매매에 더한 것입니다. 이" />
+  <meta property="og:url" content="https://www.ghostai.co.kr/posts/v043-vs-v03.html" />
+  <meta property="og:image" content="https://www.ghostai.co.kr/assets/img/og-image.png" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting",
+   "headline":"새 신호 고스트베타를 더한 V0.4.3, 26년 백테스트로 본 V0.3과의 차이 — Ghost.AI 특집 2026-10-21","datePublished":"2026-10-21","dateModified":"2026-10-21",
+   "url":"https://www.ghostai.co.kr/posts/v043-vs-v03.html","inLanguage":"ko-KR",
+   "author":{"@type":"Organization","name":"고스트에이아이 주식회사"},
+   "publisher":{"@type":"Organization","name":"고스트에이아이 주식회사",
+                 "logo":{"@type":"ImageObject","url":"https://www.ghostai.co.kr/assets/img/logo.png"}}}
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261021" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Ghost.AI 홈">
+        <img src="../assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="/">홈</a>
+        <a class="nav-signal" href="../signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
+        <a href="../backtest.html">백테스트 성과</a>
+        <a class="nav-posts" href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>
+          데일리 리포트
+        </a>
+        <a class="nav-premium" href="https://www.ghostai.co.kr/login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
+          회원 페이지<span class="soon">베타</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <article class="section-pad post">
+      <div class="wrap">
+        <div class="post-head">
+          <h1>새 신호 고스트베타를 더한 V0.4.3, 26년 백테스트로 본 V0.3과의 차이</h1>
+          <p class="post-date"><time datetime="2026-10-21">2026-10-21</time> · Ghost.AI 데일리 리포트</p>
+        </div>
+        <p><strong>👻 매일 시그널과 히스토리를 홈페이지에서 한눈에 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <p>&nbsp;</p>
+        <blockquote class="q-notice">
+        <p>지금 운영 중인 TQQQ 전략은 <strong>V0.3</strong>입니다. 그 다음 버전 후보인 <strong>V0.4.3</strong>을 10월 20일부터 실제 매매 없이 기록만 하는 방식으로 관찰하기 시작했습니다. V0.4.3의 가장 큰 변화는 AI 모델의 새 신호 <strong>고스트베타(GhostBeta)</strong>를 매매에 더한 것입니다. 이번 특집에서는 무엇이 바뀌었는지와 2000년부터의 백테스트 결과만 간단히 정리합니다. V0.4.3은 아직 검증 중인 후보이며, 운영 전략과 실계좌는 계속 V0.3으로 움직입니다.</p>
+        </blockquote>
+        <hr />
+        <h2>컨셉 — 신호 하나를 더하고, 사는 방식을 넓혔습니다</h2>
+        <p>Ghost.AI의 AI 모델은 고점과 저점을 함께 학습해 두 가지 신호를 냅니다. V0.3은 그중 <strong>기존 매매 신호 하나</strong>로 TQQQ를 사고팔았고, 다른 하나인 <strong>고스트베타(GhostBeta, 저점 신호)</strong>는 쓰지 않았습니다. V0.4.3은 두 신호를 함께 씁니다. 여기에 큰 하락 뒤와 단기 급락 뒤에 일부를 먼저 사는 규칙 두 가지를 더했습니다.</p>
+        <table>
+        <thead>
+        <tr>
+        <th></th>
+        <th>V0.3 (운영 중)</th>
+        <th>V0.4.3 (관찰 중)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>쓰는 신호</td>
+        <td>기존 AI 매매 신호 1개</td>
+        <td>기존 AI 매매 신호 + <strong>고스트베타</strong> (2개)</td>
+        </tr>
+        <tr>
+        <td>기본 매매</td>
+        <td>기존 신호로 TQQQ 전량 매수·전량 매도</td>
+        <td>같음 (매도 규칙은 V0.3과 동일)</td>
+        </tr>
+        <tr>
+        <td>매수 거르기</td>
+        <td>없음</td>
+        <td>기존 신호가 매수를 가리켜도 고스트베타가 약세장 속 짧은 반등으로 판단하면 사지 않습니다</td>
+        </tr>
+        <tr>
+        <td>급락 뒤 재매수</td>
+        <td>매수 신호를 기다립니다</td>
+        <td>큰 급락 뒤 시장의 공포가 가라앉기 시작하면 절반을 먼저 삽니다</td>
+        </tr>
+        <tr>
+        <td>현금 보유 중 단기 반등</td>
+        <td>현금으로 기다립니다</td>
+        <td>며칠 사이 지나치게 많이 내린 날 절반을 사고, 반등하면 며칠 안에 정리합니다</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>V0.3은 큰 하락을 피하는 데 강하지만, 피한 뒤 다시 사는 시점이 늦고 약세장의 짧은 반등에 자주 샀다가 손절했습니다. 고스트베타는 그중 "약세장 속 짧은 반등"을 걸러 내고, 나머지 두 규칙은 다시 사는 시점을 앞당깁니다.</p>
+        <hr />
+        <h2>지금 상태 — V0.4.3 기준으로는 50% 매수 구간입니다</h2>
+        <table>
+        <thead>
+        <tr>
+        <th></th>
+        <th>V0.3 (운영 중)</th>
+        <th>V0.4.3 (관찰 중)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>10월 19일(월) 시가</td>
+        <td>보유하던 TQQQ 전량 매도 ($71.01)</td>
+        <td>같은 시가에 기존 보유분을 매도하면서, 단기 급락 반등 규칙으로 <strong>50%를 다시 매수</strong> ($71.01)</td>
+        </tr>
+        <tr>
+        <td>10월 20일 종가 기준</td>
+        <td><strong>현금 보유 중</strong></td>
+        <td><strong>50% 보유 중</strong> (매수가 대비 -0.8%)</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>10월 16일(금) TQQQ가 하루에 7.6% 내리면서 단기 급락 조건을 만족했습니다. V0.3은 매도 신호대로 전량 매도했고, V0.4.3은 같은 날 절반을 다시 샀습니다. V0.4.3의 50%는 단기 반등이 나오면 며칠 안에 정리하고, 더 내리면 손절합니다. 실계좌는 V0.3을 따르므로 현금 보유 중이며, V0.4.3의 50%는 실제 매매 없이 기록만 하는 상태입니다.</p>
+        <p><img alt="TQQQ V0.3 vs V0.4.3" src="../assets/img/posts/TQQQ_v043_vs_v03_2026-10-20.png" /></p>
+        <p><em>위: TQQQ 가격과 V0.4.3의 보유 구간(초록 100% · 보라 50%). 아래: 두 버전의 보유 비중. 2026년 1월~10월 20일.</em></p>
+        <hr />
+        <h2>결과 — 수익은 높고, 낙폭은 얕았습니다</h2>
+        <p>1만 달러로 시작한 백테스트입니다. TQQQ가 상장하기 전인 2010년 2월까지는 나스닥 100 하루 등락의 3배에서 보수와 차입 비용을 뺀 가상 TQQQ를 썼고, 기준일은 2026년 10월 20일입니다.</p>
+        <table>
+        <thead>
+        <tr>
+        <th>구간</th>
+        <th></th>
+        <th>V0.3</th>
+        <th>V0.4.3</th>
+        <th>나스닥 100 (QQQ, 1배)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>2000년 3월~</strong> (닷컴 붕괴·금융위기 포함)</td>
+        <td>연평균</td>
+        <td>+24.2%</td>
+        <td><strong>+38.6%</strong></td>
+        <td>+7.2%</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>최대 낙폭</td>
+        <td>-75.5%</td>
+        <td><strong>-37.6%</strong></td>
+        <td>-83.0%</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>가장 나빴던 해</td>
+        <td>-33.2%</td>
+        <td><strong>-11.3%</strong></td>
+        <td></td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>1만 달러 →</td>
+        <td>322만 달러</td>
+        <td><strong>5,941만 달러</strong></td>
+        <td></td>
+        </tr>
+        <tr>
+        <td><strong>2010년 2월~</strong> (실제 TQQQ)</td>
+        <td>연평균</td>
+        <td>+47.8%</td>
+        <td><strong>+53.8%</strong></td>
+        <td>+18.3%</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>최대 낙폭</td>
+        <td>-38.1%</td>
+        <td><strong>-32.5%</strong></td>
+        <td>-35.6%</td>
+        </tr>
+        <tr>
+        <td><strong>2019년~</strong></td>
+        <td>연평균</td>
+        <td>+62.1%</td>
+        <td><strong>+77.2%</strong></td>
+        <td>+21.7%</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>최대 낙폭</td>
+        <td>-38.1%</td>
+        <td><strong>-30.4%</strong></td>
+        <td>-35.6%</td>
+        </tr>
+        <tr>
+        <td><strong>2025년~</strong></td>
+        <td>연평균</td>
+        <td>+59.4%</td>
+        <td><strong>+74.9%</strong></td>
+        <td>+20.9%</td>
+        </tr>
+        <tr>
+        <td></td>
+        <td>최대 낙폭</td>
+        <td>-27.1%</td>
+        <td><strong>-23.2%</strong></td>
+        <td>-22.9%</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>가장 큰 차이는 2000년대입니다. V0.3은 닷컴 붕괴 뒤 회복장에서 짧은 손절을 반복하며 최대 낙폭이 -75.5%까지 갔고, 고점을 되찾는 데 12.4년이 걸렸습니다. V0.4.3은 같은 기간 최대 낙폭이 -37.6%, 고점 회복 최장 기간이 3.8년이었습니다.</p>
+        <hr />
+        <h2>V0.4.3이 약한 곳</h2>
+        <p>해마다 비교하면 26년 중 16년은 V0.4.3이 앞섰고 10년은 뒤졌습니다. 위기 뒤 시장이 꾸준히 오르는 해에 V0.4.3이 덜 벌었습니다. 고스트베타가 매수 신호를 거르는 과정에서 상승 초입을 놓치기 때문입니다. V0.3 대비 2013년 -38%p, 2009년 -27%p, 2016년 -25%p였고, 2010~2018년 연평균은 두 버전이 비슷했습니다(V0.3 +36.3%, V0.4.3 +35.2%).</p>
+        <hr />
+        <h2>꼭 함께 봐야 할 점</h2>
+        <ul>
+        <li><strong>백테스트는 실제 수익이 아닙니다.</strong> 매매 비용·세금은 넣지 않았고, 2010년 이전은 가상 TQQQ입니다.</li>
+        <li><strong>최근 구간 성과는 실제보다 좋게 나왔을 수 있습니다.</strong> 고스트베타를 내는 모델은 2024년까지의 데이터로 학습했습니다.</li>
+        <li><strong>매매가 늘어납니다.</strong> 현금 보유 중 단기 반등 매매가 더해져 1년에 몇 차례 짧은 매매(평균 3~4일)가 생깁니다.</li>
+        <li><strong>아직 후보입니다.</strong> 10월 20일부터 실시간 기록을 쌓고 있으며, 충분히 검증된 뒤에 운영 전략 교체 여부를 결정합니다. 관찰 결과는 이 블로그와 홈페이지에서 다시 알려 드리겠습니다.</li>
+        </ul>
+        <hr />
+        <p><em>Ghost.AI — Quantitative AI Investment</em><br />
+        <em>Model: DeepGhost v0.3 | Transformer-Based Deep Learning</em><br />
+        <em>Coverage: 14 tickers | Updated every trading day after US market close</em></p>
+        <blockquote class="q-lede">
+        <p>⚠️ 본 자료는 정보 제공 목적으로만 작성되었으며 투자 권유가 아닙니다. 모든 투자의 책임은 투자자 본인에게 있습니다. 과거 성과가 미래 수익을 보장하지 않습니다.</p>
+        </blockquote>
+        <hr />
+        <p><strong>[유의사항]</strong></p>
+        <ul>
+        <li>본 서비스는 불특정 다수를 대상으로 발행되는 <strong>단방향 정보 제공</strong> 서비스이며, 투자자 개인의 재산 상황·투자 목적·위험 선호도를 반영한 개별 투자 조언이 아닙니다.</li>
+        <li>고스트에이아이 주식회사는 고객과 <strong>쌍방향 의사소통(개별 상담, 맞춤형 자문 등)을 제공하지 않습니다.</strong></li>
+        <li>본 콘텐츠는 투자 권유 또는 매매 주문의 청약·청약의 권유에 해당하지 않으며, 최종 투자 판단 및 그에 따른 손익의 책임은 전적으로 투자자 본인에게 있습니다.</li>
+        </ul>
+        <p>고스트에이아이 주식회사</p>
+      </div>
+    </article>
+
+    <section class="section-pad">
+      <div class="wrap">
+        <div class="sig-cta reveal">
+          <h2>매일 올라옵니다</h2>
+          <p>미국장 마감 후 시그널 현황과 시황 분석을 정리해 올립니다. 회원 페이지는 블로그·유튜브보다 먼저 업데이트됩니다.</p>
+          <div class="cta-row">
+            <a class="btn btn-premium" data-link="join" href="https://www.ghostai.co.kr/join">베타 회원 가입하기</a>
+            <a class="btn btn-secondary" href="./">지난 리포트 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="legal">
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <p class="company"><b>고스트에이아이 주식회사</b> <span>이메일 <a href="mailto:contact@ghostai.co.kr">contact@ghostai.co.kr</a></span></p>
+      </div>
+      <div class="copyright"><span>© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
