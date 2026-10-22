@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>레딧에서 유행하는 TQQQ 200일선 전략, Ghost.AI V0.3·V0.4.3과 26년 백테스트 비교 — Ghost.AI 특집 2026-10-22 · Ghost.AI</title>
+  <meta name="description" content="해외 레버리지 ETF 커뮤니티에서 'TQQQ는 200일선 위에 있을 때만 들고 있으라'는 전략이 꾸준히 화제입니다. 규칙이 단순하고, TQQQ의 큰 낙폭을 피할 수 있다는 점이 인기의 이유입니다. 이번 특집에서는 이 200일선 전략이 어디서 왔는지 먼저 정리하고, 레딧" />
+  <meta name="author" content="고스트에이아이 주식회사" />
+  <meta name="naver-site-verification" content="eeaad327c6c18df3fdcdd2fba6c85007d1da6e06" />
+  <link rel="canonical" href="https://www.ghostai.co.kr/posts/sma200-vs-ghost.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="레딧에서 유행하는 TQQQ 200일선 전략, Ghost.AI V0.3·V0.4.3과 26년 백테스트 비교 — Ghost.AI 특집 2026-10-22" />
+  <meta property="og:description" content="해외 레버리지 ETF 커뮤니티에서 'TQQQ는 200일선 위에 있을 때만 들고 있으라'는 전략이 꾸준히 화제입니다. 규칙이 단순하고, TQQQ의 큰 낙폭을 피할 수 있다는 점이 인기의 이유입니다. 이번 특집에서는 이 200일선 전략이 어디서 왔는지 먼저 정리하고, 레딧" />
+  <meta property="og:url" content="https://www.ghostai.co.kr/posts/sma200-vs-ghost.html" />
+  <meta property="og:image" content="https://www.ghostai.co.kr/assets/img/og-image.png" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting",
+   "headline":"레딧에서 유행하는 TQQQ 200일선 전략, Ghost.AI V0.3·V0.4.3과 26년 백테스트 비교 — Ghost.AI 특집 2026-10-22","datePublished":"2026-10-22","dateModified":"2026-10-22",
+   "url":"https://www.ghostai.co.kr/posts/sma200-vs-ghost.html","inLanguage":"ko-KR",
+   "author":{"@type":"Organization","name":"고스트에이아이 주식회사"},
+   "publisher":{"@type":"Organization","name":"고스트에이아이 주식회사",
+                 "logo":{"@type":"ImageObject","url":"https://www.ghostai.co.kr/assets/img/logo.png"}}}
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261022" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Ghost.AI 홈">
+        <img src="../assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="/">홈</a>
+        <a class="nav-signal" href="../signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
+        <a href="../backtest.html">백테스트 성과</a>
+        <a class="nav-posts" href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>
+          데일리 리포트
+        </a>
+        <a class="nav-premium" href="https://www.ghostai.co.kr/login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
+          회원 페이지<span class="soon">베타</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <article class="section-pad post">
+      <div class="wrap">
+        <div class="post-head">
+          <h1>레딧에서 유행하는 TQQQ 200일선 전략, Ghost.AI V0.3·V0.4.3과 26년 백테스트 비교</h1>
+          <p class="post-date"><time datetime="2026-10-22">2026-10-22</time> · Ghost.AI 특집</p>
+        </div>
+        <p><strong>👻 매일 시그널과 히스토리를 홈페이지에서 한눈에 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <p>&nbsp;</p>
+        <blockquote class="q-notice">
+        <p>해외 레버리지 ETF 커뮤니티에서 "TQQQ는 200일선 위에 있을 때만 들고 있으라"는 전략이 꾸준히 화제입니다. 규칙이 단순하고, TQQQ의 큰 낙폭을 피할 수 있다는 점이 인기의 이유입니다. 이번 특집에서는 이 200일선 전략이 어디서 왔는지 먼저 정리하고, 레딧에서 많이 쓰이는 세 가지 형태를 Ghost.AI 전략 <strong>V0.3(운영 중)</strong>·<strong>V0.4.3(관찰 중)</strong>과 같은 조건에서 2000년부터 비교했습니다.</p>
+        </blockquote>
+        <hr />
+        <h2>200일선 전략은 어디서 왔나</h2>
+        <p><strong>출발점은 2016년 논문입니다.</strong> 마이클 게이드(Michael Gayed)와 찰리 빌렐로(Charlie Bilello)가 발표한 「Leverage for the Long Run」은 미국 기술적 분석가 협회(CMT Association)의 찰스 다우 상(Charles H. Dow Award)을 받았습니다. 규칙은 하나입니다. S&amp;P 500이 200일 이동평균선(200일선) 위에 있으면 레버리지로 보유하고, 아래로 내려가면 단기 국채로 옮깁니다.</p>
+        <p>1928년부터 2015년까지의 백테스트에서 2배 레버리지를 계속 들고 있으면 최대 낙폭이 −99%였습니다. 대공황 같은 폭락을 그대로 맞기 때문입니다. 200일선 아래에서 국채로 옮기는 규칙을 더하자 위험 대비 수익(샤프 지수)이 0.27에서 0.51로 좋아졌습니다. 논문은 레버리지 성과를 가르는 것은 변동성이며, 주가가 200일선 위에 있을 때 이후 변동성이 평균보다 낮았다는 점을 근거로 들었습니다.</p>
+        <p><strong>레딧에서는 TQQQ 버전으로 퍼졌습니다.</strong> 레버리지 ETF 커뮤니티 r/LETFs에서 이 아이디어를 나스닥 100 3배 ETF인 TQQQ에 맞춘 변형들이 공유됐고, 차트 플랫폼 트레이딩뷰(TradingView)에도 같은 규칙의 스크립트가 여럿 올라와 있습니다. 많이 쓰이는 형태는 세 가지입니다.</p>
+        <table>
+        <thead>
+        <tr>
+        <th>형태</th>
+        <th>매수</th>
+        <th>매도</th>
+        <th>특징</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>① 기본형</td>
+        <td>QQQ가 200일선 위로</td>
+        <td>QQQ가 200일선 아래로</td>
+        <td>논문 규칙을 TQQQ에 그대로</td>
+        </tr>
+        <tr>
+        <td>② 5%/3% 버퍼형</td>
+        <td>QQQ가 200일선보다 5% 위로</td>
+        <td>QQQ가 200일선보다 3% 아래로</td>
+        <td>200일선 근처에서 사고팔기를 반복하는 손실(휩쏘)을 줄이려는 형태</td>
+        </tr>
+        <tr>
+        <td>③ SPY 4/3</td>
+        <td>SPY가 200일선보다 4% 위로</td>
+        <td>SPY가 200일선보다 3% 아래로 → 이후 6~12개월에 걸쳐 QQQ 분할 매수</td>
+        <td>보유 중 QQQ가 200일선보다 30% 이상 높으면 TQQQ 대신 QQQ (레딧 「SPY 200SMA 4/3」 글)</td>
+        </tr>
+        </tbody>
+        </table>
+        <p>인기의 이유는 분명합니다. 차트 하나로 판단할 수 있고, TQQQ가 한 해에 79% 내린 2022년에도 손실을 35~49%로 줄였습니다(아래 백테스트).</p>
+        <hr />
+        <h2>비교 방법 — 모두 같은 조건</h2>
+        <ul>
+        <li><strong>대상</strong>: 200일선 세 가지 형태, Ghost.AI V0.3(운영 중), Ghost.AI V0.4.3(관찰 중), TQQQ 단순 보유</li>
+        <li><strong>매매</strong>: 모두 TQQQ를 사고팝니다(③은 매도 뒤 QQQ 분할 매수 포함). 전날 종가로 신호를 확인하고 다음 날 시가에 체결합니다.</li>
+        <li><strong>비용</strong>: 매수·매도 각각 거래 금액의 0.25%를 뺐습니다. 세금은 제외, 현금 구간 수익은 0으로 계산했습니다.</li>
+        <li><strong>기간</strong>: 2000년 3월 ~ 2026년 10월 21일. TQQQ가 상장하기 전인 2010년 2월까지는 나스닥 100 하루 등락의 3배에서 보수와 차입 비용을 뺀 가상 TQQQ를 썼습니다.</li>
+        <li>Ghost.AI 전략은 AI 모델 신호로 움직이며, 매매 규칙은 공개하지 않습니다. V0.4.3은 같은 모델의 새 신호 고스트베타(GhostBeta)를 더한 다음 버전 후보입니다(<a href="https://www.ghostai.co.kr/posts/v043-vs-v03.html">V0.4.3 특집</a>).</li>
+        </ul>
+        <hr />
+        <h2>결과 — 수익은 높고, 낙폭은 얕았습니다</h2>
+        <p><img alt="TQQQ 200일선 전략 vs Ghost.AI" src="../assets/img/posts/sma200_vs_ghost_2026-10-21.png" /></p>
+        <p><em>위: 2000년 3월에 1만 달러로 시작했을 때의 자산(로그 눈금, 비용 반영). 아래: 결정적이었던 세 해의 연 수익률. 초록 = V0.4.3, 하늘색 = V0.3, 주황 = 200일선 기본형, 분홍 = 5%/3% 버퍼형, 보라 = SPY 4/3, 회색 = TQQQ 단순 보유.</em></p>
+        <p><strong>연평균 수익률 / 최대 낙폭</strong> (비용 반영)</p>
+        <table>
+        <thead>
+        <tr>
+        <th>구간</th>
+        <th><strong>V0.4.3</strong></th>
+        <th><strong>V0.3</strong></th>
+        <th>① 기본형</th>
+        <th>② 5%/3%</th>
+        <th>③ SPY 4/3</th>
+        <th>TQQQ 보유</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>2000년 3월~</strong> (전체)</td>
+        <td><strong>+34.2% / −45.5%</strong></td>
+        <td>+20.8% / −80.0%</td>
+        <td>+10.5% / −94.0%</td>
+        <td>+12.9% / −90.2%</td>
+        <td>+16.3% / −89.6%</td>
+        <td>−3.2% / −100%</td>
+        </tr>
+        <tr>
+        <td>2000~2009 (닷컴 붕괴·금융위기)</td>
+        <td><strong>+12.2% / −45.5%</strong></td>
+        <td>−10.6% / −80.0%</td>
+        <td>−13.6% / −94.0%</td>
+        <td>−9.7% / −90.2%</td>
+        <td>−10.0% / −89.6%</td>
+        <td>−48.6% / −100%</td>
+        </tr>
+        <tr>
+        <td><strong>2010년 2월~</strong> (실제 TQQQ)</td>
+        <td><strong>+49.2% / −34.6%</strong></td>
+        <td>+44.1% / −39.8%</td>
+        <td>+29.2% / −58.1%</td>
+        <td>+30.4% / −62.1%</td>
+        <td>+36.8% / −55.8%</td>
+        <td>+42.1% / −81.8%</td>
+        </tr>
+        <tr>
+        <td>2010~2018</td>
+        <td>+31.2% / <strong>−34.6%</strong></td>
+        <td>+33.0% / −39.8%</td>
+        <td>+18.9% / −56.7%</td>
+        <td>+25.2% / −53.4%</td>
+        <td>+37.3% / −52.6%</td>
+        <td>+41.9% / −58.1%</td>
+        </tr>
+        <tr>
+        <td>2019~</td>
+        <td><strong>+72.6% / −30.5%</strong></td>
+        <td>+57.7% / −39.1%</td>
+        <td>+42.1% / −58.1%</td>
+        <td>+36.7% / −62.1%</td>
+        <td>+36.3% / −55.8%</td>
+        <td>+42.3% / −81.8%</td>
+        </tr>
+        <tr>
+        <td>2025~</td>
+        <td><strong>+70.8% / −23.4%</strong></td>
+        <td>+56.5% / −28.2%</td>
+        <td>+33.2% / −33.8%</td>
+        <td>+9.4% / −37.6%</td>
+        <td>+6.0% / −36.1%</td>
+        <td>+40.0% / −57.0%</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>위험 대비 성과</strong> (2000년 3월~ / 2010년 2월~, 비용 반영)</p>
+        <table>
+        <thead>
+        <tr>
+        <th></th>
+        <th><strong>V0.4.3</strong></th>
+        <th><strong>V0.3</strong></th>
+        <th>① 기본형</th>
+        <th>② 5%/3%</th>
+        <th>③ SPY 4/3</th>
+        <th>TQQQ 보유</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>칼마 비율</td>
+        <td><strong>0.75 / 1.42</strong></td>
+        <td>0.26 / 1.11</td>
+        <td>0.11 / 0.50</td>
+        <td>0.14 / 0.49</td>
+        <td>0.18 / 0.66</td>
+        <td>−0.03 / 0.51</td>
+        </tr>
+        <tr>
+        <td>샤프 지수</td>
+        <td><strong>1.02 / 1.27</strong></td>
+        <td>0.71 / 1.17</td>
+        <td>0.45 / 0.78</td>
+        <td>0.50 / 0.81</td>
+        <td>0.55 / 0.92</td>
+        <td>0.35 / 0.88</td>
+        </tr>
+        <tr>
+        <td>보유 기간 (2000년~)</td>
+        <td>45%</td>
+        <td>52%</td>
+        <td>73%</td>
+        <td>68%</td>
+        <td>91% (QQQ 포함)</td>
+        <td>100%</td>
+        </tr>
+        <tr>
+        <td>1만 달러 → (2000년~)</td>
+        <td><strong>2,511만 달러</strong></td>
+        <td>152만 달러</td>
+        <td>14만 달러</td>
+        <td>25만 달러</td>
+        <td>55만 달러</td>
+        <td>0.4만 달러</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><em>칼마 비율 = 연평균 수익률 ÷ 최대 낙폭 (클수록 낙폭 대비 수익이 큼). 보유 기간 = 전체 기간 중 주식을 들고 있던 비율.</em></p>
+        <ul>
+        <li><strong>V0.4.3은 여섯 구간 모두에서 최대 낙폭이 가장 얕았고, 칼마 비율도 모두 1위였습니다.</strong> 연평균 수익률은 2010~2018년 한 구간을 빼고 모두 1위였습니다.</li>
+        <li><strong>V0.3은 2010년 이후 전체·2019년 이후·2025년 이후 구간에서 세 가지 200일선 전략보다 수익이 높고 낙폭이 얕았습니다.</strong></li>
+        <li><strong>들고 있는 시간은 오히려 짧았습니다.</strong> 200일선 전략은 기간의 68~91% 동안 주식을 보유했지만, V0.3은 52%, V0.4.3은 45%만 보유하고 더 높은 수익을 냈습니다.</li>
+        </ul>
+        <hr />
+        <h2>차이가 난 해 — 2020 · 2022 · 2025</h2>
+        <table>
+        <thead>
+        <tr>
+        <th>해</th>
+        <th><strong>V0.4.3</strong></th>
+        <th><strong>V0.3</strong></th>
+        <th>① 기본형</th>
+        <th>② 5%/3%</th>
+        <th>③ SPY 4/3</th>
+        <th>TQQQ 보유</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2020 코로나</td>
+        <td><strong>+194%</strong></td>
+        <td>+176%</td>
+        <td>+90%</td>
+        <td>+79%</td>
+        <td>+98%</td>
+        <td>+110%</td>
+        </tr>
+        <tr>
+        <td>2022 하락장</td>
+        <td><strong>+3%</strong></td>
+        <td>−13%</td>
+        <td>−40%</td>
+        <td>−35%</td>
+        <td>−49%</td>
+        <td>−79%</td>
+        </tr>
+        <tr>
+        <td>2025 관세 충격</td>
+        <td><strong>+87%</strong></td>
+        <td>+78%</td>
+        <td>+30%</td>
+        <td>+13%</td>
+        <td>+9%</td>
+        <td>+33%</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>200일선은 느립니다.</strong> 200일선은 지난 약 10개월 가격의 평균이라, 방향이 바뀌고 한참 뒤에야 신호가 나옵니다. 버퍼를 넣으면 잦은 매매는 줄지만 그만큼 더 늦어집니다.</p>
+        <ul>
+        <li><strong>2020년</strong>: 5%/3% 버퍼형은 3월 급락이 한참 진행된 3월 13일에 매도하고, 반등이 상당히 진행된 4월 15일에 다시 샀습니다. 세 가지 200일선 전략 모두 TQQQ 단순 보유(+110%)보다 낮았습니다.</li>
+        <li><strong>2022년</strong>: 하락이 1년 내내 이어진 해라 200일선 전략도 손실을 줄이는 효과는 있었습니다. 그래도 −35~−49%였습니다. ③은 매도 뒤 QQQ를 나눠 사는 규칙 때문에 하락장 속에서 손실이 더 커졌습니다.</li>
+        <li><strong>2025년</strong>: 5%/3% 버퍼형은 3월 11일에 TQQQ를 판 뒤 5월 15일에 다시 샀는데, 다시 산 가격이 판 가격보다 17% 높았습니다. 그 사이 QQQ는 4월 저점에서 25% 반등했습니다.</li>
+        </ul>
+        <p>2010~2018년처럼 꾸준히 오르는 장에서는 이 느림이 큰 문제가 되지 않습니다. 하지만 급락과 급반등이 짧게 오가는 장(2020·2025)과 긴 하락장(2022)에서는 차이가 크게 벌어졌습니다.</p>
+        <hr />
+        <h2>솔직하게 — 200일선 전략이 앞선 곳</h2>
+        <ul>
+        <li><strong>2010~2018년 연평균은 ③ SPY 4/3(+37.3%)이 V0.3(+33.0%)·V0.4.3(+31.2%)보다 높았습니다.</strong> 이 구간은 TQQQ 단순 보유(+41.9%)가 모든 전략을 앞선 꾸준한 상승장이었습니다. 대신 최대 낙폭은 SPY 4/3 −52.6%, V0.4.3 −34.6%였습니다.</li>
+        <li><strong>2000~2009년은 V0.3도 200일선 전략들과 함께 손실이었습니다</strong>(V0.3 연 −10.6%, 200일선 −9.7~−13.6%). 이 약점을 줄인 것이 V0.4.3입니다(연 +12.2%).</li>
+        <li><strong>V0.4.3은 매매가 많습니다.</strong> 1년에 19회 정도로 200일선 전략(연 1~7회)보다 잦습니다. 매매 비용은 반영했지만 세금 부담은 더 커질 수 있습니다.</li>
+        </ul>
+        <hr />
+        <h2>꼭 함께 봐야 할 점</h2>
+        <ul>
+        <li><strong>백테스트는 실제 수익이 아닙니다.</strong> 세금은 넣지 않았고, 2010년 이전은 가상 TQQQ입니다.</li>
+        <li><strong>Ghost.AI 전략의 수치는 실제보다 좋게 나왔을 수 있습니다.</strong> 매매 규칙을 전체 기간을 보고 정했고, AI 모델은 2024년까지의 데이터로 학습했습니다. 2018년까지의 데이터로만 규칙을 다시 고른 검증에서 2019년 이후 연평균은 V0.3 48%, V0.4.3 64%(매매 비용 제외)로 위 표(비용 제외 시 62%·78%)보다 낮았습니다.</li>
+        <li><strong>V0.4.3은 아직 후보입니다.</strong> 2026년 10월 20일부터 실제 매매 없이 기록만 하고 있으며, 운영 전략과 실계좌는 V0.3을 따릅니다.</li>
+        <li><strong>200일선 전략의 성과는 형태와 기간에 따라 크게 달라집니다.</strong> 이 글의 수치는 같은 조건(전날 종가 신호·다음 날 시가 체결·비용 0.25%)으로 다시 계산한 것이라 원글 작성자의 백테스트와 다를 수 있습니다.</li>
+        </ul>
+        <p><strong>참고</strong><br />
+        - Michael Gayed, Charlie Bilello, 「Leverage for the Long Run」(2016) — <a href="https://content.cmtassociation.org/a/leverage-for-the-long-run">CMT Association</a> · <a href="https://www.cxoadvisory.com/volatility-effects/leveraging-the-u-s-stock-market-based-on-sma-rules/">CXO Advisory 요약</a><br />
+        - 200일선 변형 규칙: 레딧 r/LETFs 「SPY 200SMA 4/3」 글, 트레이딩뷰 공개 스크립트 「200 SMA (5%/-3% Buffer) for SPY &amp; QQQ」</p>
+        <hr />
+        <p><em>Ghost.AI — Quantitative AI Investment</em><br />
+        <em>Model: DeepGhost v0.3 | Transformer-Based Deep Learning</em><br />
+        <em>Coverage: 14 tickers | Updated every trading day after US market close</em></p>
+        <blockquote class="q-lede">
+        <p>⚠️ 본 자료는 정보 제공 목적으로만 작성되었으며 투자 권유가 아닙니다. 모든 투자의 책임은 투자자 본인에게 있습니다. 과거 성과가 미래 수익을 보장하지 않습니다.</p>
+        </blockquote>
+        <hr />
+        <p><strong>[유의사항]</strong></p>
+        <ul>
+        <li>본 서비스는 불특정 다수를 대상으로 발행되는 <strong>단방향 정보 제공</strong> 서비스이며, 투자자 개인의 재산 상황·투자 목적·위험 선호도를 반영한 개별 투자 조언이 아닙니다.</li>
+        <li>고스트에이아이 주식회사는 고객과 <strong>쌍방향 의사소통(개별 상담, 맞춤형 자문 등)을 제공하지 않습니다.</strong></li>
+        <li>본 콘텐츠는 투자 권유 또는 매매 주문의 청약·청약의 권유에 해당하지 않으며, 최종 투자 판단 및 그에 따른 손익의 책임은 전적으로 투자자 본인에게 있습니다.</li>
+        </ul>
+        <p>고스트에이아이 주식회사</p>
+      </div>
+    </article>
+
+    <section class="section-pad">
+      <div class="wrap">
+        <div class="sig-cta reveal">
+          <h2>매일 올라옵니다</h2>
+          <p>미국장 마감 후 시그널 현황과 시황 분석을 정리해 올립니다. 회원 페이지는 블로그·유튜브보다 먼저 업데이트됩니다.</p>
+          <div class="cta-row">
+            <a class="btn btn-premium" data-link="join" href="https://www.ghostai.co.kr/join">베타 회원 가입하기</a>
+            <a class="btn btn-secondary" href="./">지난 리포트 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="legal">
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <p class="company"><b>고스트에이아이 주식회사</b> <span>이메일 <a href="mailto:contact@ghostai.co.kr">contact@ghostai.co.kr</a></span></p>
+      </div>
+      <div class="copyright"><span>© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
