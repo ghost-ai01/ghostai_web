@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>라오어 무한매수법과 직접 비교했습니다: TQQQ 16년 백테스트 — Ghost.AI 특집 2026-10-22 · Ghost.AI</title>
+  <meta name="description" content="TQQQ에 투자한다면 한 번쯤 들어 봤을 라오어의 「무한매수법」은 국내에서 가장 널리 알려진 TQQQ 분할 매수 방법입니다. 이번 특집에서는 현행 V4.0 규칙을 공개된 해설대로 재현해, Ghost.AI 전략 V0.3운영 중·V0.4.3관찰 중과 TQQQ 상장일2010" />
+  <meta name="author" content="고스트에이아이 주식회사" />
+  <meta name="naver-site-verification" content="eeaad327c6c18df3fdcdd2fba6c85007d1da6e06" />
+  <link rel="canonical" href="https://www.ghostai.co.kr/posts/infinite-buy-vs-ghost.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="라오어 무한매수법과 직접 비교했습니다: TQQQ 16년 백테스트 — Ghost.AI 특집 2026-10-22" />
+  <meta property="og:description" content="TQQQ에 투자한다면 한 번쯤 들어 봤을 라오어의 「무한매수법」은 국내에서 가장 널리 알려진 TQQQ 분할 매수 방법입니다. 이번 특집에서는 현행 V4.0 규칙을 공개된 해설대로 재현해, Ghost.AI 전략 V0.3운영 중·V0.4.3관찰 중과 TQQQ 상장일2010" />
+  <meta property="og:url" content="https://www.ghostai.co.kr/posts/infinite-buy-vs-ghost.html" />
+  <meta property="og:image" content="https://www.ghostai.co.kr/assets/img/og-image.png" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting",
+   "headline":"라오어 무한매수법과 직접 비교했습니다: TQQQ 16년 백테스트 — Ghost.AI 특집 2026-10-22","datePublished":"2026-10-22","dateModified":"2026-10-22",
+   "url":"https://www.ghostai.co.kr/posts/infinite-buy-vs-ghost.html","inLanguage":"ko-KR",
+   "author":{"@type":"Organization","name":"고스트에이아이 주식회사"},
+   "publisher":{"@type":"Organization","name":"고스트에이아이 주식회사",
+                 "logo":{"@type":"ImageObject","url":"https://www.ghostai.co.kr/assets/img/logo.png"}}}
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261022" />
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Ghost.AI 홈">
+        <img src="../assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="/">홈</a>
+        <a class="nav-signal" href="../signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
+        <a href="../backtest.html">백테스트 성과</a>
+        <a class="nav-posts" href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>
+          데일리 리포트
+        </a>
+        <a class="nav-premium" href="https://www.ghostai.co.kr/login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
+          회원 페이지<span class="soon">베타</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <article class="section-pad post">
+      <div class="wrap">
+        <div class="post-head">
+          <h1>라오어 무한매수법과 직접 비교했습니다: TQQQ 16년 백테스트</h1>
+          <p class="post-date"><time datetime="2026-10-22">2026-10-22</time> · Ghost.AI 특집</p>
+        </div>
+        <p><strong>👻 매일 시그널과 히스토리를 홈페이지에서 한눈에 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <p>&nbsp;</p>
+        <blockquote class="q-notice">
+        <p>TQQQ에 투자한다면 한 번쯤 들어 봤을 라오어의 「무한매수법」은 국내에서 가장 널리 알려진 TQQQ 분할 매수 방법입니다. 이번 특집에서는 현행 V4.0 규칙을 공개된 해설대로 재현해, Ghost.AI 전략 <strong>V0.3(운영 중)</strong>·<strong>V0.4.3(관찰 중)</strong>과 TQQQ 상장일(2010년 2월)부터 같은 조건으로 비교했습니다.</p>
+        </blockquote>
+        <hr />
+        <h2>무한매수법은 어떤 방법인가</h2>
+        <ul>
+        <li>라오어(필명)가 2021년 책 「라오어의 미국주식 무한매수법」과 네이버 카페를 통해 알린 방법입니다. 2021년 V2.0부터 여러 번 개정됐고, 2026년 3월 공개된 <strong>V4.0</strong>이 현행입니다.</li>
+        <li><strong>원금을 20~40번으로 나눠 매일 조금씩 삽니다.</strong> 평단보다 쌀 때는 더 사고, 비쌀 때는 덜 삽니다.</li>
+        <li><strong>평단보다 일정 수준 오르면 팔아 한 사이클을 끝내고 처음부터 다시 시작합니다.</strong> 원금을 다 쓴 뒤에도 내리면 조금씩 손절하며 다시 사들이는 단계(리버스 모드)로 넘어갑니다.</li>
+        <li>방향을 맞히려 하지 않고 TQQQ의 큰 출렁임을 이용한다는 것이 설계 의도입니다.</li>
+        </ul>
+        <hr />
+        <h2>비교 방법 — 같은 원금, 같은 조건</h2>
+        <ul>
+        <li><strong>무한매수법</strong>: V4.0 40분할(기본)과 20분할(공격형). 공개된 해설을 바탕으로 재현했으며, 원문 규칙·실제 성과와 다를 수 있습니다.</li>
+        <li><strong>비용</strong>: 매수·매도 각각 거래 금액의 0.25%를 뺐습니다. 세금은 제외, 현금 구간 수익은 0으로 계산했습니다.</li>
+        <li><strong>수익률 기준</strong>: 모두 전체 원금 대비입니다. 무한매수법은 원금의 일부만 주식에 넣는 설계라 이 점이 결과에 크게 작용합니다.</li>
+        <li><strong>기간</strong>: 2010년 2월 11일(TQQQ 상장일) ~ 2026년 10월 21일.</li>
+        <li>Ghost.AI 전략은 AI 모델 신호로 움직이며, 매매 규칙은 공개하지 않습니다.</li>
+        </ul>
+        <hr />
+        <h2>결과 — 16년 동안 차이는 이만큼 벌어졌습니다</h2>
+        <p><img alt="라오어 무한매수법 vs Ghost.AI" src="../assets/img/posts/infinite_vs_ghost_2026-10-21.png" /></p>
+        <p><em>위: 2010년 2월에 1만 달러로 시작했을 때의 자산(로그 눈금, 비용 반영). 아래: 무한매수법이 이긴 횡보장(2011·2015)과 Ghost.AI가 이긴 해(2020·2022)의 연 수익률. 초록 = V0.4.3, 하늘색 = V0.3, 주황 = 무한매수 40분할, 분홍 = 무한매수 20분할, 회색 = TQQQ 단순 보유.</em></p>
+        <p><strong>2010년 2월 ~ 2026년 10월</strong> (비용 반영)</p>
+        <table>
+        <thead>
+        <tr>
+        <th></th>
+        <th><strong>V0.4.3</strong></th>
+        <th><strong>V0.3</strong></th>
+        <th>무한매수 40분할</th>
+        <th>무한매수 20분할</th>
+        <th>TQQQ 보유</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>연평균 수익률</td>
+        <td><strong>+49.2%</strong></td>
+        <td>+44.1%</td>
+        <td>+17.0%</td>
+        <td>+16.0%</td>
+        <td>+42.1%</td>
+        </tr>
+        <tr>
+        <td>최대 낙폭</td>
+        <td><strong>−34.6%</strong></td>
+        <td>−39.8%</td>
+        <td>−55.5%</td>
+        <td>−61.4%</td>
+        <td>−81.8%</td>
+        </tr>
+        <tr>
+        <td>칼마 비율</td>
+        <td><strong>1.42</strong></td>
+        <td>1.11</td>
+        <td>0.31</td>
+        <td>0.26</td>
+        <td>0.51</td>
+        </tr>
+        <tr>
+        <td>최악 연도</td>
+        <td><strong>−6.6%</strong></td>
+        <td>−19.1%</td>
+        <td>−45.5%</td>
+        <td>−55.1%</td>
+        <td>−79.2%</td>
+        </tr>
+        <tr>
+        <td>평균 주식 비중</td>
+        <td>60%</td>
+        <td>64%</td>
+        <td>32%</td>
+        <td>37%</td>
+        <td>100%</td>
+        </tr>
+        <tr>
+        <td>1만 달러 →</td>
+        <td><strong>792만 달러</strong></td>
+        <td>443만 달러</td>
+        <td>13.7만 달러</td>
+        <td>11.9만 달러</td>
+        <td>351만 달러</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><em>칼마 비율 = 연평균 수익률 ÷ 최대 낙폭 (클수록 낙폭 대비 수익이 큼).</em></p>
+        <p><strong>구간별 연평균 / 최대 낙폭</strong></p>
+        <table>
+        <thead>
+        <tr>
+        <th>구간</th>
+        <th><strong>V0.4.3</strong></th>
+        <th><strong>V0.3</strong></th>
+        <th>무한매수 40분할</th>
+        <th>무한매수 20분할</th>
+        <th>TQQQ 보유</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2010~2018</td>
+        <td>+31.2% / −34.6%</td>
+        <td><strong>+33.0%</strong> / −39.8%</td>
+        <td>+15.8% / <strong>−32.5%</strong></td>
+        <td>+18.3% / −38.0%</td>
+        <td>+41.9% / −58.1%</td>
+        </tr>
+        <tr>
+        <td>2019~</td>
+        <td><strong>+72.6% / −30.5%</strong></td>
+        <td>+57.7% / −39.1%</td>
+        <td>+18.4% / −55.5%</td>
+        <td>+13.4% / −61.4%</td>
+        <td>+42.3% / −81.8%</td>
+        </tr>
+        <tr>
+        <td>2025~</td>
+        <td><strong>+70.8% / −23.4%</strong></td>
+        <td>+56.5% / −28.2%</td>
+        <td>+20.6% / −33.9%</td>
+        <td>+14.9% / −40.7%</td>
+        <td>+40.0% / −57.0%</td>
+        </tr>
+        <tr>
+        <td>(참고) 2000년 3월~, 가상 TQQQ</td>
+        <td><strong>+34.2% / −45.5%</strong></td>
+        <td>+20.8% / −80.0%</td>
+        <td>−5.8% / −99.4%</td>
+        <td>−5.3% / −99.2%</td>
+        <td>−3.2% / −100%</td>
+        </tr>
+        </tbody>
+        </table>
+        <p><em>가상 TQQQ = TQQQ 상장 전 나스닥 100 하루 등락의 3배에서 보수와 차입 비용을 뺀 값. 무한매수법은 2000년 3월 닷컴 고점에서 시작하면 2002년까지 원금 대부분을 잃었습니다.</em></p>
+        <hr />
+        <h2>차이가 난 이유</h2>
+        <ul>
+        <li><strong>상승장에서는 주식 비중이 낮습니다.</strong> 무한매수법은 평균적으로 원금의 3분의 1 정도만 TQQQ에 들어가 있었습니다. TQQQ가 140% 오른 2013년에 무한매수법은 32~38%, 118% 오른 2017년에는 24~30%였습니다.</li>
+        <li><strong>긴 하락장에서는 끝까지 사들인 뒤 손절로 끝납니다.</strong> 하락이 1년 내내 이어진 2022년에 무한매수법은 −46%(40분할)·−55%(20분할)였습니다. 같은 해 V0.3은 −13%, V0.4.3은 +3%였습니다.</li>
+        </ul>
+        <hr />
+        <h2>무한매수법이 앞선 곳</h2>
+        <ul>
+        <li><strong>횡보장에서는 무한매수법이 이겼습니다.</strong> 2011년 무한매수법 +18~24%(V0.3 −9%, V0.4.3 +15%), 2015년 +15%(V0.3 −19%, V0.4.3 −7%). 평단 아래에서 사고 평단 위에서 파는 구조가 오르내리며 제자리인 장에서 수익을 냅니다.</li>
+        <li><strong>2010~2018년 최대 낙폭은 40분할이 −32.5%로 가장 얕았습니다.</strong> 다만 같은 구간 연평균은 15.8%로 V0.4.3(31.2%)의 절반이었습니다.</li>
+        <li><strong>방향을 예측하지 않아도 되고, 규칙이 공개돼 있어 누구나 따라 할 수 있습니다.</strong> Ghost.AI 전략은 매수와 매도를 합쳐 V0.3이 1년에 10회, V0.4.3이 18회 정도 매매합니다.</li>
+        </ul>
+        <hr />
+        <h2>꼭 함께 봐야 할 점</h2>
+        <ul>
+        <li><strong>백테스트는 실제 수익이 아닙니다.</strong> 세금은 넣지 않았습니다.</li>
+        <li><strong>무한매수법은 공개된 해설을 바탕으로 재현했습니다.</strong> 주식을 정수 단위로 사는 점, 프리·애프터장의 지정가 체결은 반영하지 않았습니다. 원문 규칙은 라오어 카페에서 확인할 수 있습니다.</li>
+        <li><strong>Ghost.AI 전략의 수치는 실제보다 좋게 나왔을 수 있습니다.</strong> 매매 규칙을 전체 기간의 데이터를 보고 정했기 때문입니다. 2018년까지의 데이터로만 규칙을 다시 고른 검증에서 2019년 이후 연평균은 V0.3 48%, V0.4.3 64%(매매 비용 제외)였습니다.</li>
+        <li><strong>V0.4.3은 아직 후보입니다.</strong> 2026년 10월 20일부터 실제 매매 없이 기록만 하고 있으며, 운영 전략과 실계좌는 V0.3을 따릅니다.</li>
+        </ul>
+        <p><strong>참고</strong>: 라오어, 「라오어의 미국주식 무한매수법」(2021) · 무한매수법 V4.0 일반모드·리버스모드 해설 — <a href="https://quantstack.app/infinite/">quantstack</a></p>
+        <p>&nbsp;</p>
+        <h2>백테스트만 믿지 마시고, 실시간 기록을 직접 확인하세요</h2>
+        <p>Ghost.AI는 전략의 신호를 매일 장 마감 후 홈페이지에 공개하고, 지난 신호는 고치거나 지우지 않고 그대로 쌓아 둡니다. 오늘의 신호, 지금까지의 모든 신호 기록, 이 글의 백테스트와 다른 특집까지 전부 홈페이지에서 무료로 볼 수 있습니다.</p>
+        <p><strong>👻 모든 신호 기록이 공개된 Ghost.AI 홈페이지 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <hr />
+        <p><em>Ghost.AI — Quantitative AI Investment</em><br />
+        <em>Model: DeepGhost v0.3 | Transformer-Based Deep Learning</em><br />
+        <em>Coverage: 14 tickers | Updated every trading day after US market close</em></p>
+        <blockquote class="q-lede">
+        <p>⚠️ 본 자료는 정보 제공 목적으로만 작성되었으며 투자 권유가 아닙니다. 모든 투자의 책임은 투자자 본인에게 있습니다. 과거 성과가 미래 수익을 보장하지 않습니다.</p>
+        </blockquote>
+        <hr />
+        <p><strong>[유의사항]</strong></p>
+        <ul>
+        <li>본 서비스는 불특정 다수를 대상으로 발행되는 <strong>단방향 정보 제공</strong> 서비스이며, 투자자 개인의 재산 상황·투자 목적·위험 선호도를 반영한 개별 투자 조언이 아닙니다.</li>
+        <li>고스트에이아이 주식회사는 고객과 <strong>쌍방향 의사소통(개별 상담, 맞춤형 자문 등)을 제공하지 않습니다.</strong></li>
+        <li>본 콘텐츠는 투자 권유 또는 매매 주문의 청약·청약의 권유에 해당하지 않으며, 최종 투자 판단 및 그에 따른 손익의 책임은 전적으로 투자자 본인에게 있습니다.</li>
+        </ul>
+        <p>고스트에이아이 주식회사</p>
+      </div>
+    </article>
+
+    <section class="section-pad">
+      <div class="wrap">
+        <div class="sig-cta reveal">
+          <h2>매일 올라옵니다</h2>
+          <p>미국장 마감 후 시그널 현황과 시황 분석을 정리해 올립니다. 회원 페이지는 블로그·유튜브보다 먼저 업데이트됩니다.</p>
+          <div class="cta-row">
+            <a class="btn btn-premium" data-link="join" href="https://www.ghostai.co.kr/join">베타 회원 가입하기</a>
+            <a class="btn btn-secondary" href="./">지난 리포트 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="legal">
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <p class="company"><b>고스트에이아이 주식회사</b> <span>이메일 <a href="mailto:contact@ghostai.co.kr">contact@ghostai.co.kr</a></span></p>
+      </div>
+      <div class="copyright"><span>© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
