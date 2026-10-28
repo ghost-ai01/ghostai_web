@@ -20,6 +20,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.ghostai.co.kr/compare.html</loc>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.ghostai.co.kr/about.html</loc>
     <lastmod>2026-10-27</lastmod>
     <changefreq>monthly</changefreq>

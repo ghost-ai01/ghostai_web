@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>TQQQ 매매법 비교 — 유명 레버리지 ETF 매매법 10가지 vs Ghost.AI 26년 백테스트 · Ghost.AI</title>
+  <meta name="description" content="라오어 무한매수법·VR, 200일선, 9Sig, HFEA, TQQQ For The Long Term 등 많이 따라 하는 레버리지 ETF 매매법 10가지를 같은 조건으로 재현해 Ghost.AI V0.4와 2000년부터 비교했습니다. 구간별·연도별·하락 구간별 결과." />
+  <meta name="author" content="고스트에이아이 주식회사" />
+  <meta name="naver-site-verification" content="eeaad327c6c18df3fdcdd2fba6c85007d1da6e06" />
+
+  <link rel="canonical" href="https://www.ghostai.co.kr/compare.html" />
+  <meta property="og:url" content="https://www.ghostai.co.kr/compare.html" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "url": "https://www.ghostai.co.kr/compare.html",
+  "headline": "TQQQ 매매법 비교 — 유명 레버리지 ETF 매매법 10가지 vs Ghost.AI 26년 백테스트",
+  "description": "라오어 무한매수법·VR, 200일선, 9Sig, HFEA, TQQQ For The Long Term 등 많이 따라 하는 레버리지 ETF 매매법 10가지를 같은 조건으로 재현해 Ghost.AI V0.4와 2000년부터 비교했습니다. 구간별·연도별·하락 구간별 결과.",
+  "dateModified": "2026-10-27",
+  "inLanguage": "ko-KR",
+  "isPartOf": { "@id": "https://www.ghostai.co.kr/#website" },
+  "publisher": { "@id": "https://www.ghostai.co.kr/#org" }
+}
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="TQQQ 매매법 비교 — 유명 레버리지 ETF 매매법 10가지 vs Ghost.AI 26년 백테스트" />
+  <meta property="og:description" content="라오어 무한매수법·VR, 200일선, 9Sig, HFEA, TQQQ For The Long Term 등 많이 따라 하는 레버리지 ETF 매매법 10가지를 같은 조건으로 재현해 Ghost.AI V0.4와 2000년부터 비교했습니다. 구간별·연도별·하락 구간별 결과." />
+  <meta property="og:image" content="https://www.ghostai.co.kr/assets/img/compare/popular_vs_ghost_2026-10-27.png" />
+  <meta property="og:image:alt" content="유명 레버리지 ETF 매매법 vs Ghost.AI V0.4 백테스트" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TQQQ 매매법 비교 — 유명 레버리지 ETF 매매법 10가지 vs Ghost.AI 26년 백테스트" />
+  <meta name="twitter:description" content="라오어 무한매수법·VR, 200일선, 9Sig, HFEA, TQQQ For The Long Term 등 많이 따라 하는 레버리지 ETF 매매법 10가지를 같은 조건으로 재현해 Ghost.AI V0.4와 2000년부터 비교했습니다. 구간별·연도별·하락 구간별 결과." />
+  <meta name="twitter:image" content="https://www.ghostai.co.kr/assets/img/compare/popular_vs_ghost_2026-10-27.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon.png" />
+  <link rel="shortcut icon" href="assets/img/favicon.ico" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="assets/css/style.css?v=20261028" />
+  <style>
+    /* 표가 많고 열이 넓다 — 표마다 가로 스크롤, 첫 열 고정 */
+    .post .cmp-table { overflow-x: auto; margin: 18px 0; -webkit-overflow-scrolling: touch; }
+    .post .cmp-table table { margin: 0; min-width: 640px; }
+    .post .cmp-table th:first-child, .post .cmp-table td:first-child {
+      position: sticky; left: 0; background: #0d111b; z-index: 1; }
+    .post .cmp-table td, .post .cmp-table th { white-space: nowrap; }
+    .post .cmp-table td:first-child { white-space: normal; min-width: 150px; }
+    .post h2:first-of-type { margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <!-- ===================== Header ===================== -->
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Ghost.AI 홈">
+        <img src="assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="/">홈</a>
+        <a class="nav-about" href="about.html">소개</a>
+        <a class="nav-signal" href="signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
+        <a href="backtest.html">백테스트 성과</a>
+        <a href="compare.html" class="active" aria-current="page">매매법 비교</a>
+        <a class="nav-posts" href="posts/">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>
+          데일리 리포트
+        </a>
+        <a class="nav-premium" data-link="login" href="https://www.ghostai.co.kr/login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
+          회원 페이지<span class="soon">베타</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <article class="section-pad post">
+      <div class="wrap">
+        <div class="post-head">
+          <h1>TQQQ 유명 매매법 10가지, Ghost.AI V0.4와 비교했습니다</h1>
+          <p class="post-date"><time datetime="2026-10-27">백테스트 기준일 2026-10-27</time> · 상시 게시 · 매매법 비교</p>
+        </div>
+        <blockquote class="q-lede">
+        <p>라오어 무한매수법·VR, 레딧의 200일선, 9Sig, HFEA, 「TQQQ For The Long Term」까지.<br />
+        국내외에서 많이 따라 하는 레버리지 ETF 매매법 10가지를 같은 조건으로 재현해 <strong>Ghost.AI V0.4</strong>와 2000년부터 비교했습니다.</p>
+        </blockquote>
+        <hr />
+        <h2>결론 — Ghost.AI는 남들이 다 보는 지표가 아니라, 우리만의 고유 신호로 움직입니다</h2>
+        <ul>
+        <li><strong>Ghost.AI V0.4는 낙폭 대비 수익(칼마 비율)에서 2000년 이후와 2010년 이후 모두 1위였습니다.</strong><ul>
+        <li>2010년 이후 연평균 <strong>+48.9%</strong>, 최대 낙폭 <strong>−34.6%</strong> 입니다. 비교한 10가지 중 최대 낙폭이 가장 작은 매매법은 −55% 였습니다.</li>
+        <li>닷컴 붕괴와 금융위기가 들어간 2000년 이후로 보면 연평균 <strong>+34.1%</strong>, 최대 낙폭 <strong>−45.5%</strong> 입니다. 다른 매매법은 대부분 이 기간에 원금의 90~100%를 잃었습니다.</li>
+        </ul>
+        </li>
+        <li><strong>연평균 수익만 보면 「TQQQ For The Long Term」이 더 높았습니다</strong>(2010년 이후 +62.3%). <ul>
+        <li>다만 최대 낙폭이 −65%(2000년 이후 −92%)였고, 하락장 수익의 대부분이 <strong>3배 인버스 ETF</strong>에서 나왔습니다. (위험합니다)</li>
+        </ul>
+        </li>
+        <li><strong>차이를 만든 것은 신호의 출처입니다.</strong><ul>
+        <li>다른 매매법은 모두 <strong>누구나 볼 수 있는 가격 정보</strong>로 움직입니다. </li>
+        <li>이동평균선, RSI·CCI 같은 보조지표가 그렇습니다. 같은 차트를 보는 수많은 사람이 같은 날 같은 판단을 내립니다.</li>
+        <li><strong>Ghost.AI V0.4는 자체 개발한 딥러닝 모델(DeepGhost)이 매일 계산하는 신호를 중심으로 움직입니다.</strong> </li>
+        <li>이 신호는 다른 어디에서도 구할 수 없고, 차트의 선 하나로는 흉내 낼 수 없습니다.</li>
+        <li>그 결과가 가장 크게 드러난 곳이 <strong>긴 하락장</strong>입니다. <br />
+        닷컴 붕괴(2000~02)와 금융위기(2007~09)에 V0.4는 오히려 자산을 늘렸고<br />
+        2022년 약세장은 −15.8%로 버텼습니다.<br />
+        같은 약세장에서 3배 인버스로 넘어간 TQQQ For The Long Term(+2%)을 빼면, 다른 매매법은 −43 ~ −82%였습니다.</li>
+        </ul>
+        </li>
+        </ul>
+        <hr />
+        <h2>비교한 매매법</h2>
+        <div class="cmp-table"><table>
+        <thead>
+        <tr>
+        <th>매매법</th>
+        <th>어떻게 운용하나</th>
+        <th>어디서 나왔나</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>무한매수법 V4.0</strong></td>
+        <td>원금을 40번으로 나눠 매일 조금씩 사고, 평단보다 일정 수준 오르면 팔아 처음부터 다시 시작</td>
+        <td>라오어, 책 「라오어의 미국주식 무한매수법」(2021)·네이버 카페</td>
+        </tr>
+        <tr>
+        <td><strong>VR(밸류 리밸런싱) 5.0</strong></td>
+        <td>2주마다 목표 평가금을 조금씩 올리고, 평가금이 목표의 ±15% 밖으로 나가면 사고팔아 되돌림</td>
+        <td>라오어, 책 「라오어의 미국주식 밸류 리밸런싱」</td>
+        </tr>
+        <tr>
+        <td><strong>QQQ 200일선</strong></td>
+        <td>나스닥 100(QQQ)이 200일 이동평균 위면 TQQQ 보유, 아래면 현금</td>
+        <td>이동평균 추세 추종의 기본형, 레딧 r/LETFs</td>
+        </tr>
+        <tr>
+        <td><strong>SPY 200일선 4/3</strong></td>
+        <td>S&amp;P 500이 200일선보다 4% 위로 오르면 TQQQ, 3% 아래로 내리면 팔고 QQQ로 천천히 분할 매수</td>
+        <td>레딧 r/LETFs 인기 글</td>
+        </tr>
+        <tr>
+        <td><strong>Leverage for the Long Run</strong></td>
+        <td>S&amp;P 500이 200일선 위면 S&amp;P 500 3배(UPRO), 아래면 현금</td>
+        <td>Gayed·Bilello 논문(2016, 미국 기술분석가협회 Dow Award)</td>
+        </tr>
+        <tr>
+        <td><strong>9Sig</strong></td>
+        <td>TQQQ 60 : 채권 40으로 시작해, 분기마다 TQQQ 몫이 9% 성장 목표보다 많으면 팔고 적으면 채움</td>
+        <td>미국 투자 작가 Jason Kelly</td>
+        </tr>
+        <tr>
+        <td><strong>HFEA</strong></td>
+        <td>S&amp;P 500 3배(UPRO) 55% + 미국 장기국채 3배(TMF) 45%, 분기마다 비율 재조정</td>
+        <td>미국 투자 커뮤니티 Bogleheads (2019)</td>
+        </tr>
+        <tr>
+        <td><strong>TQQQ For The Long Term</strong></td>
+        <td>평소엔 TQQQ, 단기 과열이면 변동성 ETF(UVXY), 약세장에선 3배 인버스(SQQQ)나 채권으로 매일 바꿔 탐</td>
+        <td>레딧 r/LETFs, 자동매매 플랫폼 Composer</td>
+        </tr>
+        <tr>
+        <td><strong>CCI 0선</strong></td>
+        <td>나스닥 100의 CCI 지표가 0을 위로 넘으면 사고 아래로 내려가면 팜</td>
+        <td>국내 보조지표 매매 해설</td>
+        </tr>
+        <tr>
+        <td><strong>RSI 30/80</strong></td>
+        <td>나스닥 100의 RSI가 30을 위로 넘으면 사고 80에서 꺾이면 팜</td>
+        <td>국내 SNS TQQQ 지표 매매 글</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p><em>각 매매법은 공개된 원문·해설을 바탕으로 재현했으며, 원래 규칙·실제 성과와 다를 수 있습니다.</em></p>
+        <h3>비교 기준 — 모두 같은 조건</h3>
+        <ul>
+        <li><strong>같은 원금을 한 번 넣고</strong>, 매수·매도 때마다 거래 금액의 0.25%를 비용으로 뺐습니다. 세금은 빼고, 현금 구간 수익은 0으로 계산했습니다.</li>
+        <li>모든 매매법을 <strong>장 마감 가격으로 판단하고 다음 날 시가에 체결</strong>했습니다. 무한매수법과 VR은 원래 규칙대로 그날 종가에 체결했습니다.</li>
+        <li><strong>기간</strong>은 2000년 3월 ~ 2026년 10월 27일입니다. 각 ETF가 상장하기 전 구간은 기초 지수 하루 등락의 3배에서 보수·차입 비용을 뺀 가상 가격을 썼습니다. 2010년 이후는 실제 ETF 가격입니다.</li>
+        </ul>
+        <hr />
+        <h2>백테스트 결과</h2>
+        <p><img alt="유명 매매법 vs Ghost.AI V0.4" src="assets/img/compare/popular_vs_ghost_2026-10-27.png" /></p>
+        <p><em>위: 2010년 2월에 1만 달러로 시작했을 때의 자산(로그 눈금, 비용 반영). 아래: 연평균 수익률(세로)과 최대 낙폭(가로) — 왼쪽 위로 갈수록 덜 잃으면서 많이 번 전략입니다. 왼쪽은 2010년 이후, 오른쪽은 2000년 이후.</em></p>
+        <h3>총정리 — 2010년 이후 / 2000년 이후</h3>
+        <div class="cmp-table"><table>
+        <thead>
+        <tr>
+        <th>매매법</th>
+        <th>2010~ 연평균</th>
+        <th>2010~ 최대 낙폭</th>
+        <th>2000~ 연평균</th>
+        <th>2000~ 최대 낙폭</th>
+        <th>칼마 (2010~)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Ghost.AI V0.4</strong></td>
+        <td>+48.9%</td>
+        <td><strong>−34.6%</strong></td>
+        <td>+34.1%</td>
+        <td><strong>−45.5%</strong></td>
+        <td><strong>1.41</strong></td>
+        </tr>
+        <tr>
+        <td>TQQQ For The Long Term</td>
+        <td><strong>+62.3%</strong></td>
+        <td>−64.9%</td>
+        <td><strong>+50.0%</strong></td>
+        <td>−92.2%</td>
+        <td>0.96</td>
+        </tr>
+        <tr>
+        <td>SPY 200일선 4/3</td>
+        <td>+36.6%</td>
+        <td>−55.8%</td>
+        <td>+16.2%</td>
+        <td>−89.6%</td>
+        <td>0.66</td>
+        </tr>
+        <tr>
+        <td>9Sig</td>
+        <td>+38.1%</td>
+        <td>−72.0%</td>
+        <td>−1.4%</td>
+        <td>−99.9%</td>
+        <td>0.53</td>
+        </tr>
+        <tr>
+        <td>VR 5.0</td>
+        <td>+41.2%</td>
+        <td>−80.3%</td>
+        <td>−2.4%</td>
+        <td>−100%</td>
+        <td>0.51</td>
+        </tr>
+        <tr>
+        <td>QQQ 200일선</td>
+        <td>+29.0%</td>
+        <td>−58.1%</td>
+        <td>+10.4%</td>
+        <td>−94.0%</td>
+        <td>0.50</td>
+        </tr>
+        <tr>
+        <td>RSI 30/80</td>
+        <td>+38.7%</td>
+        <td>−81.8%</td>
+        <td>−4.1%</td>
+        <td>−100%</td>
+        <td>0.47</td>
+        </tr>
+        <tr>
+        <td>HFEA</td>
+        <td>+21.7%</td>
+        <td>−71.2%</td>
+        <td>+11.8%</td>
+        <td>−71.2%</td>
+        <td>0.31</td>
+        </tr>
+        <tr>
+        <td>Leverage for the Long Run</td>
+        <td>+17.8%</td>
+        <td>−57.4%</td>
+        <td>+11.0%</td>
+        <td>−58.7%</td>
+        <td>0.31</td>
+        </tr>
+        <tr>
+        <td>무한매수법 V4.0</td>
+        <td>+17.0%</td>
+        <td>−55.5%</td>
+        <td>−5.8%</td>
+        <td>−99.4%</td>
+        <td>0.31</td>
+        </tr>
+        <tr>
+        <td>CCI 0선</td>
+        <td>+14.1%</td>
+        <td>−61.4%</td>
+        <td>−3.1%</td>
+        <td>−96.7%</td>
+        <td>0.23</td>
+        </tr>
+        <tr>
+        <td>TQQQ 그냥 보유</td>
+        <td>+41.8%</td>
+        <td>−81.8%</td>
+        <td>−3.3%</td>
+        <td>−100%</td>
+        <td>0.51</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p><em>칼마 비율 = 연평균 수익률 ÷ 최대 낙폭 (클수록 낙폭 대비 수익이 큼). 2010~ 은 TQQQ 상장일(2010-02-11) 새 출발, 2000~ 은 2000-03-13 출발. 2010년 1만 달러 → V0.4 약 772만 달러, TQQQ 보유 약 343만 달러.</em></p>
+        <h3>구간별 — 연평균 / 최대 낙폭</h3>
+        <div class="cmp-table"><table>
+        <thead>
+        <tr>
+        <th>매매법</th>
+        <th>2000~2009</th>
+        <th>2010~2018</th>
+        <th>2019~</th>
+        <th>2025~</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>Ghost.AI V0.4</strong></td>
+        <td>+12.2% / <strong>−45.5%</strong></td>
+        <td>+31.2% / −34.6%</td>
+        <td>+71.8% / <strong>−30.5%</strong></td>
+        <td><strong>+67.6% / −23.4%</strong></td>
+        </tr>
+        <tr>
+        <td>TQQQ For The Long Term</td>
+        <td><strong>+34.4%</strong> / −92.2%</td>
+        <td>+35.1% / −63.1%</td>
+        <td><strong>+99.9%</strong> / −64.9%</td>
+        <td>+27.2% / −39.5%</td>
+        </tr>
+        <tr>
+        <td>VR 5.0</td>
+        <td>−47.4% / −100%</td>
+        <td>+39.3% / −55.0%</td>
+        <td>+43.3% / −80.3%</td>
+        <td>+42.6% / −55.3%</td>
+        </tr>
+        <tr>
+        <td>9Sig</td>
+        <td>−44.1% / −99.9%</td>
+        <td>+36.1% / −35.1%</td>
+        <td>+40.5% / −72.0%</td>
+        <td>+40.0% / −42.4%</td>
+        </tr>
+        <tr>
+        <td>SPY 200일선 4/3</td>
+        <td>−10.0% / −89.6%</td>
+        <td>+37.3% / −52.6%</td>
+        <td>+35.8% / −55.8%</td>
+        <td>+4.7% / −36.1%</td>
+        </tr>
+        <tr>
+        <td>HFEA</td>
+        <td>−2.4% / −67.8%</td>
+        <td>+29.6% / <strong>−26.5%</strong></td>
+        <td>+13.4% / −71.2%</td>
+        <td>+12.6% / −31.4%</td>
+        </tr>
+        <tr>
+        <td>무한매수법 V4.0</td>
+        <td>−34.9% / −99.4%</td>
+        <td>+15.8% / −32.5%</td>
+        <td>+18.3% / −55.5%</td>
+        <td>+20.3% / −33.9%</td>
+        </tr>
+        <tr>
+        <td>TQQQ 그냥 보유</td>
+        <td>−48.6% / −100%</td>
+        <td><strong>+41.9%</strong> / −58.1%</td>
+        <td>+41.8% / −81.8%</td>
+        <td>+37.9% / −57.0%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h3>연도별 수익률</h3>
+        <div class="cmp-table"><table>
+        <thead>
+        <tr>
+        <th>연도</th>
+        <th><strong>V0.4</strong></th>
+        <th>TQQQ FTLT</th>
+        <th>VR 5.0</th>
+        <th>9Sig</th>
+        <th>SPY 4/3</th>
+        <th>HFEA</th>
+        <th>무한매수</th>
+        <th>TQQQ 보유</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2001 닷컴 붕괴</td>
+        <td><strong>+45%</strong></td>
+        <td>+284%</td>
+        <td>−89%</td>
+        <td>−88%</td>
+        <td>−28%</td>
+        <td>−19%</td>
+        <td>−80%</td>
+        <td>−89%</td>
+        </tr>
+        <tr>
+        <td>2008 금융위기</td>
+        <td><strong>+17%</strong></td>
+        <td>+157%</td>
+        <td>−88%</td>
+        <td>−88%</td>
+        <td>−36%</td>
+        <td>−32%</td>
+        <td>−73%</td>
+        <td>−88%</td>
+        </tr>
+        <tr>
+        <td>2011 횡보</td>
+        <td>+15%</td>
+        <td>−36%</td>
+        <td>−2%</td>
+        <td>−1%</td>
+        <td>−2%</td>
+        <td><strong>+63%</strong></td>
+        <td>+18%</td>
+        <td>−8%</td>
+        </tr>
+        <tr>
+        <td>2013 상승장</td>
+        <td>+62%</td>
+        <td><strong>+226%</strong></td>
+        <td>+111%</td>
+        <td>+107%</td>
+        <td>+140%</td>
+        <td>+28%</td>
+        <td>+32%</td>
+        <td>+140%</td>
+        </tr>
+        <tr>
+        <td>2015 횡보</td>
+        <td>−7%</td>
+        <td>−35%</td>
+        <td><strong>+22%</strong></td>
+        <td>+17%</td>
+        <td>−22%</td>
+        <td>−4%</td>
+        <td>+15%</td>
+        <td>+17%</td>
+        </tr>
+        <tr>
+        <td>2018 4분기 급락</td>
+        <td>+4%</td>
+        <td>−13%</td>
+        <td>−16%</td>
+        <td>−6%</td>
+        <td><strong>+8%</strong></td>
+        <td>−14%</td>
+        <td>−1%</td>
+        <td>−20%</td>
+        </tr>
+        <tr>
+        <td>2020 코로나</td>
+        <td>+194%</td>
+        <td><strong>+490%</strong></td>
+        <td>+104%</td>
+        <td>+123%</td>
+        <td>+98%</td>
+        <td>+77%</td>
+        <td>+42%</td>
+        <td>+110%</td>
+        </tr>
+        <tr>
+        <td>2022 약세장</td>
+        <td>+3%</td>
+        <td><strong>+8%</strong></td>
+        <td>−78%</td>
+        <td>−69%</td>
+        <td>−49%</td>
+        <td>−64%</td>
+        <td>−46%</td>
+        <td>−79%</td>
+        </tr>
+        <tr>
+        <td>2025 관세 충격</td>
+        <td><strong>+87%</strong></td>
+        <td>+63%</td>
+        <td>+35%</td>
+        <td>+31%</td>
+        <td>+9%</td>
+        <td>+16%</td>
+        <td>+20%</td>
+        <td>+33%</td>
+        </tr>
+        <tr>
+        <td>2026 (10/27까지)</td>
+        <td>+37%</td>
+        <td>−5%</td>
+        <td><strong>+41%</strong></td>
+        <td><strong>+41%</strong></td>
+        <td>0%</td>
+        <td>+7%</td>
+        <td>+17%</td>
+        <td>+35%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p><em>VR·9Sig·HFEA·무한매수법은 2010년 이후 해는 2010년 새 출발 기준입니다. 2000년에 시작하면 닷컴 붕괴 뒤 현금이 바닥나 TQQQ 보유와 거의 같아집니다.</em></p>
+        <h3>큰 하락 구간 — TQQQ 고점에서 저점까지</h3>
+        <div class="cmp-table"><table>
+        <thead>
+        <tr>
+        <th>사건 (기간)</th>
+        <th><strong>V0.4</strong></th>
+        <th>TQQQ FTLT</th>
+        <th>VR 5.0</th>
+        <th>9Sig</th>
+        <th>SPY 4/3</th>
+        <th>HFEA</th>
+        <th>무한매수</th>
+        <th>TQQQ 보유</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>닷컴 붕괴 (00.3~02.10)</td>
+        <td><strong>+82%</strong></td>
+        <td>+51%</td>
+        <td>−100%</td>
+        <td>−100%</td>
+        <td>−90%</td>
+        <td>−53%</td>
+        <td>−99%</td>
+        <td>−100%</td>
+        </tr>
+        <tr>
+        <td>금융위기 (07.10~09.3)</td>
+        <td>+20%</td>
+        <td><strong>+35%</strong></td>
+        <td>−95%</td>
+        <td>−94%</td>
+        <td>−61%</td>
+        <td>−68%</td>
+        <td>−83%</td>
+        <td>−95%</td>
+        </tr>
+        <tr>
+        <td>2011 신용등급 강등 (11.7~8)</td>
+        <td>−32%</td>
+        <td>−30%</td>
+        <td>−40%</td>
+        <td>−32%</td>
+        <td>−24%</td>
+        <td><strong>−1%</strong></td>
+        <td>−22%</td>
+        <td>−44%</td>
+        </tr>
+        <tr>
+        <td>중국 쇼크 (15.7~16.2)</td>
+        <td>−15%</td>
+        <td>−42%</td>
+        <td>−40%</td>
+        <td>−30%</td>
+        <td>−47%</td>
+        <td><strong>−4%</strong></td>
+        <td>−20%</td>
+        <td>−45%</td>
+        </tr>
+        <tr>
+        <td>2018 4분기 (18.8~12)</td>
+        <td><strong>−15%</strong></td>
+        <td>−63%</td>
+        <td>−55%</td>
+        <td>−35%</td>
+        <td>−33%</td>
+        <td>−24%</td>
+        <td>−32%</td>
+        <td>−58%</td>
+        </tr>
+        <tr>
+        <td>코로나 (20.2~3)</td>
+        <td><strong>−31%</strong></td>
+        <td>−60%</td>
+        <td>−64%</td>
+        <td>−47%</td>
+        <td>−43%</td>
+        <td><strong>−31%</strong></td>
+        <td>−33%</td>
+        <td>−70%</td>
+        </tr>
+        <tr>
+        <td>2022 약세장 (21.11~22.12)</td>
+        <td>−16%</td>
+        <td><strong>+2%</strong></td>
+        <td>−80%</td>
+        <td>−72%</td>
+        <td>−53%</td>
+        <td>−65%</td>
+        <td>−48%</td>
+        <td>−82%</td>
+        </tr>
+        <tr>
+        <td>2025 관세 충격 (24.12~25.4)</td>
+        <td><strong>−16%</strong></td>
+        <td>−38%</td>
+        <td>−56%</td>
+        <td>−44%</td>
+        <td>−37%</td>
+        <td>−32%</td>
+        <td>−31%</td>
+        <td>−58%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <hr />
+        <h2>시사점</h2>
+        <ul>
+        <li><strong>레버리지 ETF에서 수익을 가르는 것은 「큰 하락을 얼마나 피했느냐」였습니다.</strong> <br />
+        TQQQ는 닷컴 붕괴와 금융위기에 −95~−100%를 맞았습니다. 그 구간을 그대로 들고 간 매매법(VR·9Sig·RSI·무한매수)은 26년 연평균이 마이너스가 됐습니다.</li>
+        <li><strong>정해진 비율로 사고파는 방법은 상승장에서는 TQQQ 보유와 비슷하지만, 긴 하락장에서는 현금이 바닥납니다.</strong> <br />
+        VR·9Sig는 2010년 이후 연평균 38~41%로 TQQQ 보유(41.8%)와 비슷했습니다. 하지만 2022년에는 −69~−78%였습니다.</li>
+        <li><strong>200일선 계열은 낙폭을 줄여 주지만, 늦게 팔고 늦게 사는 대가가 있습니다.</strong> <br />
+        2022년 −49%(SPY 4/3)였고, 2025년처럼 급락 뒤 빨리 반등하는 해에는 휩쏘로 수익을 많이 놓쳤습니다(2025년 +9%).</li>
+        <li><strong>주식과 채권을 섞는 HFEA는 둘이 반대로 움직일 때만 작동했습니다.</strong> <br />
+        2022년처럼 금리가 오르며 함께 떨어진 해에는 −64%였습니다.</li>
+        <li><strong>TQQQ For The Long Term의 높은 수익은 하락장의 3배 인버스 ETF에 기대고 있습니다.</strong> <br />
+        인버스·변동성 ETF를 빼고 계산하면 2010년 이후 연평균은 +43.5%로 내려갑니다. 그래도 최대 낙폭은 −58%입니다.</li>
+        <li><strong>Ghost.AI V0.4는 상승장 수익을 일부 내주는 대신, 긴 하락장과 급락을 가장 적은 손실로 지나갔습니다.</strong> <br />
+        최악의 해가 2000년 이후 −14%, 2010년 이후 −7%였습니다.</li>
+        </ul>
+        <hr />
+        <h2>다른 매매법이 앞선 곳</h2>
+        <ul>
+        <li><strong>연평균 수익은 TQQQ For The Long Term이 더 높았습니다</strong>(2010년 이후 +62.3% vs +48.9%). 2013·2020년처럼 크게 오른 해에도 훨씬 많이 벌었습니다.</li>
+        <li><strong>2010~2018년만 보면 TQQQ 보유(+41.9%)·VR·SPY 4/3·9Sig의 연평균이 V0.4(+31.2%)보다 높았습니다.</strong> 같은 기간 최대 낙폭은 HFEA가 −26.5%로 가장 얕았습니다.</li>
+        <li><strong>횡보장에서는 리밸런싱·분할 매수 방법이 이겼습니다.</strong> 2011년 HFEA +63%·무한매수 +18%, 2015년 VR +22%·9Sig +17%였고, V0.4는 2015년 −7%였습니다.</li>
+        <li><strong>짧고 깊은 급락은 HFEA가 더 잘 버텼습니다.</strong> 2011년 신용등급 강등 때 HFEA −1%·V0.4 −32%였고, 2015~16년 중국 쇼크 때 HFEA −4%·V0.4 −15%였습니다.</li>
+        <li><strong>다른 매매법은 규칙이 공개돼 있어 누구나 직접 따라 할 수 있습니다.</strong> 200일선·9Sig·HFEA·VR은 1년에 몇 번 안팎만 매매하면 됩니다. Ghost.AI V0.4는 모델 신호를 따라 1년에 30~35번 정도 비중을 바꿉니다.</li>
+        </ul>
+        <hr />
+        <h2>Commnets</h2>
+        <ul>
+        <li><strong>다른 매매법은 공개된 원문·해설을 바탕으로 재현했습니다.</strong> 주식을 정수 단위로 사는 점과 장중 지정가 체결은 반영하지 않았습니다. 9Sig·VR·무한매수법은 원래 매달 돈을 넣는 적립식이나 원금 일부 운용을 함께 쓰는 경우가 많은데, 비교를 위해 원금을 한 번만 넣는 방식으로 계산했습니다. TQQQ For The Long Term은 공개된 여러 변형 가운데 원형을 썼고, 일부 ETF는 비슷한 ETF로 바꿨습니다.</li>
+        <li><strong>Ghost.AI V0.4는 다음 버전 후보입니다.</strong> 2026년 10월 20일부터 실제 매매 없이 신호를 기록하며 관찰하고 있습니다. 지금 운영 전략과 실계좌는 V0.3을 따릅니다.</li>
+        </ul>
+        <p><strong>참고</strong>: 라오어, 「라오어의 미국주식 무한매수법」(2021)·「라오어의 미국주식 밸류 리밸런싱」 · 무한매수법 V4.0·VR 5.0 해설 — <a href="https://quantstack.app/">quantstack</a> · Gayed &amp; Bilello, 「Leverage for the Long Run」(2016) · Jason Kelly, 9Sig — <a href="https://bestfolio.app/blog/kelly-signal-danger">bestfolio 정리</a> · HEDGEFUNDIE's Excellent Adventure — <a href="https://www.bogleheads.org/forum/viewtopic.php?t=326588&amp;start=300">Bogleheads</a> · TQQQ For The Long Term — <a href="https://www.composer.trade/trading-strategies/reddit-tqqq-for-the-long-term-60-rsi-mod-nWP8uLmaVHGfBS7vh4fx">Composer</a></p>
+        <hr />
+        <p><strong>백테스트만 믿지 마시고, 실시간 기록을 직접 확인하세요.</strong> Ghost.AI는 전략의 신호를 매일 장 마감 후 공개하고,
+        지난 신호는 고치거나 지우지 않고 그대로 쌓아 둡니다. → <a href="signal.html">오늘의 시그널</a> · <a href="backtest.html">백테스트 성과</a> ·
+        <a href="https://www.ghostai.co.kr/join">베타 회원 가입</a></p>
+      </div>
+    </article>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-top">
+        <a class="foot-brand" href="/" aria-label="Ghost.AI 홈">
+          <img src="assets/img/logo.png" alt="" aria-hidden="true" />
+          <b>Ghost<span>.AI</span></b>
+        </a>
+        <!-- 임시 숨김 (2026-09-17) · 방문자를 사이트 안에 붙잡아 두려고 푸터 이탈 경로를 내렸다.
+             되돌리려면 이 줄과 블록 끝의 닫는 주석만 지우면 된다.
+             CSS 로 가리지 않고 마크업째 내린 이유: 안 보이는 링크는 구글 스팸 정책의
+             "hidden links" 에 걸리는데, 내부 페이지는 이미 상단 메뉴와 sitemap.xml 에
+             있어 색인에 보태는 게 없다. 위험만 있고 이득이 없다.
+        <div class="foot-links">
+          <a href="/" aria-label="홈">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 22V12h6v10" /></svg>
+          </a>
+          <a class="prem-ico" data-link="login" href="https://www.ghostai.co.kr/login" aria-label="회원 페이지 로그인 (베타)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
+          </a>
+          <a data-link="blog" href="https://blog.naver.com/ghostai" target="_blank" rel="noopener" aria-label="블로그">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
+          </a>
+          <a data-link="youtube" href="https://youtube.com/@ghostai-n7m?si=Q_MuF8CtfeUeW5aV" target="_blank" rel="noopener" aria-label="유튜브">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z" /></svg>
+          </a>
+        </div>
+        -->
+      </div>
+
+      <div class="legal">
+        <p><strong>백테스트 고지</strong> &middot; 본 페이지의 모든 성과 수치는 과거 시장 데이터를 이용한 가설적 시뮬레이션(백테스트) 결과이며, 실제 운용 성과가 아닙니다. 시뮬레이션 결과는 실제 거래에서 재현되지 않을 수 있습니다.</p>
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <!-- <p>고스트에이아이 주식회사(Ghost.AI Inc.)는 「자본시장과 금융투자업에 관한 법률」에 따른 유사투자자문업자입니다. &middot; 유사투자자문업 신고번호: 제0000-000호</p> -->
+        <p class="company">
+          <b>고스트에이아이 주식회사</b>
+          <span>대표이사 이유진</span>
+          <span>사업자등록번호 501-86-03936</span>
+          <span>주소 경기도 용인시 기흥구 흥덕3로 60</span>
+          <span>전화/팩스 <a href="tel:+825041423946">050-4142-3946</a></span>
+          <span>이메일 <a href="mailto:contact@ghostai.co.kr">contact@ghostai.co.kr</a></span>
+        </p>
+        <p class="donate">
+          <strong>서버 후원</strong> · 국민은행 698901-01-223530 (고스트에이아이) · 후원금은 서버 운영비와 모델 업그레이드에 사용됩니다. 후원 여부와 관계없이 제공되는 서비스는 동일합니다.
+        </p>
+      </div>
+
+      <div class="copyright">
+        <span>© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</span>
+        <a class="beta-link live" data-link="login" href="https://www.ghostai.co.kr/login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>
+          회원 페이지 로그인<span class="tag">BETA</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Vercel Web Analytics -->
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
