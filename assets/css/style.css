@@ -1240,7 +1240,16 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .pin-list a:hover, .pin-list a:focus-visible { border-color: rgba(240,208,138,.8); background: rgba(214,174,96,.11); transform: translateY(-1px); }
 .pin-list .pk { font-family: var(--f-mono); font-size: .76rem; font-weight: 700; color: var(--gold-hi); letter-spacing: .02em; }
 .pin-list .pt { font-size: .98rem; font-weight: 600; color: var(--text); line-height: 1.45; word-break: keep-all; }
-@media (max-width: 640px) { .pin-list { grid-template-columns: 1fr; } }
+.pin-more { display: none; }
+@media (max-width: 640px) {
+  .pin-list { grid-template-columns: 1fr; }
+  /* 휴대폰: 고정 글은 3개만, 나머지는 「더 보기」 (스크립트가 .collapsed 를 붙일 때만) */
+  .pin-list.collapsed li:nth-child(n+4) { display: none; }
+  .pin-list.collapsed + .pin-more { display: block; width: 100%; margin: 10px 0 4px; padding: 12px 16px;
+    font: inherit; font-size: .92rem; font-weight: 700; color: var(--gold-hi); cursor: pointer;
+    background: transparent; border: 1px dashed rgba(214,174,96,.5); border-radius: var(--radius-sm); }
+  .pin-list.collapsed + .pin-more:hover, .pin-list.collapsed + .pin-more:focus-visible { background: rgba(214,174,96,.08); }
+}
 @media (prefers-reduced-motion: reduce) { .pin-list a, .pin-list a:hover { transition: none; transform: none; } }
 
 .post .wrap { max-width: 820px; }
