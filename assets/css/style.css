@@ -1305,6 +1305,43 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 }
 .post blockquote.q-lede p { color: var(--text); font-size: 1.02rem; font-weight: 600; }
 
+/* 「매매법 비교」 강조 (2026-10-29 사용자 요청: 앞으로 옮기고 색으로 강조, NEW 표시로 클릭 유도).
+   시그널(시안)·리포트(금색)·회원(보라)과 겹치지 않는 코랄. 내비 알약과 히어로 버튼이 같은 색이다. */
+.nav-links a.nav-compare {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #2a0c05; font-weight: 700; border: 0;
+  background: linear-gradient(135deg, #ffab8a, #ff7a59);
+  padding: 8px 14px;
+  box-shadow: 0 6px 18px -8px rgba(255,122,89,0.65);
+  transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease);
+}
+.nav-links a.nav-compare:hover, .nav-links a.nav-compare:focus-visible,
+.nav-links a.nav-compare.active {
+  color: #2a0c05; background: linear-gradient(135deg, #ffbb9f, #ff8a6b);
+  transform: translateY(-1px); box-shadow: 0 11px 26px -8px rgba(255,122,89,0.85);
+}
+.btn-compare {
+  color: #2a0c05; font-weight: 700; border: 1px solid transparent;
+  background: linear-gradient(135deg, #ffab8a, #ff7a59);
+  box-shadow: 0 10px 26px -12px rgba(255,122,89,0.75);
+}
+.btn-compare:hover, .btn-compare:focus-visible {
+  color: #2a0c05; background: linear-gradient(135deg, #ffbb9f, #ff8a6b);
+  box-shadow: 0 14px 30px -10px rgba(255,122,89,0.9);
+}
+.new-badge {
+  font-size: 0.62rem; font-weight: 800; letter-spacing: 0.06em; line-height: 1;
+  padding: 3px 6px; border-radius: 999px; white-space: nowrap;
+  color: #fff; background: #e0362b;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.35);
+  animation: newBadgePulse 2.4s ease-in-out infinite;
+}
+@keyframes newBadgePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+@media (prefers-reduced-motion: reduce) {
+  .new-badge { animation: none; }
+  .nav-links a.nav-compare, .nav-links a.nav-compare:hover { transform: none; }
+}
+
 /* =========================================================================
    모바일 내비 — 반드시 파일의 마지막에 둔다.
    .nav-premium / .nav-posts 의 기본 규칙이 이 블록보다 앞에 있으면 명시도가
