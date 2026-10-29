@@ -47,7 +47,7 @@
   <link rel="shortcut icon" href="assets/img/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261028" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261029" />
   <style>
     /* 표가 많고 열이 넓다 — 표마다 가로 스크롤, 첫 열 고정 */
     .post .cmp-table { overflow-x: auto; margin: 18px 0; -webkit-overflow-scrolling: touch; }
@@ -57,6 +57,22 @@
     .post .cmp-table td, .post .cmp-table th { white-space: nowrap; }
     .post .cmp-table td:first-child { white-space: normal; min-width: 150px; }
     .post h2:first-of-type { margin-top: 8px; }
+    /* 매매법별 자세히 보기 — 카드 목록 (새 편이 하나씩 붙는다) */
+    .post .strat-hub { margin: 44px 0 8px; }
+    .post .strat-hub ul { list-style: none; margin: 16px 0 0; padding: 0;
+      display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+    .post .strat-hub li { margin: 0; word-break: keep-all; }
+    .post .strat-hub a { display: flex; flex-direction: column; gap: 4px; height: 100%; box-sizing: border-box;
+      padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+      background: rgba(255,255,255,.025); color: var(--text);
+      transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); }
+    .post .strat-hub a:hover, .post .strat-hub a:focus-visible { border-color: rgba(214,174,96,.55);
+      background: rgba(214,174,96,.06); transform: translateY(-2px); color: var(--text); }
+    .post .strat-hub .sh-k { font-family: var(--f-mono); font-size: .74rem; color: var(--gold-hi); letter-spacing: .02em; }
+    .post .strat-hub b { font-size: 1.05rem; line-height: 1.35; }
+    .post .strat-hub .sh-b { color: var(--muted); font-size: .88rem; line-height: 1.5; }
+    .post .strat-hub .sh-d { margin-top: auto; padding-top: 6px; font-family: var(--f-mono); font-size: .76rem; color: var(--muted-2); }
+    @media (prefers-reduced-motion: reduce) { .post .strat-hub a { transition: none; } .post .strat-hub a:hover { transform: none; } }
   </style>
 </head>
 <body>
@@ -192,6 +208,15 @@
         <li><strong>기간</strong>은 2000년 3월 ~ 2026년 10월 27일입니다. 각 ETF가 상장하기 전 구간은 기초 지수 하루 등락의 3배에서 보수·차입 비용을 뺀 가상 가격을 썼습니다. 2010년 이후는 실제 ETF 가격입니다.</li>
         </ul>
         <hr />
+        <section class="strat-hub" aria-labelledby="strat-hub-h">
+          <h2 id="strat-hub-h">매매법별 자세히 보기</h2>
+          <p>매매법 하나씩, 같은 조건으로 더 길고 자세하게 백테스트한 글입니다. 매매법 소개와 연도별·하락 구간별 결과를 함께 실었습니다.</p>
+          <ul>
+          <li><a href="posts/strategy-vr.html"><span class="sh-k">매매법 백테스트 1편</span><b>라오어 VR 5.0</b><span class="sh-b">밸류 리밸런싱 거치식 · 2010년 출발과 닷컴버블 고점 출발</span><span class="sh-d">2026-11-02 <span aria-hidden="true">→</span></span></a></li>
+          <li><a href="posts/infinite-buy-vs-ghost.html"><span class="sh-k">특집</span><b>라오어 무한매수법 V4.0</b><span class="sh-b">40분할 매수 · TQQQ 16년 백테스트</span><span class="sh-d">2026-10-22 <span aria-hidden="true">→</span></span></a></li>
+          <li><a href="posts/sma200-vs-ghost.html"><span class="sh-k">특집</span><b>200일선 전략</b><span class="sh-b">레딧에서 유행하는 TQQQ 200일선 · 26년 백테스트</span><span class="sh-d">2026-10-22 <span aria-hidden="true">→</span></span></a></li>
+          </ul>
+        </section>
         <h2>백테스트 결과</h2>
         <p><img alt="유명 매매법 vs Ghost.AI V0.4" src="assets/img/compare/popular_vs_ghost_2026-10-27.png" /></p>
         <p><em>위: 2010년 2월에 1만 달러로 시작했을 때의 자산(로그 눈금, 비용 반영). 아래: 연평균 수익률(세로)과 최대 낙폭(가로) — 왼쪽 위로 갈수록 덜 잃으면서 많이 번 전략입니다. 왼쪽은 2010년 이후, 오른쪽은 2000년 이후.</em></p>
