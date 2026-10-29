@@ -1228,6 +1228,20 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .post-list a:hover { border-color: rgba(139,108,246,.4); background: rgba(139,108,246,.07); }
 .post-list .pd { font-family: var(--f-mono); font-size: .82rem; color: var(--muted-2); flex: none; }
 .post-list .pt { font-size: .98rem; font-weight: 600; color: var(--text); }
+/* 데일리 리포트 목록 위 「고정 글」 (2026-10-29) — 날짜 목록과 구분되게 금색 테두리 카드 두 줄 격자 */
+.post-list-h { font-size: 1.05rem; font-weight: 700; color: var(--muted); margin: 34px 0 14px; letter-spacing: -0.01em; }
+.post-list-h.pin-h { color: var(--gold-hi); margin-top: 0; }
+.pin-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+.pin-list a { display: flex; flex-direction: column; gap: 6px; height: 100%; box-sizing: border-box;
+  padding: 15px 18px; border-radius: var(--radius-sm); text-decoration: none;
+  border: 1px solid rgba(214,174,96,.45); background: rgba(214,174,96,.06);
+  transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); }
+.pin-list a:hover, .pin-list a:focus-visible { border-color: rgba(240,208,138,.8); background: rgba(214,174,96,.11); transform: translateY(-1px); }
+.pin-list .pk { font-family: var(--f-mono); font-size: .76rem; font-weight: 700; color: var(--gold-hi); letter-spacing: .02em; }
+.pin-list .pt { font-size: .98rem; font-weight: 600; color: var(--text); line-height: 1.45; word-break: keep-all; }
+@media (max-width: 640px) { .pin-list { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .pin-list a, .pin-list a:hover { transition: none; transform: none; } }
 
 .post .wrap { max-width: 820px; }
 .post h1, .post h2 { letter-spacing: -.02em; }
