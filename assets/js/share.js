@@ -15,22 +15,23 @@
   var boxes = document.querySelectorAll("[data-share]");
   if (!boxes.length) return;
 
+  // Colors come from the page (inherited text color + translucent gray) so the box reads on the dark
+  // site theme and on the light/dark standalone chart pages alike.
   var CSS =
-    ".share-box{margin:28px 0;padding:22px 24px;border:1px solid rgba(153,163,182,.35);border-radius:16px;" +
-    "background:rgba(255,255,255,.03);text-align:left}" +
-    ".share-box p{margin:0 0 14px;word-break:keep-all;color:var(--muted,#99a3b6);font-size:.98rem}" +
-    ".share-box p b{color:var(--text,#ecf0f8)}" +
+    ".share-box{margin:28px 0;padding:22px 24px;border:1px solid rgba(128,128,128,.35);border-radius:16px;" +
+    "background:rgba(128,128,128,.05);text-align:left}" +
+    ".share-box p{margin:0 0 14px;color:inherit;opacity:.78;font-size:.98rem;word-break:keep-all}" +
     ".share-row{display:flex;flex-wrap:wrap;gap:10px}" +
     ".share-box .share-btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;" +
-    "font:inherit;font-size:.95rem;font-weight:700;cursor:pointer;color:var(--text,#ecf0f8);" +
-    "background:rgba(255,255,255,.055);border:1px solid rgba(153,163,182,.55);text-decoration:none;" +
+    "font:inherit;font-size:.95rem;font-weight:700;cursor:pointer;color:inherit;" +
+    "background:rgba(128,128,128,.08);border:1px solid rgba(128,128,128,.5);text-decoration:none;" +
     "transition:border-color .2s,background .2s}" +
-    ".share-box .share-btn:hover,.share-box .share-btn:focus-visible{border-color:rgba(86,204,222,.6);background:rgba(86,204,222,.08)}" +
+    ".share-box .share-btn:hover,.share-box .share-btn:focus-visible{border-color:rgba(86,204,222,.7);background:rgba(86,204,222,.1)}" +
     ".share-box .share-btn svg{width:18px;height:18px;flex:none}" +
-    ".share-box .share-btn.main{background:linear-gradient(135deg,var(--gold-hi,#f0d08a),var(--gold,#d6ae60));color:#1a1305;border-color:transparent}" +
+    ".share-box .share-btn.main{background:linear-gradient(135deg,#f0d08a,#d6ae60);color:#1a1305;border-color:transparent}" +
     ".share-box .share-btn.naver b{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:4px;" +
     "background:#03c75a;color:#fff;font-size:.72rem;line-height:1}" +
-    ".share-box .share-msg{min-height:1.2em;margin:10px 0 0;font-size:.88rem;color:var(--cyan,#56ccde)}" +
+    ".share-box .share-msg{min-height:1.2em;margin:10px 0 0;font-size:.88rem;opacity:.9}" +
     "@media (max-width:480px){.share-box{padding:18px 16px}.share-box .share-btn{flex:1 1 auto;justify-content:center}}";
 
   var ICON_SHARE = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" ' +
