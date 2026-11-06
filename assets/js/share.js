@@ -3,8 +3,9 @@
  * Put <div data-share hidden></div> where the box should appear. Optional:
  *   data-share-title  title passed to the share sheet (default: page <title> minus " · Ghost.AI")
  *   data-share-label  line above the buttons
+ *   data-share-ref    sign-up tag for links from this box (default share; Naver adds _naver)
  *
- * Shared links carry ?ref=share (share_naver for the Naver button) so sign-ups that come
+ * Shared links carry ?ref=share (share_naver for the Naver button; daily posts use share_daily) so sign-ups that come
  * through them show up in the member app's sign-up source count — ref.js keeps the tag
  * while the visitor clicks around and adds it to the /join link.
  * The URL is the page's canonical address, so a ?ref= the sharer arrived with is dropped.
@@ -86,6 +87,7 @@
 
   function build(box) {
     var title = pageTitle(box);
+    var ref = box.getAttribute("data-share-ref") || "share";
     var label = box.getAttribute("data-share-label") ||
       "<b>도움이 됐다면 공유해 주세요.</b> TQQQ 투자하는 분께 보내 주시면 같은 자료를 바로 보실 수 있습니다.";
     var msg = el("p", "share-msg");
@@ -97,7 +99,7 @@
       var s = el("button", "share-btn main", ICON_SHARE + "공유하기");
       s.type = "button";
       s.addEventListener("click", function () {
-        navigator.share({ title: title, url: pageUrl("share") }).catch(function () { /* closed */ });
+        navigator.share({ title: title, url: pageUrl(ref) }).catch(function () { /* closed */ });
       });
       row.appendChild(s);
     }
@@ -105,7 +107,7 @@
     var c = el("button", "share-btn" + (navigator.share ? "" : " main"), ICON_LINK + "링크 복사");
     c.type = "button";
     c.addEventListener("click", function () {
-      copy(pageUrl("share")).then(function () {
+      copy(pageUrl(ref)).then(function () {
         msg.textContent = "링크를 복사했습니다. 카카오톡이나 메신저에 붙여 넣으세요.";
       }, function () {
         msg.textContent = "복사하지 못했습니다. 주소창의 주소를 직접 복사해 주세요.";
@@ -114,7 +116,7 @@
     row.appendChild(c);
 
     var n = el("a", "share-btn naver", "<b aria-hidden=\"true\">N</b>네이버 공유");
-    n.href = "https://share.naver.com/web/shareView?url=" + encodeURIComponent(pageUrl("share_naver")) +
+    n.href = "https://share.naver.com/web/shareView?url=" + encodeURIComponent(pageUrl(ref + "_naver")) +
       "&title=" + encodeURIComponent(title);
     n.target = "_blank";
     n.rel = "noopener";
