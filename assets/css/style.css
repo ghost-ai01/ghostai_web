@@ -1239,6 +1239,24 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 .post-list .pt { font-size: .98rem; font-weight: 600; color: var(--text); }
 /* 데일리 리포트 목록 위 「고정 글」 (2026-10-29) — 날짜 목록과 구분되게 금색 테두리 카드 두 줄 격자 */
 .post-list-h { font-size: 1.05rem; font-weight: 700; color: var(--muted); margin: 34px 0 14px; letter-spacing: -0.01em; }
+/* 데일리 리포트 목록 — 월별 묶음 (2026-11-11~) */
+.post-month { border-top: 1px solid var(--line); }
+.post-month:last-of-type { border-bottom: 1px solid var(--line); }
+.post-month > summary {
+  display: flex; align-items: baseline; gap: 10px; padding: 16px 4px;
+  cursor: pointer; list-style: none; user-select: none;
+}
+.post-month > summary::-webkit-details-marker { display: none; }
+.post-month > summary::after {
+  content: ""; margin-left: auto; align-self: center;
+  width: 8px; height: 8px; border-right: 2px solid var(--muted-2); border-bottom: 2px solid var(--muted-2);
+  transform: rotate(45deg); transition: transform .2s var(--ease);
+}
+.post-month[open] > summary::after { transform: rotate(-135deg); }
+.post-month > summary:hover .pm-t { color: var(--gold-hi); }
+.post-month .pm-t { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.01em; color: var(--text); transition: color .2s var(--ease); }
+.post-month .pm-n { font-family: var(--f-mono); font-size: .8rem; color: var(--muted-2); }
+.post-month .post-list { padding-bottom: 18px; }
 .post-list-h.pin-h { color: var(--gold-hi); margin-top: 0; }
 .pin-list { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 10px;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
