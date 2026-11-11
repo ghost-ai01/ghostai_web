@@ -39,7 +39,13 @@
   }
   function fmtDate(s) { return s ? s : "—"; }
 
-  /* today_action -> presentation. CASH/HOLD/NEW_BUY/SELL all supported. */
+  /* today_action -> presentation. CASH/HOLD/NEW_BUY/SELL all supported.
+     The engine writes sells as NEW_SELL — normalise it to SELL, otherwise a sell
+     day fell through to the CASH card and the history table showed the raw code. */
+  function normAction(a) {
+    a = String(a || "CASH").toUpperCase();
+    return a === "NEW_SELL" ? "SELL" : a;
+  }
   var STATES = {
     CASH:    { chip: "현금 보유 중",   big: "현금 보유 중",     note: "Ghost.AI 전략은 현재 TQQQ 포지션 없이 관망 중입니다. 신규 매수 신호가 발생하면 이 페이지에 표시됩니다.", live: false },
     HOLD:    { chip: "보유 중",       big: "보유 중",         note: "Ghost.AI 전략이 TQQQ 포지션을 유지하고 있습니다. 전략의 진입 정보와 수익률은 아래에서 확인하세요.",        live: true  },
@@ -50,7 +56,7 @@
   function render(snap) {
     if (!snap || !snap.tqqq) return;
     var t = snap.tqqq;
-    var action = (t.today_action || "CASH").toUpperCase();
+    var action = normAction(t.today_action);
     var state = STATES[action] || STATES.CASH;
 
     // asof
@@ -142,7 +148,7 @@
       return String(b.date).localeCompare(String(a.date)); // newest first
     });
     var html = rows.map(function (r, i) {
-      var action = (r.action || "CASH").toUpperCase();
+      var action = normAction(r.action);
       var label = HIST_LABEL[action] || action;
       var pnl = r.pnl_pct;
       var pnlTxt = "—", pnlCls = "muted";

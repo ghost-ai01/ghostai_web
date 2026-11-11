@@ -89,7 +89,7 @@
   <link rel="shortcut icon" href="assets/img/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261029b" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261111" />
 </head>
 <body>
   <div class="bg" aria-hidden="true"></div>
@@ -103,7 +103,7 @@
       </a>
       <nav class="nav-links" aria-label="사이트 내비게이션">
         <a class="nav-about" href="about.html">소개</a>
-        <a class="nav-compare" href="compare.html">매매법 비교<span class="new-badge">NEW</span></a>
+        <a class="nav-compare" href="compare.html">매매법 비교</a>
         <a class="nav-signal" href="signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
         <a href="backtest.html">백테스트 성과</a>
         <a class="nav-posts" href="posts/">
@@ -121,7 +121,8 @@
   <main id="top">
     <!-- ===================== Hero ===================== -->
     <section class="hero">
-      <div class="wrap">
+      <div class="wrap hero-grid">
+        <div class="hero-main">
         <span class="eyebrow reveal in"><span class="dot" aria-hidden="true"></span>Transformer 기반 시그널 엔진</span>
 
         <h1 class="reveal in d1">데이터로 분석하는 시장,<br /><span class="mark">AI</span> 생성 매매 신호.</h1>
@@ -149,6 +150,9 @@
           </span>
         </a>
 
+        <!-- 2026-11-11 정리: 색을 채운 버튼은 회원 가입 하나, 오늘의 시그널은 청록 테두리로
+             한 단계 아래. 나머지 셋은 버튼이 아니라 아래 작은 링크 줄로 내렸다 —
+             버튼 다섯 개가 네 가지 색으로 경쟁하던 문제. -->
         <div class="cta-row reveal in d3">
           <a class="btn btn-premium" data-link="join" href="https://www.ghostai.co.kr/join">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -156,32 +160,25 @@
             </svg>
             무료 회원 가입<span class="soon">베타</span>
           </a>
-          <a class="btn btn-compare" href="compare.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M3 3v18h18" /><path d="M7 15l4-4 3 3 5-6" />
-            </svg>
-            매매법 비교<span class="new-badge">NEW</span>
-          </a>
           <a class="btn btn-signal" href="signal.html">
             <span class="live-dot" aria-hidden="true"></span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-            </svg>
             오늘의 시그널
           </a>
-          <a class="btn btn-posts" href="posts/">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" />
-            </svg>
+        </div>
+        <nav class="hero-links reveal in d3" aria-label="바로 가기">
+          <a href="compare.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18" /><path d="M7 15l4-4 3 3 5-6" /></svg>
+            매매법 비교
+          </a>
+          <a href="posts/">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>
             데일리 리포트
           </a>
-          <a class="btn btn-secondary" href="backtest.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" />
-            </svg>
+          <a href="backtest.html">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18" /><path d="m19 9-5 5-4-4-3 3" /></svg>
             16년 백테스트
           </a>
-        </div>
+        </nav>
         <p class="beta-note reveal in d3">이미 회원이신가요? <a data-link="login" href="https://www.ghostai.co.kr/login">로그인</a></p>
 
         <!-- <div class="trust reveal in d3" aria-label="서비스 특징">
@@ -189,6 +186,39 @@
           <div class="item"><div class="n">매일<em>·</em>업데이트</div><div class="l">미장 마감 후 자동 시그널 갱신</div></div>
           <div class="item"><div class="n"><em>리포트</em> + 영상</div><div class="l">블로그와 유튜브로 동시 발행</div></div>
         </div> -->
+        </div>
+
+        <!-- 오늘의 TQQQ — 공개 웹 v0.3(V2bc) 전략 상태. signal.json · signal_history.json 을
+             읽어 채운다(home.js). 스크립트가 없으면 링크 카드로만 남는다.
+             전략의 상태(모델 가상 포지션)이지 개인에게 하는 매매 권유가 아니다. -->
+        <aside class="today-card reveal in d2" id="today-card" aria-labelledby="tc-h">
+          <div class="tc-top">
+            <h2 class="tc-k" id="tc-h"><span class="live-dot" aria-hidden="true"></span>오늘의 TQQQ</h2>
+            <span class="tc-asof" id="tc-asof">미국장 마감 기준</span>
+          </div>
+          <div class="tc-status" id="tc-status" data-action="CASH">
+            <span class="tc-chip" id="tc-chip">전략 상태</span>
+          </div>
+          <div class="tc-price">
+            <div>
+              <span class="tc-l">TQQQ 종가</span>
+              <span class="tc-v" id="tc-close">—</span>
+            </div>
+            <span class="tc-chg" id="tc-chg"></span>
+          </div>
+          <figure class="tc-spark" id="tc-spark" hidden>
+            <svg viewBox="0 0 320 84" role="img" aria-labelledby="tc-spark-cap"></svg>
+            <figcaption id="tc-spark-cap"><span class="tc-range" id="tc-range"></span><span class="sw hold" aria-hidden="true"></span>전략 보유 구간</figcaption>
+          </figure>
+          <dl class="tc-meta" id="tc-meta" hidden>
+            <div><dt>전략 진입가</dt><dd id="tc-entry">—</dd></div>
+            <div><dt>전략 수익률</dt><dd id="tc-pnl">—</dd></div>
+          </dl>
+          <a class="tc-go" href="signal.html">시그널 현황 자세히 보기
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+          </a>
+          <p class="tc-note">Ghost.AI v0.3 전략의 상태(모델 가상 포지션)이며 투자 권유가 아닙니다. 개선판 v0.4의 비중은 <a data-link="join" href="https://www.ghostai.co.kr/join">회원 페이지</a>에서 보실 수 있습니다.</p>
+        </aside>
       </div>
     </section>
 
@@ -243,6 +273,43 @@
               <span class="seat-l">BETA MEMBERS</span>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Latest posts (2026-11-11~) =====================
+         목록은 posts/latest.json(발행 스크립트가 갱신)에서 home.js 가 다시 그린다.
+         아래 항목은 스크립트가 없을 때와 검색엔진을 위한 기본값이다. -->
+    <section class="section latest-section" id="latest">
+      <div class="wrap">
+        <div class="latest-head reveal">
+          <div>
+            <span class="kicker">LATEST · 최근 글</span>
+            <h2>매일 미국장 마감 후 올라옵니다</h2>
+          </div>
+          <a class="latest-all" href="posts/">전체 글 보기
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+          </a>
+        </div>
+        <div class="latest-grid reveal">
+          <div class="latest-col">
+            <h3>데일리 리포트</h3>
+            <ul class="latest-list daily" id="latest-daily">
+              <li><a href="posts/2026-11-10.html"><span class="ld">2026-11-10</span><span class="lt">높은 CPI, 금리 급등에 나스닥 0.74% 하락</span></a></li>
+              <li><a href="posts/2026-11-09.html"><span class="ld">2026-11-09</span><span class="lt">반도체 반등에 S&amp;P500 4월 이후 최대 상승, 엔비디아만 하락</span></a></li>
+              <li><a href="posts/2026-11-06.html"><span class="ld">2026-11-06</span><span class="lt">12월 금리인상 확률 78%, 금주 S&amp;P500 -2.5%</span></a></li>
+              <li><a href="posts/2026-11-05.html"><span class="ld">2026-11-05</span><span class="lt">AI 관련주 매도에 나스닥 5.5% 하락, 조정 구간 진입</span></a></li>
+            </ul>
+          </div>
+          <div class="latest-col">
+            <h3>백테스트 · 특집</h3>
+            <ul class="latest-list pinned" id="latest-pinned">
+              <li><a href="compare.html"><span class="lk">매매법 비교</span><span class="lt">TQQQ 유명 매매법 10가지 vs Ghost.AI, 같은 조건 26년 백테스트 총정리</span></a></li>
+              <li><a href="posts/strategy-ftlt.html"><span class="lk">매매법 백테스트 2편</span><span class="lt">레딧 TQQQ For The Long Term(FTLT) 백테스트: 수익률 1위, 그 절반은 인버스에서 나왔습니다</span></a></li>
+              <li><a href="posts/strategy-vr.html"><span class="lk">매매법 백테스트 1편</span><span class="lt">라오어 VR 5.0 백테스트: TQQQ 밸류 리밸런싱을 닷컴버블부터 26년 돌려 봤습니다</span></a></li>
+              <li><a href="posts/sma200-vs-ghost.html"><span class="lk">특집</span><span class="lt">레딧에서 유행하는 TQQQ 200일선 전략, Ghost.AI와 26년 백테스트 비교</span></a></li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -347,6 +414,7 @@
   </footer>
 
   <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/home.js?v=20261111" defer></script>
   <!-- Vercel Web Analytics -->
   <script defer src="/_vercel/insights/script.js"></script>
   <script src="assets/js/ref.js?v=20261029" defer></script>

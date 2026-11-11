@@ -12,6 +12,13 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* Mobile nav row scrolls sideways — bring the current page's item into view. */
+  var navRow = document.querySelector(".nav-links");
+  var cur = navRow && navRow.querySelector("a.active, a[aria-current='page']");
+  if (navRow && cur && navRow.scrollWidth > navRow.clientWidth) {
+    navRow.scrollLeft = Math.max(0, cur.offsetLeft - navRow.offsetLeft - 24);
+  }
+
   /* Reveal-on-scroll via IntersectionObserver (graceful fallback: show all) */
   var items = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && items.length) {

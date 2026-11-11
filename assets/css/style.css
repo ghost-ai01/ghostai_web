@@ -1375,26 +1375,223 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
 }
 
 /* =========================================================================
+   2026-11-11 정리 — 색은 "회원 가입 = 보라 채움" 하나, "오늘의 시그널 = 청록 테두리"로
+   한 단계 아래, 나머지 메뉴는 평범한 글자 링크. 예전에는 내비 알약 6개와 히어로 버튼
+   5개가 주황·청록·금·보라 네 색으로 서로 주목을 다퉜다. 이미 발행된 포스트 페이지도
+   같은 클래스를 쓰므로 함께 바뀐다(마크업은 그대로).
+   ========================================================================= */
+.nav-links a[href="backtest.html"],
+.nav-links a[href="compare.html"],
+.nav-links a[href$="/compare.html"],
+.nav-links a[href="about.html"] { border: 1px solid transparent; }
+.nav-links a.nav-compare,
+.nav-links a.nav-posts {
+  color: var(--muted); font-weight: 400; border: 1px solid transparent;
+  background: none; box-shadow: none; padding: 8px 14px;
+}
+.nav-links a.nav-posts svg { display: none; }
+.nav-links a.nav-compare:hover, .nav-links a.nav-compare:focus-visible,
+.nav-links a.nav-posts:hover, .nav-links a.nav-posts:focus-visible {
+  color: var(--text); background: rgba(255,255,255,0.04);
+  border-color: transparent; box-shadow: none; transform: none;
+}
+.nav-links a.nav-compare.active, .nav-links a.nav-posts.active,
+.nav-links a[aria-current="page"] {
+  color: var(--text); background: rgba(255,255,255,0.06); box-shadow: none; transform: none;
+}
+.new-badge { display: none; }
+
+.nav-links a.nav-signal {
+  color: var(--cyan); font-weight: 700;
+  background: rgba(86,204,222,0.08);
+  border: 1px solid rgba(86,204,222,0.45);
+  box-shadow: none; padding: 7px 15px;
+}
+.nav-links a.nav-signal:hover, .nav-links a.nav-signal:focus-visible {
+  color: #c4f5fc; background: rgba(86,204,222,0.16);
+  border-color: rgba(86,204,222,0.7); box-shadow: none;
+}
+.nav-links a.nav-signal .live-dot,
+.hero .btn-signal .live-dot,
+.tc-k .live-dot { background: var(--cyan); animation: cyanLive 1.8s ease-out infinite; }
+@keyframes cyanLive {
+  0%   { box-shadow: 0 0 0 0 rgba(86,204,222,0.55); }
+  70%  { box-shadow: 0 0 0 7px rgba(86,204,222,0); }
+  100% { box-shadow: 0 0 0 0 rgba(86,204,222,0); }
+}
+
+/* ---------- 홈 히어로: 왼쪽 메시지 + 오른쪽 오늘의 TQQQ ---------- */
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px; align-items: center; }
+@media (min-width: 1080px) {
+  .hero-grid { grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr); gap: 56px; }
+  .hero-grid h1 { font-size: clamp(2.6rem, 3.9vw, 3.6rem); }
+}
+.hero .btn-signal {
+  color: #c4f5fc; background: rgba(86,204,222,0.08);
+  border-color: rgba(86,204,222,0.55); box-shadow: none;
+}
+.hero .btn-signal:hover, .hero .btn-signal:focus-visible {
+  background: rgba(86,204,222,0.16); border-color: var(--cyan);
+  box-shadow: 0 16px 38px -16px rgba(86,204,222,0.6);
+}
+.hero-links { display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: 22px; }
+.hero-links a {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 0.95rem; font-weight: 600; color: var(--muted);
+  padding: 4px 0; border-bottom: 1px solid rgba(153,163,182,0.25);
+  transition: color .2s var(--ease), border-color .2s var(--ease);
+}
+.hero-links a svg { width: 16px; height: 16px; flex: none; }
+.hero-links a:hover, .hero-links a:focus-visible { color: var(--text); border-bottom-color: var(--text); }
+.hero .hero-links + .beta-note { margin-top: 18px; }
+
+.today-card {
+  position: relative; padding: 24px 24px 20px; border-radius: 20px;
+  border: 1px solid rgba(86,204,222,0.22);
+  background:
+    radial-gradient(420px 200px at 100% 0%, rgba(86,204,222,0.10), transparent 70%),
+    linear-gradient(180deg, var(--ink-3), var(--ink-2));
+  box-shadow: 0 30px 80px -40px rgba(0,0,0,0.85);
+}
+.tc-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.tc-k {
+  margin: 0; display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; color: var(--cyan);
+}
+.tc-k .live-dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.tc-asof { font-size: 0.78rem; color: var(--muted-2); white-space: nowrap; }
+.tc-status { margin-top: 16px; --stat-fg: var(--text); }
+.tc-status[data-action="HOLD"]    { --stat-fg: var(--cyan); }
+.tc-status[data-action="NEW_BUY"] { --stat-fg: #4ad991; }
+.tc-status[data-action="SELL"]    { --stat-fg: #ff6b6b; }
+.tc-chip { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; color: var(--stat-fg); }
+.tc-price {
+  display: flex; align-items: flex-end; justify-content: space-between; gap: 12px;
+  margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line);
+}
+.tc-l { display: block; font-size: 0.76rem; color: var(--muted-2); }
+.tc-v { display: block; margin-top: 2px; font-family: var(--f-mono); font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em; }
+.tc-chg { font-family: var(--f-mono); font-size: 0.92rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+.tc-chg:empty { display: none; }
+.tc-chg.up, .tc-meta .up     { color: #4ad991; }
+.tc-chg.down, .tc-meta .down { color: #ff6b6b; }
+.tc-chg.up   { background: rgba(74,217,145,0.1); }
+.tc-chg.down { background: rgba(255,107,107,0.1); }
+.tc-spark { margin: 14px 0 0; }
+.tc-spark svg { display: block; width: 100%; height: auto; color: var(--muted); overflow: visible; }
+.tc-spark .sp-line { fill: none; stroke: rgba(153,163,182,0.55); stroke-width: 1.4; stroke-linejoin: round; }
+.tc-spark .sp-held { fill: none; stroke: var(--gold); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.tc-spark .sp-dot  { fill: var(--cyan); }
+.tc-spark figcaption {
+  display: flex; align-items: center; gap: 7px; margin-top: 8px;
+  justify-content: flex-end;
+  font-size: 0.74rem; color: var(--muted-2);
+}
+.tc-spark .tc-range { margin-right: auto; font-family: var(--f-mono); }
+.tc-spark .sw { width: 14px; height: 3px; border-radius: 2px; background: var(--gold); flex: none; }
+.tc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 0; }
+.tc-meta dt { font-size: 0.74rem; color: var(--muted-2); }
+.tc-meta dd { margin: 2px 0 0; font-family: var(--f-mono); font-size: 1.05rem; font-weight: 700; }
+.tc-go {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  margin-top: 18px; padding: 12px 14px; border-radius: 12px;
+  font-size: 0.92rem; font-weight: 700; color: var(--cyan);
+  background: rgba(86,204,222,0.08);
+  transition: background .2s var(--ease);
+}
+.tc-go svg { width: 16px; height: 16px; flex: none; transition: transform .2s var(--ease); }
+.tc-go:hover, .tc-go:focus-visible { background: rgba(86,204,222,0.15); }
+.tc-go:hover svg { transform: translateX(3px); }
+.tc-note { margin: 12px 0 0; font-size: 0.74rem; line-height: 1.6; color: var(--muted-2); }
+.tc-note a { color: var(--violet-hi); border-bottom: 1px solid rgba(185,163,255,.35); }
+
+/* ---------- 홈: 최근 글 ---------- */
+.latest-section { padding: 72px 0 0; }
+.tc-meta[hidden], .tc-spark[hidden] { display: none; }
+.latest-head {
+  display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between;
+  gap: 12px 20px; margin-bottom: 22px;
+}
+.latest-head .kicker { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.14em; color: var(--cyan); }
+.latest-head h2 { margin: 8px 0 0; font-size: clamp(1.45rem, 3.2vw, 2rem); font-weight: 800; letter-spacing: -0.02em; }
+.latest-all {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.92rem; font-weight: 600; color: var(--muted);
+}
+.latest-all svg { width: 15px; height: 15px; transition: transform .2s var(--ease); }
+.latest-all:hover, .latest-all:focus-visible { color: var(--text); }
+.latest-all:hover svg { transform: translateX(3px); }
+.latest-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.latest-col { padding: 20px 24px 8px; border-radius: var(--radius); border: 1px solid var(--line); background: var(--ink-2); }
+.latest-col h3 { margin: 0 0 4px; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.04em; color: var(--muted-2); }
+.latest-list { list-style: none; margin: 0; padding: 0; }
+.latest-list li + li { border-top: 1px solid var(--line); }
+.latest-list a { display: flex; align-items: baseline; gap: 14px; padding: 14px 0; color: var(--text); }
+.latest-list .ld { flex: none; width: 84px; font-family: var(--f-mono); font-size: 0.78rem; color: var(--muted-2); }
+.latest-list .lk {
+  flex: none; font-size: 0.7rem; font-weight: 700; white-space: nowrap;
+  color: var(--gold-hi); padding: 2px 8px; border-radius: 999px;
+  background: rgba(214,174,96,0.1); border: 1px solid rgba(214,174,96,0.3);
+}
+.latest-list .lt { font-size: 0.95rem; line-height: 1.5; transition: color .2s var(--ease); }
+.latest-list a:hover .lt, .latest-list a:focus-visible .lt { color: var(--gold-hi); }
+@media (max-width: 860px) {
+  .latest-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .latest-col { padding: 16px 18px 4px; }
+  .latest-list a { flex-direction: column; gap: 4px; }
+  .latest-list .ld { width: auto; }
+  .latest-list .lk { align-self: flex-start; }
+}
+@media (max-width: 760px) {
+  .hero .cta-row .btn { flex: 1 1 100%; }
+  .hero-links { gap: 6px 20px; }
+}
+
+/* =========================================================================
    모바일 내비 — 반드시 파일의 마지막에 둔다.
    .nav-premium / .nav-posts 의 기본 규칙이 이 블록보다 앞에 있으면 명시도가
    같아 나중 규칙이 이긴다. 예전에는 모바일 축소가 파일 앞쪽에 있었고 기본
    규칙이 뒤에 있어서, 휴대폰에서 알약이 데스크톱 크기 그대로 나왔다.
    ========================================================================= */
 @media (max-width: 760px) {
-  /* 헤더 폭이 로고 + 알약 하나가 한계다. 회원 페이지 진입점만 남기고
-     나머지는 감춘다 — 데일리 리포트는 히어로 CTA 와 푸터에서 갈 수 있다. */
-  .nav-links { display: inline-flex; align-items: center; gap: 0; }
-  .nav-links a:not(.nav-premium) { display: none !important; }
+  /* 2026-11-11~ 모바일에서도 모든 메뉴로 갈 수 있게 한다. 예전에는 회원 페이지 알약 하나만
+     남기고 나머지를 감춰서, 하위 페이지에 들어가면 다른 페이지로 넘어갈 길이 없었다.
+     첫 줄 = 로고 + 회원 알약, 둘째 줄 = 가로로 밀어 보는 메뉴 줄.
+     회원 알약은 .nav 기준 절대 위치라 메뉴 줄의 가로 스크롤에 잘리지 않는다. */
+  .site-header .nav { position: relative; flex-wrap: wrap; height: auto; }
+  .site-header .brand { height: 56px; gap: 10px; }
+  .site-header .brand img { width: 40px; height: 40px; }
+  .site-header .brand b { font-size: 1.5rem; }
+  .nav-links {
+    display: flex; flex-wrap: nowrap; gap: 6px; width: 100%;
+    overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
+    padding: 0 36px 10px 0; margin-right: -24px;
+  }
+  /* 메뉴 줄 오른쪽 끝 흐림 — 더 밀어 볼 수 있다는 표시. mask-image 를 메뉴 줄에 걸면
+     절대 위치인 회원 알약까지 가려져서 덧씌우는 층으로 그린다. */
+  .site-header .nav::after {
+    content: ""; position: absolute; right: 0; bottom: 10px;
+    width: 44px; height: 32px; pointer-events: none;
+    background: linear-gradient(90deg, rgba(8,11,18,0), rgba(8,11,18,0.92));
+  }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { flex: none; white-space: nowrap; font-size: 0.84rem; padding: 6px 12px; }
+  .nav-links a.nav-signal { padding: 6px 12px; }
   .nav-links a.nav-premium {
+    position: absolute; top: 12px; right: 24px;
     padding: 6px 12px; font-size: 0.84rem; gap: 5px;
     box-shadow: 0 4px 12px -6px rgba(139,108,246,0.7);
   }
   .nav-links a.nav-premium svg { width: 13px; height: 13px; }
   .nav-links a.nav-premium .soon { font-size: 0.58rem; padding: 1px 5px; }
 }
-@media (max-width: 420px) {
-  /* 로고와 부딪히기 직전 — 배지를 접고 알약만 남긴다. */
-  .nav-links a.nav-premium { padding: 6px 10px; font-size: 0.8rem; }
+@media (max-width: 400px) {
+  .nav-links { margin-right: -18px; }
+  .nav-links a.nav-premium { right: 18px; }
+}
+@media (max-width: 360px) {
   .nav-links a.nav-premium .soon { display: none; }
 }
 

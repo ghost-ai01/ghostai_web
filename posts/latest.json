@@ -1,0 +1,47 @@
+{
+ "updated": "2026-11-10",
+ "daily": [
+  {
+   "date": "2026-11-10",
+   "title": "높은 CPI, 금리 급등에 나스닥 0.74% 하락",
+   "url": "posts/2026-11-10.html"
+  },
+  {
+   "date": "2026-11-09",
+   "title": "반도체 반등에 S&P500 4월 이후 최대 상승, 엔비디아만 하락",
+   "url": "posts/2026-11-09.html"
+  },
+  {
+   "date": "2026-11-06",
+   "title": "12월 금리인상 확률 78%, 금주 S&P500 -2.5%",
+   "url": "posts/2026-11-06.html"
+  },
+  {
+   "date": "2026-11-05",
+   "title": "AI 관련주 매도에 나스닥 5.5% 하락, 조정 구간 진입",
+   "url": "posts/2026-11-05.html"
+  }
+ ],
+ "pinned": [
+  {
+   "label": "매매법 비교",
+   "title": "TQQQ 유명 매매법 10가지 vs Ghost.AI, 같은 조건 26년 백테스트 총정리",
+   "url": "compare.html"
+  },
+  {
+   "label": "매매법 백테스트 2편",
+   "title": "레딧 TQQQ For The Long Term(FTLT) 백테스트: 수익률 1위, 그 절반은 인버스에서 나왔습니다",
+   "url": "posts/strategy-ftlt.html"
+  },
+  {
+   "label": "매매법 백테스트 1편",
+   "title": "라오어 VR 5.0 백테스트: TQQQ 밸류 리밸런싱을 닷컴버블부터 26년 돌려 봤습니다",
+   "url": "posts/strategy-vr.html"
+  },
+  {
+   "label": "특집",
+   "title": "레딧에서 유행하는 TQQQ 200일선 전략, Ghost.AI와 26년 백테스트 비교",
+   "url": "posts/sma200-vs-ghost.html"
+  }
+ ]
+}
