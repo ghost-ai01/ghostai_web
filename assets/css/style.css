@@ -1830,3 +1830,34 @@ main:not(:has(.ab-alt)) > section.section:nth-of-type(odd),
 main:not(:has(.ab-alt)) > section.section-pad:nth-of-type(odd) {
   background: linear-gradient(180deg, transparent, rgba(19,26,40,.55) 12%, rgba(19,26,40,.55) 88%, transparent);
 }
+
+/* =========================================================================
+   데일리 리포트 글 사이 링크 (2026-11-12) — build_posts.py 의 apply_postnav 가 넣는다.
+   ========================================================================= */
+.post-nav-sec { padding: 0 0 8px; }
+.post-nav-sec .wrap { max-width: 820px; }
+.post-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.post-nav a {
+  display: flex; flex-direction: column; gap: 4px; padding: 14px 16px;
+  border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--ink-2);
+  color: var(--text); transition: border-color .2s var(--ease);
+}
+.post-nav a.next { grid-column: 2; text-align: right; }
+.post-nav a:hover, .post-nav a:focus-visible { border-color: var(--muted-2); }
+.post-nav b { font-size: .76rem; font-weight: 700; color: var(--muted-2); }
+.post-nav span { font-size: .92rem; line-height: 1.5; }
+.post-same { margin-top: 26px; }
+.post-same h2 { margin: 0 0 6px; font-size: .86rem; font-weight: 700; color: var(--muted-2); letter-spacing: .02em; }
+.post-same ul { list-style: none; margin: 0; padding: 0; }
+.post-same li + li { border-top: 1px solid var(--line); }
+.post-same li a { display: flex; align-items: baseline; gap: 14px; padding: 11px 0; color: var(--text); }
+.post-same time { flex: none; width: 84px; font-family: var(--f-mono); font-size: .78rem; color: var(--muted-2); }
+.post-same li span { font-size: .93rem; line-height: 1.5; transition: color .2s var(--ease); }
+.post-same li a:hover span, .post-same li a:focus-visible span { color: var(--gold-hi); }
+.post-all { display: inline-block; margin-top: 12px; font-size: .88rem; font-weight: 600; color: var(--muted); }
+.post-all:hover, .post-all:focus-visible { color: var(--text); }
+@media (max-width: 560px) {
+  .post-nav { grid-template-columns: 1fr; }
+  .post-nav a.next { grid-column: auto; }
+  .post-same time { width: 76px; }
+}
