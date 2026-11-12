@@ -47,32 +47,175 @@
   <link rel="shortcut icon" href="assets/img/favicon.ico" />
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 
-  <link rel="stylesheet" href="assets/css/style.css?v=20261111" />
+  <link rel="stylesheet" href="assets/css/style.css?v=20261112" />
   <style>
-    /* 표가 많고 열이 넓다 — 표마다 가로 스크롤, 첫 열 고정 */
-    .post .cmp-table { overflow-x: auto; margin: 18px 0; -webkit-overflow-scrolling: touch; }
-    .post .cmp-table table { margin: 0; min-width: 640px; }
-    .post .cmp-table th:first-child, .post .cmp-table td:first-child {
-      position: sticky; left: 0; background: #0d111b; z-index: 1; }
-    .post .cmp-table td, .post .cmp-table th { white-space: nowrap; }
-    .post .cmp-table td:first-child { white-space: normal; min-width: 150px; }
-    .post h2:first-of-type { margin-top: 8px; }
-    /* 매매법별 자세히 보기 — 카드 목록 (새 편이 하나씩 붙는다) */
-    .post .strat-hub { margin: 44px 0 8px; }
-    .post .strat-hub ul { list-style: none; margin: 16px 0 0; padding: 0;
-      display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+    /* ===== 매매법 비교 (2026-11-12 모바일 개편) — 이 페이지 전용, 공용 style.css 는 건드리지 않는다 ===== */
+    .cx { --cx-panel: #0d111b; --cx-g: rgba(214,174,96,.08); }
+    .cx .post-head { margin-bottom: 18px; padding-bottom: 18px; }
+    .cx-lede { margin: 0 0 18px; color: var(--muted); font-size: .98rem; line-height: 1.7; }
+    .cx-lede strong { color: var(--text); }
+    .cx-jump { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -24px 6px; padding: 0 24px 4px; }
+    .cx-jump::-webkit-scrollbar { display: none; }
+    .post .cx-jump a { flex: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 13px; font-size: .84rem;
+      color: var(--muted); background: rgba(255,255,255,.02); }
+    .post .cx-jump a:hover, .post .cx-jump a:focus-visible { color: var(--text); border-color: rgba(214,174,96,.5); }
+    .cx-sec { scroll-margin-top: 130px; margin-top: 48px; }
+    .cx-sec:first-of-type { margin-top: 24px; }
+    .post .cx-sec h2 { margin: 0 0 8px; font-size: clamp(1.25rem, 3.6vw, 1.6rem); line-height: 1.35; word-break: keep-all; }
+    .cx-eyebrow { display: block; margin-bottom: 6px; font-family: var(--f-mono); font-size: .74rem; font-weight: 600;
+      letter-spacing: .06em; color: var(--gold-hi); }
+    .post .cx-sub { margin: 0 0 16px; font-size: .95rem; line-height: 1.7; word-break: keep-all; }
+    .post .cx-fine { margin-top: 12px; margin-bottom: 0; font-size: .82rem; line-height: 1.65; color: var(--muted-2); }
+    .post .cx-fine em { font-style: normal; }
+    .post .cx-h3 { margin: 30px 0 12px; font-size: 1.05rem; }
+    .post a.cx-chip-link { display: inline-block; margin-top: 4px; font-size: .86rem; }
+
+    /* 결론 — 숫자 카드 */
+    .cx-kpis { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+    .cx-kpi { display: flex; flex-direction: column; gap: 2px; padding: 14px 15px; border: 1px solid var(--line);
+      border-radius: var(--radius-sm); background: var(--cx-panel); }
+    .cx-kpi.is-main { grid-column: 1 / -1; border-color: rgba(214,174,96,.45);
+      background: linear-gradient(135deg, rgba(214,174,96,.12), rgba(214,174,96,.03)); }
+    .cx-kpi .k { font-size: .78rem; color: var(--muted); }
+    .cx-kpi .v { font-family: var(--f-sans); font-size: 1.75rem; font-weight: 800; line-height: 1.2; color: var(--text);
+      font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+    .cx-kpi.is-main .v { font-size: 2.3rem; color: var(--gold-hi); }
+    .cx-kpi .s { font-size: .8rem; line-height: 1.55; color: var(--muted); word-break: keep-all; }
+    .cx-note { margin-top: 12px; padding: 12px 15px; border-left: 3px solid var(--muted-2); background: rgba(255,255,255,.03);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: .9rem; line-height: 1.7; color: var(--muted); word-break: keep-all; }
+    .cx-note b { color: var(--text); }
+    .cx-vs { display: grid; gap: 10px; grid-template-columns: 1fr 1fr; }
+    .cx-vs > div { padding: 13px 14px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--cx-panel); }
+    .cx-vs .cx-vs-b { border-color: rgba(214,174,96,.4); }
+    .cx-vs .k { display: block; margin-bottom: 4px; font-family: var(--f-mono); font-size: .74rem; color: var(--muted-2); }
+    .cx-vs .cx-vs-b .k { color: var(--gold-hi); }
+    .post .cx-vs p { margin: 0; font-size: .88rem; line-height: 1.65; word-break: keep-all; }
+    .post .cx-k2 { margin: 18px 0 8px; font-size: .95rem; }
+    .post ul.cx-bear { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
+    .post .cx-bear li { margin: 0; padding: 12px 14px; border-radius: var(--radius-sm); background: var(--cx-g);
+      border: 1px solid rgba(214,174,96,.25); line-height: 1.5; }
+    .cx-bear .k { display: block; font-size: .78rem; color: var(--muted); margin-bottom: 3px; }
+    .cx-bear b { font-size: 1rem; }
+    .cx-bear .s { display: block; margin-top: 4px; font-size: .8rem; color: var(--muted); word-break: keep-all; }
+
+    /* 총정리 — 순위표 */
+    .cx-seg { display: inline-flex; gap: 4px; padding: 3px; margin-bottom: 10px; border: 1px solid var(--line); border-radius: 999px; }
+    .cx-seg[hidden] { display: none; }
+    .cx-seg button { border: 0; background: none; color: var(--muted); font-size: .84rem; padding: 6px 14px; border-radius: 999px; cursor: pointer; }
+    .cx-seg button[aria-pressed="true"] { background: rgba(214,174,96,.16); color: var(--gold-hi); font-weight: 700; }
+    .cx-seg button:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; }
+    .post .cx-rank table { margin: 0; font-size: .9rem; font-variant-numeric: tabular-nums; }
+    .post .cx-rank th, .post .cx-rank td { padding: 9px 10px; white-space: nowrap; }
+    .post .cx-rank tbody th { font-weight: 600; color: var(--text); text-transform: none; letter-spacing: 0; background: none; font-size: .9rem; white-space: normal; }
+    .post .cx-rank thead th { white-space: normal; line-height: 1.35; word-break: keep-all; }
+    .post .cx-rank tr.is-ghost th, .post .cx-rank tr.is-ghost td { background: var(--cx-g); }
+    .post .cx-rank tr.is-ghost th { color: var(--gold-hi); }
+    .post .cx-rank tr.is-base th, .post .cx-rank tr.is-base td { border-top: 1px dashed #2c3549; }
+    .post .cx-rank tr.is-base th { color: var(--muted); font-weight: 500; }
+    .cx-rank .cal { min-width: 92px; }
+    .cal-n { display: block; }
+    .cal-bar { display: block; height: 4px; margin-top: 4px; border-radius: 2px; background: rgba(255,255,255,.05); }
+    .cal-bar i { display: block; height: 100%; border-radius: 2px; background: #59647a; }
+    .is-ghost .cal-bar i { background: var(--gold); }
+
+    /* 예외·시사점 카드 */
+    .post ul.cx-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+    .post .cx-cards li { margin: 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius-sm);
+      background: var(--cx-panel); line-height: 1.6; word-break: keep-all; }
+    .post .cx-cards b { display: block; color: var(--text); font-size: .97rem; line-height: 1.5; }
+    .post .cx-cards p { margin: 6px 0 0; font-size: .88rem; line-height: 1.65; }
+    .post .cx-cards.is-num li { position: relative; padding-left: 50px; }
+    .cx-cards .n { position: absolute; left: 16px; top: 15px; font-family: var(--f-mono); font-size: .8rem; color: var(--gold-hi); }
+    #c-ahead .cx-cards li { border-left: 3px solid var(--cyan); }
+
+    /* 매매법별 자세히 보기 */
+    .post .strat-hub ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
     .post .strat-hub li { margin: 0; word-break: keep-all; }
-    .post .strat-hub a { display: flex; flex-direction: column; gap: 4px; height: 100%; box-sizing: border-box;
-      padding: 16px 18px; border: 1px solid var(--line); border-radius: var(--radius-sm);
-      background: rgba(255,255,255,.025); color: var(--text);
+    .post .strat-hub a { position: relative; display: flex; flex-direction: column; gap: 3px; height: 100%; box-sizing: border-box;
+      padding: 14px 40px 14px 16px; border: 1px solid rgba(214,174,96,.32); border-radius: var(--radius-sm);
+      background: rgba(214,174,96,.05); color: var(--text);
       transition: border-color .2s var(--ease), background .2s var(--ease), transform .2s var(--ease); }
-    .post .strat-hub a:hover, .post .strat-hub a:focus-visible { border-color: rgba(214,174,96,.55);
-      background: rgba(214,174,96,.06); transform: translateY(-2px); color: var(--text); }
-    .post .strat-hub .sh-k { font-family: var(--f-mono); font-size: .74rem; color: var(--gold-hi); letter-spacing: .02em; }
-    .post .strat-hub b { font-size: 1.05rem; line-height: 1.35; }
-    .post .strat-hub .sh-b { color: var(--muted); font-size: .88rem; line-height: 1.5; }
-    .post .strat-hub .sh-d { margin-top: auto; padding-top: 6px; font-family: var(--f-mono); font-size: .76rem; color: var(--muted-2); }
+    .post .strat-hub a:hover, .post .strat-hub a:focus-visible { border-color: rgba(214,174,96,.7);
+      background: rgba(214,174,96,.1); transform: translateY(-2px); color: var(--text); }
+    .post .strat-hub .sh-k { font-family: var(--f-mono); font-size: .72rem; color: var(--gold-hi); letter-spacing: .02em; }
+    .post .strat-hub b { font-size: 1rem; line-height: 1.35; }
+    .post .strat-hub .sh-b { color: var(--muted); font-size: .84rem; line-height: 1.5; }
+    .post .strat-hub .sh-go { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--gold-hi); font-size: 1.1rem; }
     @media (prefers-reduced-motion: reduce) { .post .strat-hub a { transition: none; } .post .strat-hub a:hover { transform: none; } }
+
+    /* 차트 */
+    .post a.cx-fig { display: block; position: relative; border: 0; }
+    .post .cx-fig img { margin: 0; width: 100%; height: auto; }
+    .cx-zoom { position: absolute; right: 8px; bottom: 8px; padding: 4px 10px; border-radius: 999px; font-size: .74rem;
+      background: rgba(8,11,18,.85); color: var(--muted); border: 1px solid var(--line); }
+
+    /* 접기 */
+    .cx-folds { display: grid; gap: 8px; grid-template-columns: minmax(0, 1fr); }
+    .cx-folds > * { min-width: 0; }
+    .cx-fold { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--cx-panel); }
+    .cx-fold > summary { list-style: none; cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px;
+      padding: 13px 44px 13px 15px; position: relative; }
+    .cx-fold > summary::-webkit-details-marker { display: none; }
+    .cx-fold > summary::after { content: ""; position: absolute; right: 18px; top: 19px; width: 8px; height: 8px;
+      border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .2s var(--ease); }
+    .cx-fold[open] > summary::after { transform: rotate(-135deg); top: 22px; }
+    .cx-fold > summary:focus-visible { outline: 2px solid var(--gold); outline-offset: -2px; border-radius: var(--radius-sm); }
+    .cx-fold > summary .t { font-weight: 700; color: var(--text); font-size: .97rem; }
+    .cx-fold > summary .h { font-size: .8rem; color: var(--muted-2); }
+    .cx-fold > summary:hover .t { color: var(--gold-hi); }
+    .cx-fold > :not(summary) { margin-left: 15px; margin-right: 15px; }
+    .post .cx-fold > :last-child { margin-bottom: 15px; }
+    .post .cx-fold p { font-size: .9rem; line-height: 1.7; }
+    .post .cx-fold > p:first-of-type { margin-top: 0; }
+    .cx-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+    .post .cx-fold p.cx-from { margin-top: -4px; font-size: .8rem; color: var(--muted-2); }
+    .post .cx-basis { margin-top: 14px; }
+    .post .cx-basis ul { margin-top: 0; padding-left: 18px; }
+    .post .cx-basis li { font-size: .9rem; line-height: 1.7; }
+    .post .cx-legend { margin-top: 0; margin-bottom: 8px; font-size: .8rem; color: var(--muted-2); }
+    .cx-swipe { display: none; margin-top: 6px; margin-bottom: 0; font-size: .76rem; color: var(--muted-2); }
+
+    /* 넓은 표 — 첫 열 고정 가로 스크롤 */
+    .cx-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; }
+    .post table.cx-wide { margin: 0; font-size: .86rem; font-variant-numeric: tabular-nums; }
+    .post .cx-wide th, .post .cx-wide td { padding: 8px 9px; white-space: nowrap; text-align: right; }
+    .post .cx-wide th { text-transform: none; letter-spacing: 0; }
+    .post .cx-wide thead th { font-size: .78rem; }
+    .post .cx-wide th:first-child { position: sticky; left: 0; z-index: 1; text-align: left; background: var(--cx-panel);
+      white-space: normal; min-width: 104px; box-shadow: 1px 0 0 var(--line); }
+    .post .cx-wide tbody th { font-weight: 600; color: var(--text); font-size: .86rem; line-height: 1.35; }
+    .post .cx-wide tbody th small { display: block; font-weight: 400; font-size: .74rem; color: var(--muted-2); }
+    .post .cx-wide tbody th b { display: block; }
+    .post .cx-wide .g { background: var(--cx-g); }
+    .post .cx-wide thead .g { color: var(--gold-hi); }
+    .post .cx-wide tr.is-ghost th { color: var(--gold-hi); background: #1d1e20; }
+    .post .cx-wide tr.is-ghost td { background: var(--cx-g); }
+    .post .cx-wide tr.is-base th { color: var(--muted); font-weight: 500; }
+    .post .cx-wide .dd { display: block; font-size: .78rem; color: var(--muted-2); }
+    .post .cx-wide .dd strong { color: var(--text); }
+
+    .cx-notes p { font-size: .92rem; }
+    .post .cx-ref { font-size: .84rem; line-height: 1.75; word-break: break-word; }
+
+    @media (min-width: 760px) {
+      .cx-kpis { grid-template-columns: 1.25fr 1fr 1fr; }
+      .cx-kpi.is-main { grid-column: auto; }
+    }
+    @media (max-width: 640px) {
+      .cx-kpi .v { font-size: 1.45rem; }
+      .cx-kpi.is-main .v { font-size: 2rem; }
+      .cx-vs, .post ul.cx-bear, .cx-grid { grid-template-columns: minmax(0, 1fr); }
+      .cx-swipe { display: block; }
+      /* 총정리: 스크립트가 기간을 고르면 그 기간 열만 — 매매법·연평균·낙폭(·칼마) 네 칸이 폭에 들어간다 */
+      .cx-rank { overflow-x: auto; }
+      .post .cx-rank th, .post .cx-rank td { padding: 9px 7px; font-size: .86rem; }
+      .post .cx-rank tbody th { font-size: .86rem; }
+      .cx-rank[data-v="10"] .c00, .cx-rank[data-v="00"] .c10 { display: none; }
+      .cx-rank[data-v] .c00, .cx-rank[data-v] .c10 { text-align: right; }
+      .cx-rank .cal { min-width: 64px; }
+      .cx-rank[data-v] thead .p { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -103,573 +246,274 @@
   </header>
 
   <main id="top">
-    <article class="section-pad post">
+    <article class="section-pad post cx">
       <div class="wrap">
         <div class="post-head">
           <h1>TQQQ 유명 매매법 10가지, Ghost.AI V0.4와 비교했습니다</h1>
           <p class="post-date"><time datetime="2026-10-27">백테스트 기준일 2026-10-27</time> · 상시 게시 · 매매법 비교</p>
         </div>
-        <blockquote class="q-lede">
-        <p>라오어 무한매수법·VR, 레딧의 200일선, 9Sig, HFEA, 「TQQQ For The Long Term」까지.<br />
-        국내외에서 많이 따라 하는 레버리지 ETF 매매법 10가지를 같은 조건으로 재현해 <strong>Ghost.AI V0.4</strong>와 2000년부터 비교했습니다.</p>
-        </blockquote>
-        <hr />
-        <h2>결론 — Ghost.AI는 남들이 다 보는 지표가 아니라, 우리만의 고유 신호로 움직입니다</h2>
-        <ul>
-        <li><strong>Ghost.AI V0.4는 낙폭 대비 수익(칼마 비율)에서 2000년 이후와 2010년 이후 모두 1위였습니다.</strong><ul>
-        <li>2010년 이후 연평균 <strong>+53.4%</strong>, 최대 낙폭 <strong>−33.9%</strong> 입니다. 비교한 10가지 중 최대 낙폭이 가장 작은 매매법은 −55% 였습니다.</li>
-        <li>닷컴 붕괴와 금융위기가 들어간 2000년 이후로 보면 연평균 <strong>+35.1%</strong>, 최대 낙폭 <strong>−46.7%</strong> 입니다. 다른 매매법은 대부분 이 기간에 원금의 90~100%를 잃었습니다.</li>
-        </ul>
-        </li>
-        <li><strong>연평균 수익만 보면 「TQQQ For The Long Term」이 더 높았습니다</strong>(2010년 이후 +62.3%). <ul>
-        <li>다만 최대 낙폭이 −65%(2000년 이후 −92%)였고, 하락장 수익의 대부분이 <strong>3배 인버스 ETF</strong>에서 나왔습니다. (위험합니다)</li>
-        </ul>
-        </li>
-        <li><strong>차이를 만든 것은 신호의 출처입니다.</strong><ul>
-        <li>다른 매매법은 모두 <strong>누구나 볼 수 있는 가격 정보</strong>로 움직입니다. </li>
-        <li>이동평균선, RSI·CCI 같은 보조지표가 그렇습니다. 같은 차트를 보는 수많은 사람이 같은 날 같은 판단을 내립니다.</li>
-        <li><strong>Ghost.AI V0.4는 자체 개발한 딥러닝 모델(DeepGhost)이 매일 계산하는 신호를 중심으로 움직입니다.</strong> </li>
-        <li>이 신호는 다른 어디에서도 구할 수 없고, 차트의 선 하나로는 흉내 낼 수 없습니다.</li>
-        <li>그 결과가 가장 크게 드러난 곳이 <strong>긴 하락장</strong>입니다. <br />
-        닷컴 붕괴(2000~02)와 금융위기(2007~09)에 V0.4는 오히려 자산을 늘렸고<br />
-        2022년 약세장은 −19.8%로 버텼습니다.<br />
-        같은 약세장에서 3배 인버스로 넘어간 TQQQ For The Long Term(+2%)을 빼면, 다른 매매법은 −43 ~ −82%였습니다.</li>
-        </ul>
-        </li>
-        </ul>
-        <hr />
-        <h2>비교한 매매법</h2>
-        <div class="cmp-table"><table>
-        <thead>
-        <tr>
-        <th>매매법</th>
-        <th>어떻게 운용하나</th>
-        <th>어디서 나왔나</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td><strong>무한매수법 V4.0</strong></td>
-        <td>원금을 40번으로 나눠 매일 조금씩 사고, 평단보다 일정 수준 오르면 팔아 처음부터 다시 시작</td>
-        <td>라오어, 책 「라오어의 미국주식 무한매수법」(2021)·네이버 카페</td>
-        </tr>
-        <tr>
-        <td><strong>VR(밸류 리밸런싱) 5.0</strong></td>
-        <td>2주마다 목표 평가금을 조금씩 올리고, 평가금이 목표의 ±15% 밖으로 나가면 사고팔아 되돌림</td>
-        <td>라오어, 책 「라오어의 미국주식 밸류 리밸런싱」</td>
-        </tr>
-        <tr>
-        <td><strong>QQQ 200일선</strong></td>
-        <td>나스닥 100(QQQ)이 200일 이동평균 위면 TQQQ 보유, 아래면 현금</td>
-        <td>이동평균 추세 추종의 기본형, 레딧 r/LETFs</td>
-        </tr>
-        <tr>
-        <td><strong>SPY 200일선 4/3</strong></td>
-        <td>S&amp;P 500이 200일선보다 4% 위로 오르면 TQQQ, 3% 아래로 내리면 팔고 QQQ로 천천히 분할 매수</td>
-        <td>레딧 r/LETFs 인기 글</td>
-        </tr>
-        <tr>
-        <td><strong>Leverage for the Long Run</strong></td>
-        <td>S&amp;P 500이 200일선 위면 S&amp;P 500 3배(UPRO), 아래면 현금</td>
-        <td>Gayed·Bilello 논문(2016, 미국 기술분석가협회 Dow Award)</td>
-        </tr>
-        <tr>
-        <td><strong>9Sig</strong></td>
-        <td>TQQQ 60 : 채권 40으로 시작해, 분기마다 TQQQ 몫이 9% 성장 목표보다 많으면 팔고 적으면 채움</td>
-        <td>미국 투자 작가 Jason Kelly</td>
-        </tr>
-        <tr>
-        <td><strong>HFEA</strong></td>
-        <td>S&amp;P 500 3배(UPRO) 55% + 미국 장기국채 3배(TMF) 45%, 분기마다 비율 재조정</td>
-        <td>미국 투자 커뮤니티 Bogleheads (2019)</td>
-        </tr>
-        <tr>
-        <td><strong>TQQQ For The Long Term</strong></td>
-        <td>평소엔 TQQQ, 단기 과열이면 변동성 ETF(UVXY), 약세장에선 3배 인버스(SQQQ)나 채권으로 매일 바꿔 탐</td>
-        <td>레딧 r/LETFs, 자동매매 플랫폼 Composer</td>
-        </tr>
-        <tr>
-        <td><strong>CCI 0선</strong></td>
-        <td>나스닥 100의 CCI 지표가 0을 위로 넘으면 사고 아래로 내려가면 팜</td>
-        <td>국내 보조지표 매매 해설</td>
-        </tr>
-        <tr>
-        <td><strong>RSI 30/80</strong></td>
-        <td>나스닥 100의 RSI가 30을 위로 넘으면 사고 80에서 꺾이면 팜</td>
-        <td>국내 SNS TQQQ 지표 매매 글</td>
-        </tr>
-        </tbody>
-        </table></div>
-        <p><em>각 매매법은 공개된 원문·해설을 바탕으로 재현했으며, 원래 규칙·실제 성과와 다를 수 있습니다.</em></p>
-        <h3>비교 기준 — 모두 같은 조건</h3>
-        <ul>
-        <li><strong>같은 원금을 한 번 넣고</strong>, 매수·매도 때마다 거래 금액의 0.25%를 비용으로 뺐습니다. 세금은 빼고, 현금 구간 수익은 0으로 계산했습니다.</li>
-        <li>모든 매매법을 <strong>장 마감 가격으로 판단하고 다음 날 시가에 체결</strong>했습니다. 무한매수법과 VR은 원래 규칙대로 그날 종가에 체결했습니다.</li>
-        <li><strong>기간</strong>은 2000년 3월 ~ 2026년 10월 27일입니다. 각 ETF가 상장하기 전 구간은 기초 지수 하루 등락의 3배에서 보수·차입 비용을 뺀 가상 가격을 썼습니다. 2010년 이후는 실제 ETF 가격입니다.</li>
-        </ul>
-        <hr />
-        <section class="strat-hub" aria-labelledby="strat-hub-h">
-          <h2 id="strat-hub-h">매매법별 자세히 보기</h2>
-          <p>매매법 하나씩, 같은 조건으로 더 길고 자세하게 백테스트한 글입니다. 매매법 소개와 연도별·하락 구간별 결과를 함께 실었습니다.</p>
-          <ul>
-          <li><a href="posts/strategy-vr.html"><span class="sh-k">매매법 백테스트 1편</span><b>라오어 VR 5.0</b><span class="sh-b">밸류 리밸런싱 거치식 · 2010년 출발과 닷컴버블 고점 출발</span><span class="sh-d">2026-11-02 <span aria-hidden="true">→</span></span></a></li>
-          <li><a href="posts/strategy-ftlt.html"><span class="sh-k">매매법 백테스트 2편</span><b>레딧 TQQQ For The Long Term (FTLT)</b><span class="sh-b">200일선 + 인버스 자동매매 · 수익 1위의 출처</span><span class="sh-d">2026-11-09 <span aria-hidden="true">→</span></span></a></li>
-          <li><a href="posts/infinite-buy-vs-ghost.html"><span class="sh-k">특집</span><b>라오어 무한매수법 V4.0</b><span class="sh-b">40분할 매수 · TQQQ 16년 백테스트</span><span class="sh-d">2026-10-22 <span aria-hidden="true">→</span></span></a></li>
-          <li><a href="posts/sma200-vs-ghost.html"><span class="sh-k">특집</span><b>200일선 전략</b><span class="sh-b">레딧에서 유행하는 TQQQ 200일선 · 26년 백테스트</span><span class="sh-d">2026-10-22 <span aria-hidden="true">→</span></span></a></li>
+        <p class="cx-lede">라오어 무한매수법·VR, 레딧의 200일선, 9Sig, HFEA, 「TQQQ For The Long Term」까지. 국내외에서 많이 따라 하는 레버리지 ETF 매매법 10가지를 같은 조건으로 재현해 <strong>Ghost.AI V0.4</strong>와 2000년부터 비교했습니다.</p>
+        <nav class="cx-jump" aria-label="이 페이지 안 바로가기"><a href="#c-sum">결론</a><a href="#c-rank">총정리</a><a href="#c-ahead">앞선 곳</a><a href="#c-take">시사점</a><a href="#c-hub">매매법별 글</a><a href="#c-tables">자세한 표</a><a href="#c-list">매매법 소개</a></nav>
+
+        <section class="cx-sec cx-sum" id="c-sum" aria-labelledby="c-sum-h">
+          <h2 id="c-sum-h"><span class="cx-eyebrow">결론</span>낙폭 대비 수익, 2000년 이후·2010년 이후 모두 1위</h2>
+          <p class="cx-sub">Ghost.AI V0.4는 <strong>낙폭 대비 수익(칼마 비율)</strong>에서 2000년 이후와 2010년 이후 모두 1위였습니다. 칼마 비율 = 연평균 수익률 ÷ 최대 낙폭, 클수록 낙폭 대비 수익이 큽니다.</p>
+          <div class="cx-kpis">
+            <div class="cx-kpi is-main">
+              <span class="k">2010년 이후 · 연평균</span>
+              <b class="v">+53.4%</b>
+              <span class="s">최대 낙폭 <strong>−33.9%</strong><br />비교한 10가지 중 가장 얕은 낙폭도 −55%</span>
+            </div>
+            <div class="cx-kpi">
+              <span class="k">2000년 이후 · 연평균</span>
+              <b class="v">+35.1%</b>
+              <span class="s">최대 낙폭 <strong>−46.7%</strong> · 닷컴 붕괴·금융위기 포함<br />다른 매매법은 대부분 원금의 90~100% 손실</span>
+            </div>
+            <div class="cx-kpi">
+              <span class="k">칼마 비율 · 2010년 이후</span>
+              <b class="v">1.57</b>
+              <span class="s">2위 TQQQ For The Long Term 0.96</span>
+            </div>
+          </div>
+          <div class="cx-note">
+            <b>연평균만 보면 「TQQQ For The Long Term」이 더 높았습니다</b> (2010년 이후 +62.3%).
+            다만 최대 낙폭이 −65%(2000년 이후 −92%)였고, 하락장 수익의 대부분이 <b>3배 인버스 ETF</b>에서 나왔습니다. (위험합니다)
+          </div>
+
+          <h3 class="cx-h3">차이를 만든 것은 신호의 출처입니다</h3>
+          <div class="cx-vs">
+            <div class="cx-vs-a">
+              <span class="k">다른 매매법</span>
+              <p><b>누구나 볼 수 있는 가격 정보</b> — 이동평균선, RSI·CCI 같은 보조지표. 같은 차트를 보는 수많은 사람이 같은 날 같은 판단을 내립니다.</p>
+            </div>
+            <div class="cx-vs-b">
+              <span class="k">Ghost.AI V0.4</span>
+              <p><b>자체 개발한 딥러닝 모델(DeepGhost)이 매일 계산하는 신호</b> 중심. 다른 어디에서도 구할 수 없고, 차트의 선 하나로는 흉내 낼 수 없습니다.</p>
+            </div>
+          </div>
+          <p class="cx-k2">그 결과가 가장 크게 드러난 곳 — <b>긴 하락장</b></p>
+          <ul class="cx-bear">
+            <li><span class="k">닷컴 붕괴(2000~02) · 금융위기(2007~09)</span><b>V0.4는 오히려 자산을 늘렸습니다</b></li>
+            <li><span class="k">2022년 약세장</span><b>V0.4 −19.8%</b>
+              <span class="s">다른 매매법 −43 ~ −82% (3배 인버스로 넘어간 TQQQ For The Long Term(+2%) 제외)</span></li>
           </ul>
         </section>
-        <h2>백테스트 결과</h2>
-        <p><img alt="유명 매매법 vs Ghost.AI V0.4" src="assets/img/compare/popular_vs_ghost_2026-10-27.png" /></p>
-        <p><em>위: 2010년 2월에 1만 달러로 시작했을 때의 자산(로그 눈금, 비용 반영). 아래: 연평균 수익률(세로)과 최대 낙폭(가로) — 왼쪽 위로 갈수록 덜 잃으면서 많이 번 전략입니다. 왼쪽은 2010년 이후, 오른쪽은 2000년 이후.</em></p>
-        <h3>총정리 — 2010년 이후 / 2000년 이후</h3>
-        <div class="cmp-table"><table>
-        <thead>
-        <tr>
-        <th>매매법</th>
-        <th>2010~ 연평균</th>
-        <th>2010~ 최대 낙폭</th>
-        <th>2000~ 연평균</th>
-        <th>2000~ 최대 낙폭</th>
-        <th>칼마 (2010~)</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td><strong>Ghost.AI V0.4</strong></td>
-        <td>+53.4%</td>
-        <td><strong>−33.9%</strong></td>
-        <td>+35.1%</td>
-        <td><strong>−46.7%</strong></td>
-        <td><strong>1.57</strong></td>
-        </tr>
-        <tr>
-        <td>TQQQ For The Long Term</td>
-        <td><strong>+62.3%</strong></td>
-        <td>−64.8%</td>
-        <td><strong>+49.9%</strong></td>
-        <td>−92.2%</td>
-        <td>0.96</td>
-        </tr>
-        <tr>
-        <td>SPY 200일선 4/3</td>
-        <td>+36.6%</td>
-        <td>−55.8%</td>
-        <td>+16.2%</td>
-        <td>−89.6%</td>
-        <td>0.66</td>
-        </tr>
-        <tr>
-        <td>9Sig</td>
-        <td>+38.1%</td>
-        <td>−72.0%</td>
-        <td>−1.4%</td>
-        <td>−99.9%</td>
-        <td>0.53</td>
-        </tr>
-        <tr>
-        <td>VR 5.0</td>
-        <td>+41.2%</td>
-        <td>−80.3%</td>
-        <td>−2.4%</td>
-        <td>−100%</td>
-        <td>0.51</td>
-        </tr>
-        <tr>
-        <td>QQQ 200일선</td>
-        <td>+29.0%</td>
-        <td>−58.1%</td>
-        <td>+10.4%</td>
-        <td>−94.0%</td>
-        <td>0.50</td>
-        </tr>
-        <tr>
-        <td>RSI 30/80</td>
-        <td>+38.7%</td>
-        <td>−81.8%</td>
-        <td>−4.1%</td>
-        <td>−100%</td>
-        <td>0.47</td>
-        </tr>
-        <tr>
-        <td>HFEA</td>
-        <td>+21.7%</td>
-        <td>−71.2%</td>
-        <td>+11.8%</td>
-        <td>−71.2%</td>
-        <td>0.31</td>
-        </tr>
-        <tr>
-        <td>Leverage for the Long Run</td>
-        <td>+17.8%</td>
-        <td>−57.4%</td>
-        <td>+11.0%</td>
-        <td>−58.7%</td>
-        <td>0.31</td>
-        </tr>
-        <tr>
-        <td>무한매수법 V4.0</td>
-        <td>+17.0%</td>
-        <td>−55.5%</td>
-        <td>−5.8%</td>
-        <td>−99.4%</td>
-        <td>0.31</td>
-        </tr>
-        <tr>
-        <td>CCI 0선</td>
-        <td>+14.1%</td>
-        <td>−61.4%</td>
-        <td>−3.1%</td>
-        <td>−96.7%</td>
-        <td>0.23</td>
-        </tr>
-        <tr>
-        <td>TQQQ 그냥 보유</td>
-        <td>+41.8%</td>
-        <td>−81.8%</td>
-        <td>−3.3%</td>
-        <td>−100%</td>
-        <td>0.51</td>
-        </tr>
-        </tbody>
-        </table></div>
-        <p><em>칼마 비율 = 연평균 수익률 ÷ 최대 낙폭 (클수록 낙폭 대비 수익이 큼). 2010~ 은 TQQQ 상장일(2010-02-11) 새 출발, 2000~ 은 2000-03-13 출발. 2010년 1만 달러 → V0.4 약 1,271만 달러, TQQQ 보유 약 343만 달러.</em></p>
-        <h3>구간별 — 연평균 / 최대 낙폭</h3>
-        <div class="cmp-table"><table>
-        <thead>
-        <tr>
-        <th>매매법</th>
-        <th>2000~2009</th>
-        <th>2010~2018</th>
-        <th>2019~</th>
-        <th>2025~</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td><strong>Ghost.AI V0.4</strong></td>
-        <td>+8.9% / <strong>−46.7%</strong></td>
-        <td>+38.0% / −33.5%</td>
-        <td>+73.0% / <strong>−33.9%</strong></td>
-        <td><strong>+69.2% / −23.4%</strong></td>
-        </tr>
-        <tr>
-        <td>TQQQ For The Long Term</td>
-        <td><strong>+34.2%</strong> / −92.2%</td>
-        <td>+35.1% / −63.1%</td>
-        <td><strong>+99.9%</strong> / −64.8%</td>
-        <td>+27.2% / −39.5%</td>
-        </tr>
-        <tr>
-        <td>VR 5.0</td>
-        <td>−47.4% / −100%</td>
-        <td>+39.3% / −55.0%</td>
-        <td>+43.3% / −80.3%</td>
-        <td>+42.6% / −55.3%</td>
-        </tr>
-        <tr>
-        <td>9Sig</td>
-        <td>−44.1% / −99.9%</td>
-        <td>+36.1% / −35.1%</td>
-        <td>+40.5% / −72.0%</td>
-        <td>+40.0% / −42.4%</td>
-        </tr>
-        <tr>
-        <td>SPY 200일선 4/3</td>
-        <td>−10.0% / −89.6%</td>
-        <td>+37.3% / −52.6%</td>
-        <td>+35.8% / −55.8%</td>
-        <td>+4.7% / −36.1%</td>
-        </tr>
-        <tr>
-        <td>HFEA</td>
-        <td>−2.4% / −67.8%</td>
-        <td>+29.6% / <strong>−26.5%</strong></td>
-        <td>+13.4% / −71.2%</td>
-        <td>+12.6% / −31.4%</td>
-        </tr>
-        <tr>
-        <td>무한매수법 V4.0</td>
-        <td>−34.9% / −99.4%</td>
-        <td>+15.8% / −32.5%</td>
-        <td>+18.3% / −55.5%</td>
-        <td>+20.3% / −33.9%</td>
-        </tr>
-        <tr>
-        <td>TQQQ 그냥 보유</td>
-        <td>−48.6% / −100%</td>
-        <td><strong>+41.9%</strong> / −58.1%</td>
-        <td>+41.8% / −81.8%</td>
-        <td>+37.9% / −57.0%</td>
-        </tr>
-        </tbody>
-        </table></div>
-        <h3>연도별 수익률</h3>
-        <div class="cmp-table"><table>
-        <thead>
-        <tr>
-        <th>연도</th>
-        <th><strong>V0.4</strong></th>
-        <th>TQQQ FTLT</th>
-        <th>VR 5.0</th>
-        <th>9Sig</th>
-        <th>SPY 4/3</th>
-        <th>HFEA</th>
-        <th>무한매수</th>
-        <th>TQQQ 보유</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td>2001 닷컴 붕괴</td>
-        <td><strong>+45%</strong></td>
-        <td>+283%</td>
-        <td>−89%</td>
-        <td>−88%</td>
-        <td>−28%</td>
-        <td>−19%</td>
-        <td>−80%</td>
-        <td>−89%</td>
-        </tr>
-        <tr>
-        <td>2008 금융위기</td>
-        <td><strong>+8%</strong></td>
-        <td>+156%</td>
-        <td>−88%</td>
-        <td>−88%</td>
-        <td>−36%</td>
-        <td>−32%</td>
-        <td>−73%</td>
-        <td>−88%</td>
-        </tr>
-        <tr>
-        <td>2011 횡보</td>
-        <td>+10%</td>
-        <td>−36%</td>
-        <td>−2%</td>
-        <td>−1%</td>
-        <td>−2%</td>
-        <td><strong>+63%</strong></td>
-        <td>+18%</td>
-        <td>−8%</td>
-        </tr>
-        <tr>
-        <td>2013 상승장</td>
-        <td>+84%</td>
-        <td><strong>+226%</strong></td>
-        <td>+111%</td>
-        <td>+107%</td>
-        <td>+140%</td>
-        <td>+28%</td>
-        <td>+32%</td>
-        <td>+140%</td>
-        </tr>
-        <tr>
-        <td>2015 횡보</td>
-        <td>−7%</td>
-        <td>−35%</td>
-        <td><strong>+22%</strong></td>
-        <td>+17%</td>
-        <td>−22%</td>
-        <td>−4%</td>
-        <td>+15%</td>
-        <td>+17%</td>
-        </tr>
-        <tr>
-        <td>2018 4분기 급락</td>
-        <td>+1%</td>
-        <td>−13%</td>
-        <td>−16%</td>
-        <td>−6%</td>
-        <td><strong>+8%</strong></td>
-        <td>−14%</td>
-        <td>−1%</td>
-        <td>−20%</td>
-        </tr>
-        <tr>
-        <td>2020 코로나</td>
-        <td>+198%</td>
-        <td><strong>+490%</strong></td>
-        <td>+104%</td>
-        <td>+123%</td>
-        <td>+98%</td>
-        <td>+77%</td>
-        <td>+42%</td>
-        <td>+110%</td>
-        </tr>
-        <tr>
-        <td>2022 약세장</td>
-        <td>+4%</td>
-        <td><strong>+8%</strong></td>
-        <td>−78%</td>
-        <td>−69%</td>
-        <td>−49%</td>
-        <td>−64%</td>
-        <td>−46%</td>
-        <td>−79%</td>
-        </tr>
-        <tr>
-        <td>2025 관세 충격</td>
-        <td><strong>+85%</strong></td>
-        <td>+63%</td>
-        <td>+35%</td>
-        <td>+31%</td>
-        <td>+9%</td>
-        <td>+16%</td>
-        <td>+20%</td>
-        <td>+33%</td>
-        </tr>
-        <tr>
-        <td>2026 (10/27까지)</td>
-        <td><strong>+41%</strong></td>
-        <td>−5%</td>
-        <td><strong>+41%</strong></td>
-        <td><strong>+41%</strong></td>
-        <td>0%</td>
-        <td>+7%</td>
-        <td>+17%</td>
-        <td>+35%</td>
-        </tr>
-        </tbody>
-        </table></div>
-        <p><em>VR·9Sig·HFEA·무한매수법은 2010년 이후 해는 2010년 새 출발 기준입니다. 2000년에 시작하면 닷컴 붕괴 뒤 현금이 바닥나 TQQQ 보유와 거의 같아집니다.</em></p>
-        <h3>큰 하락 구간 — TQQQ 고점에서 저점까지</h3>
-        <div class="cmp-table"><table>
-        <thead>
-        <tr>
-        <th>사건 (기간)</th>
-        <th><strong>V0.4</strong></th>
-        <th>TQQQ FTLT</th>
-        <th>VR 5.0</th>
-        <th>9Sig</th>
-        <th>SPY 4/3</th>
-        <th>HFEA</th>
-        <th>무한매수</th>
-        <th>TQQQ 보유</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <td>닷컴 붕괴 (00.3~02.10)</td>
-        <td>+48%</td>
-        <td><strong>+50%</strong></td>
-        <td>−100%</td>
-        <td>−100%</td>
-        <td>−90%</td>
-        <td>−53%</td>
-        <td>−99%</td>
-        <td>−100%</td>
-        </tr>
-        <tr>
-        <td>금융위기 (07.10~09.3)</td>
-        <td>+6%</td>
-        <td><strong>+34%</strong></td>
-        <td>−95%</td>
-        <td>−94%</td>
-        <td>−61%</td>
-        <td>−68%</td>
-        <td>−83%</td>
-        <td>−95%</td>
-        </tr>
-        <tr>
-        <td>2011 신용등급 강등 (11.7~8)</td>
-        <td>−32%</td>
-        <td>−30%</td>
-        <td>−40%</td>
-        <td>−32%</td>
-        <td>−24%</td>
-        <td><strong>−1%</strong></td>
-        <td>−22%</td>
-        <td>−44%</td>
-        </tr>
-        <tr>
-        <td>중국 쇼크 (15.7~16.2)</td>
-        <td>−17%</td>
-        <td>−42%</td>
-        <td>−40%</td>
-        <td>−30%</td>
-        <td>−47%</td>
-        <td><strong>−4%</strong></td>
-        <td>−20%</td>
-        <td>−45%</td>
-        </tr>
-        <tr>
-        <td>2018 4분기 (18.8~12)</td>
-        <td><strong>−20%</strong></td>
-        <td>−63%</td>
-        <td>−55%</td>
-        <td>−35%</td>
-        <td>−33%</td>
-        <td>−24%</td>
-        <td>−32%</td>
-        <td>−58%</td>
-        </tr>
-        <tr>
-        <td>코로나 (20.2~3)</td>
-        <td><strong>−31%</strong></td>
-        <td>−60%</td>
-        <td>−64%</td>
-        <td>−47%</td>
-        <td>−43%</td>
-        <td><strong>−31%</strong></td>
-        <td>−33%</td>
-        <td>−70%</td>
-        </tr>
-        <tr>
-        <td>2022 약세장 (21.11~22.12)</td>
-        <td>−20%</td>
-        <td><strong>+2%</strong></td>
-        <td>−80%</td>
-        <td>−72%</td>
-        <td>−53%</td>
-        <td>−65%</td>
-        <td>−48%</td>
-        <td>−82%</td>
-        </tr>
-        <tr>
-        <td>2025 관세 충격 (24.12~25.4)</td>
-        <td><strong>−23%</strong></td>
-        <td>−38%</td>
-        <td>−56%</td>
-        <td>−44%</td>
-        <td>−37%</td>
-        <td>−32%</td>
-        <td>−31%</td>
-        <td>−58%</td>
-        </tr>
-        </tbody>
-        </table></div>
-        <hr />
-        <h2>시사점</h2>
-        <ul>
-        <li><strong>레버리지 ETF에서 수익을 가르는 것은 「큰 하락을 얼마나 피했느냐」였습니다.</strong> <br />
-        TQQQ는 닷컴 붕괴와 금융위기에 −95~−100%를 맞았습니다. 그 구간을 그대로 들고 간 매매법(VR·9Sig·RSI·무한매수)은 26년 연평균이 마이너스가 됐습니다.</li>
-        <li><strong>정해진 비율로 사고파는 방법은 상승장에서는 TQQQ 보유와 비슷하지만, 긴 하락장에서는 현금이 바닥납니다.</strong> <br />
-        VR·9Sig는 2010년 이후 연평균 38~41%로 TQQQ 보유(41.8%)와 비슷했습니다. 하지만 2022년에는 −69~−78%였습니다.</li>
-        <li><strong>200일선 계열은 낙폭을 줄여 주지만, 늦게 팔고 늦게 사는 대가가 있습니다.</strong> <br />
-        2022년 −49%(SPY 4/3)였고, 2025년처럼 급락 뒤 빨리 반등하는 해에는 휩쏘로 수익을 많이 놓쳤습니다(2025년 +9%).</li>
-        <li><strong>주식과 채권을 섞는 HFEA는 둘이 반대로 움직일 때만 작동했습니다.</strong> <br />
-        2022년처럼 금리가 오르며 함께 떨어진 해에는 −64%였습니다.</li>
-        <li><strong>TQQQ For The Long Term의 높은 수익은 하락장의 3배 인버스 ETF에 기대고 있습니다.</strong> <br />
-        인버스·변동성 ETF를 빼고 계산하면 2010년 이후 연평균은 +43.5%로 내려갑니다. 그래도 최대 낙폭은 −58%입니다.</li>
-        <li><strong>Ghost.AI V0.4는 상승장 수익을 일부 내주는 대신, 긴 하락장과 급락을 가장 적은 손실로 지나갔습니다.</strong> <br />
-        최악의 해가 2000년 이후 −9%, 2010년 이후 −7%였습니다.</li>
-        </ul>
-        <hr />
-        <h2>다른 매매법이 앞선 곳</h2>
-        <ul>
-        <li><strong>연평균 수익은 TQQQ For The Long Term이 더 높았습니다</strong>(2010년 이후 +62.3% vs +53.4%). 2013·2020년처럼 크게 오른 해에도 훨씬 많이 벌었습니다.</li>
-        <li><strong>2010~2018년만 보면 TQQQ 보유(+41.9%)와 VR(+39.3%)의 연평균이 V0.4(+38.0%)보다 높았습니다.</strong> 같은 기간 최대 낙폭은 HFEA가 −26.5%로 가장 얕았습니다.</li>
-        <li><strong>횡보장에서는 리밸런싱·분할 매수 방법이 이겼습니다.</strong> 2011년 HFEA +63%·무한매수 +18%, 2015년 VR +22%·9Sig +17%였고, V0.4는 2015년 −7%였습니다.</li>
-        <li><strong>짧고 깊은 급락은 HFEA가 더 잘 버텼습니다.</strong> 2011년 신용등급 강등 때 HFEA −1%·V0.4 −32%였고, 2015~16년 중국 쇼크 때 HFEA −4%·V0.4 −17%였습니다.</li>
-        <li><strong>다른 매매법은 규칙이 공개돼 있어 누구나 직접 따라 할 수 있습니다.</strong> 200일선·9Sig·HFEA·VR은 1년에 몇 번 안팎만 매매하면 됩니다. Ghost.AI V0.4는 모델 신호를 따라 1년에 20번 남짓 비중을 바꿉니다.</li>
-        </ul>
-        <hr />
-        <h2>Comments</h2>
-        <ul>
-        <li><strong>다른 매매법은 공개된 원문·해설을 바탕으로 재현했습니다.</strong> 주식을 정수 단위로 사는 점과 장중 지정가 체결은 반영하지 않았습니다. 9Sig·VR·무한매수법은 원래 매달 돈을 넣는 적립식이나 원금 일부 운용을 함께 쓰는 경우가 많은데, 비교를 위해 원금을 한 번만 넣는 방식으로 계산했습니다. TQQQ For The Long Term은 공개된 여러 변형 가운데 원형을 썼고, 일부 ETF는 비슷한 ETF로 바꿨습니다.</li>
-        <li><strong>Ghost.AI V0.4는 2026년 11월 2일부터 Ghost.AI의 공식 전략입니다.</strong> 그 전 구간의 V0.4 숫자는 같은 규칙을 과거에 적용한 백테스트입니다.</li>
-        </ul>
-        <p><strong>참고</strong>: 라오어, 「라오어의 미국주식 무한매수법」(2021)·「라오어의 미국주식 밸류 리밸런싱」 · 무한매수법 V4.0·VR 5.0 해설 — <a href="https://quantstack.app/">quantstack</a> · Gayed &amp; Bilello, 「Leverage for the Long Run」(2016) · Jason Kelly, 9Sig — <a href="https://bestfolio.app/blog/kelly-signal-danger">bestfolio 정리</a> · HEDGEFUNDIE's Excellent Adventure — <a href="https://www.bogleheads.org/forum/viewtopic.php?t=326588&amp;start=300">Bogleheads</a> · TQQQ For The Long Term — <a href="https://www.composer.trade/trading-strategies/reddit-tqqq-for-the-long-term-60-rsi-mod-nWP8uLmaVHGfBS7vh4fx">Composer</a></p>
+
+        <section class="cx-sec" id="c-rank" aria-labelledby="c-rank-h">
+          <h2 id="c-rank-h"><span class="cx-eyebrow">총정리</span>총정리 — 2010년 이후 / 2000년 이후</h2>
+          <p class="cx-sub">2010년 이후 칼마 비율 순서입니다. 맨 아래 「TQQQ 그냥 보유」는 비교 기준입니다.
+            <a class="cx-chip-link" href="#c-basis">모두 같은 조건으로 계산 — 비교 기준</a></p>
+          <div class="cx-seg" role="group" aria-label="기간 선택" hidden>
+            <button type="button" data-v="10" aria-pressed="true">2010년 이후</button>
+            <button type="button" data-v="00" aria-pressed="false">2000년 이후</button>
+          </div>
+          <div class="cx-rank">
+            <table>
+              <thead><tr><th scope="col">매매법</th><th scope="col" class="c10"><span class="p">2010~ </span>연평균</th><th scope="col" class="c10"><span class="p">2010~ </span>최대 낙폭</th>
+                <th scope="col" class="c00"><span class="p">2000~ </span>연평균</th><th scope="col" class="c00"><span class="p">2000~ </span>최대 낙폭</th><th scope="col" class="c10 cal">칼마 (2010~)</th></tr></thead>
+              <tbody>
+              <tr class="is-ghost"><th scope="row"><strong>Ghost.AI V0.4</strong></th><td class="c10" data-l="연평균">+53.4%</td><td class="c10" data-l="최대 낙폭"><strong>−33.9%</strong></td><td class="c00" data-l="연평균">+35.1%</td><td class="c00" data-l="최대 낙폭"><strong>−46.7%</strong></td><td class="c10 cal" data-l="칼마"><span class="cal-n">1.57</span><span class="cal-bar" aria-hidden="true"><i style="width:100%"></i></span></td></tr>
+              <tr><th scope="row">TQQQ For The Long Term</th><td class="c10" data-l="연평균"><strong>+62.3%</strong></td><td class="c10" data-l="최대 낙폭">−64.8%</td><td class="c00" data-l="연평균"><strong>+49.9%</strong></td><td class="c00" data-l="최대 낙폭">−92.2%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.96</span><span class="cal-bar" aria-hidden="true"><i style="width:61%"></i></span></td></tr>
+              <tr><th scope="row">SPY 200일선 4/3</th><td class="c10" data-l="연평균">+36.6%</td><td class="c10" data-l="최대 낙폭">−55.8%</td><td class="c00" data-l="연평균">+16.2%</td><td class="c00" data-l="최대 낙폭">−89.6%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.66</span><span class="cal-bar" aria-hidden="true"><i style="width:42%"></i></span></td></tr>
+              <tr><th scope="row">9Sig</th><td class="c10" data-l="연평균">+38.1%</td><td class="c10" data-l="최대 낙폭">−72.0%</td><td class="c00" data-l="연평균">−1.4%</td><td class="c00" data-l="최대 낙폭">−99.9%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.53</span><span class="cal-bar" aria-hidden="true"><i style="width:34%"></i></span></td></tr>
+              <tr><th scope="row">VR 5.0</th><td class="c10" data-l="연평균">+41.2%</td><td class="c10" data-l="최대 낙폭">−80.3%</td><td class="c00" data-l="연평균">−2.4%</td><td class="c00" data-l="최대 낙폭">−100%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.51</span><span class="cal-bar" aria-hidden="true"><i style="width:32%"></i></span></td></tr>
+              <tr><th scope="row">QQQ 200일선</th><td class="c10" data-l="연평균">+29.0%</td><td class="c10" data-l="최대 낙폭">−58.1%</td><td class="c00" data-l="연평균">+10.4%</td><td class="c00" data-l="최대 낙폭">−94.0%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.50</span><span class="cal-bar" aria-hidden="true"><i style="width:32%"></i></span></td></tr>
+              <tr><th scope="row">RSI 30/80</th><td class="c10" data-l="연평균">+38.7%</td><td class="c10" data-l="최대 낙폭">−81.8%</td><td class="c00" data-l="연평균">−4.1%</td><td class="c00" data-l="최대 낙폭">−100%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.47</span><span class="cal-bar" aria-hidden="true"><i style="width:30%"></i></span></td></tr>
+              <tr><th scope="row">HFEA</th><td class="c10" data-l="연평균">+21.7%</td><td class="c10" data-l="최대 낙폭">−71.2%</td><td class="c00" data-l="연평균">+11.8%</td><td class="c00" data-l="최대 낙폭">−71.2%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.31</span><span class="cal-bar" aria-hidden="true"><i style="width:20%"></i></span></td></tr>
+              <tr><th scope="row">Leverage for the Long Run</th><td class="c10" data-l="연평균">+17.8%</td><td class="c10" data-l="최대 낙폭">−57.4%</td><td class="c00" data-l="연평균">+11.0%</td><td class="c00" data-l="최대 낙폭">−58.7%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.31</span><span class="cal-bar" aria-hidden="true"><i style="width:20%"></i></span></td></tr>
+              <tr><th scope="row">무한매수법 V4.0</th><td class="c10" data-l="연평균">+17.0%</td><td class="c10" data-l="최대 낙폭">−55.5%</td><td class="c00" data-l="연평균">−5.8%</td><td class="c00" data-l="최대 낙폭">−99.4%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.31</span><span class="cal-bar" aria-hidden="true"><i style="width:20%"></i></span></td></tr>
+              <tr><th scope="row">CCI 0선</th><td class="c10" data-l="연평균">+14.1%</td><td class="c10" data-l="최대 낙폭">−61.4%</td><td class="c00" data-l="연평균">−3.1%</td><td class="c00" data-l="최대 낙폭">−96.7%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.23</span><span class="cal-bar" aria-hidden="true"><i style="width:15%"></i></span></td></tr>
+              <tr class="is-base"><th scope="row">TQQQ 그냥 보유</th><td class="c10" data-l="연평균">+41.8%</td><td class="c10" data-l="최대 낙폭">−81.8%</td><td class="c00" data-l="연평균">−3.3%</td><td class="c00" data-l="최대 낙폭">−100%</td><td class="c10 cal" data-l="칼마"><span class="cal-n">0.51</span><span class="cal-bar" aria-hidden="true"><i style="width:32%"></i></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="cx-fine">칼마 비율 = 연평균 수익률 ÷ 최대 낙폭 (클수록 낙폭 대비 수익이 큼). 2010~ 은 TQQQ 상장일(2010-02-11) 새 출발, 2000~ 은 2000-03-13 출발. 2010년 1만 달러 → V0.4 약 1,271만 달러, TQQQ 보유 약 343만 달러.</p>
+        </section>
+
+        <section class="cx-sec" id="c-ahead" aria-labelledby="c-ahead-h">
+          <h2 id="c-ahead-h"><span class="cx-eyebrow">예외</span>다른 매매법이 앞선 곳</h2>
+          <p class="cx-sub">V0.4가 모든 면에서 앞선 것은 아닙니다.</p>
+          <ul class="cx-cards">
+            <li><b>연평균 수익은 TQQQ For The Long Term이 더 높았습니다</b><p>(2010년 이후 +62.3% vs +53.4%). 2013·2020년처럼 크게 오른 해에도 훨씬 많이 벌었습니다.</p></li>
+            <li><b>2010~2018년만 보면 TQQQ 보유(+41.9%)와 VR(+39.3%)의 연평균이 V0.4(+38.0%)보다 높았습니다.</b><p>같은 기간 최대 낙폭은 HFEA가 −26.5%로 가장 얕았습니다.</p></li>
+            <li><b>횡보장에서는 리밸런싱·분할 매수 방법이 이겼습니다.</b><p>2011년 HFEA +63%·무한매수 +18%, 2015년 VR +22%·9Sig +17%였고, V0.4는 2015년 −7%였습니다.</p></li>
+            <li><b>짧고 깊은 급락은 HFEA가 더 잘 버텼습니다.</b><p>2011년 신용등급 강등 때 HFEA −1%·V0.4 −32%였고, 2015~16년 중국 쇼크 때 HFEA −4%·V0.4 −17%였습니다.</p></li>
+            <li><b>다른 매매법은 규칙이 공개돼 있어 누구나 직접 따라 할 수 있습니다.</b><p>200일선·9Sig·HFEA·VR은 1년에 몇 번 안팎만 매매하면 됩니다. Ghost.AI V0.4는 모델 신호를 따라 1년에 20번 남짓 비중을 바꿉니다.</p></li>
+          </ul>
+        </section>
+
+        <section class="cx-sec" id="c-take" aria-labelledby="c-take-h">
+          <h2 id="c-take-h"><span class="cx-eyebrow">시사점</span>26년 비교에서 얻은 것</h2>
+          <ul class="cx-cards is-num">
+            <li><span class="n">01</span><b>레버리지 ETF에서 수익을 가르는 것은 「큰 하락을 얼마나 피했느냐」였습니다.</b><p>TQQQ는 닷컴 붕괴와 금융위기에 −95~−100%를 맞았습니다. 그 구간을 그대로 들고 간 매매법(VR·9Sig·RSI·무한매수)은 26년 연평균이 마이너스가 됐습니다.</p></li>
+            <li><span class="n">02</span><b>정해진 비율로 사고파는 방법은 상승장에서는 TQQQ 보유와 비슷하지만, 긴 하락장에서는 현금이 바닥납니다.</b><p>VR·9Sig는 2010년 이후 연평균 38~41%로 TQQQ 보유(41.8%)와 비슷했습니다. 하지만 2022년에는 −69~−78%였습니다.</p></li>
+            <li><span class="n">03</span><b>200일선 계열은 낙폭을 줄여 주지만, 늦게 팔고 늦게 사는 대가가 있습니다.</b><p>2022년 −49%(SPY 4/3)였고, 2025년처럼 급락 뒤 빨리 반등하는 해에는 휩쏘로 수익을 많이 놓쳤습니다(2025년 +9%).</p></li>
+            <li><span class="n">04</span><b>주식과 채권을 섞는 HFEA는 둘이 반대로 움직일 때만 작동했습니다.</b><p>2022년처럼 금리가 오르며 함께 떨어진 해에는 −64%였습니다.</p></li>
+            <li><span class="n">05</span><b>TQQQ For The Long Term의 높은 수익은 하락장의 3배 인버스 ETF에 기대고 있습니다.</b><p>인버스·변동성 ETF를 빼고 계산하면 2010년 이후 연평균은 +43.5%로 내려갑니다. 그래도 최대 낙폭은 −58%입니다.</p></li>
+            <li><span class="n">06</span><b>Ghost.AI V0.4는 상승장 수익을 일부 내주는 대신, 긴 하락장과 급락을 가장 적은 손실로 지나갔습니다.</b><p>최악의 해가 2000년 이후 −9%, 2010년 이후 −7%였습니다.</p></li>
+          </ul>
+        </section>
+
+        <section class="cx-sec strat-hub" id="c-hub" aria-labelledby="c-hub-h">
+          <h2 id="c-hub-h"><span class="cx-eyebrow">더 보기</span>매매법별 자세히 보기</h2>
+          <p class="cx-sub">매매법 하나씩, 같은 조건으로 더 길고 자세하게 백테스트한 글입니다.</p>
+          <ul>
+            <li><a href="posts/strategy-vr.html"><span class="sh-k">시리즈 1편</span><b>라오어 VR 5.0</b><span class="sh-b">밸류 리밸런싱 거치식 · 2010년 출발과 닷컴버블 고점 출발</span><span class="sh-go" aria-hidden="true">→</span></a></li>
+            <li><a href="posts/strategy-ftlt.html"><span class="sh-k">시리즈 2편</span><b>레딧 TQQQ For The Long Term (FTLT)</b><span class="sh-b">200일선 + 인버스 자동매매 · 수익 1위의 출처</span><span class="sh-go" aria-hidden="true">→</span></a></li>
+            <li><a href="posts/infinite-buy-vs-ghost.html"><span class="sh-k">특집</span><b>라오어 무한매수법 V4.0</b><span class="sh-b">40분할 매수 · TQQQ 16년 백테스트</span><span class="sh-go" aria-hidden="true">→</span></a></li>
+            <li><a href="posts/sma200-vs-ghost.html"><span class="sh-k">특집</span><b>200일선 전략</b><span class="sh-b">레딧에서 유행하는 TQQQ 200일선 · 26년 백테스트</span><span class="sh-go" aria-hidden="true">→</span></a></li>
+          </ul>
+        </section>
+
+        <section class="cx-sec" id="c-chart" aria-labelledby="c-chart-h">
+          <h2 id="c-chart-h"><span class="cx-eyebrow">차트</span>자산 곡선과 수익·낙폭 지도</h2>
+          <a class="cx-fig" href="assets/img/compare/popular_vs_ghost_2026-10-27.png" target="_blank" rel="noopener">
+            <img src="assets/img/compare/popular_vs_ghost_2026-10-27.png" alt="유명 매매법 vs Ghost.AI V0.4" loading="lazy" />
+            <span class="cx-zoom">탭하면 크게 보기</span>
+          </a>
+          <p class="cx-fine">위: 2010년 2월에 1만 달러로 시작했을 때의 자산(로그 눈금, 비용 반영). 아래: 연평균 수익률(세로)과 최대 낙폭(가로) — 왼쪽 위로 갈수록 덜 잃으면서 많이 번 전략입니다. 왼쪽은 2010년 이후, 오른쪽은 2000년 이후.</p>
+        </section>
+
+        <section class="cx-sec" id="c-tables" aria-labelledby="c-tables-h">
+          <h2 id="c-tables-h"><span class="cx-eyebrow">자세한 표</span>구간별 · 연도별 · 하락 구간별</h2>
+          <p class="cx-sub">눌러서 펼쳐 보세요. 금색으로 칠한 열·줄이 Ghost.AI V0.4입니다.</p>
+          <div class="cx-folds">
+            <details class="cx-fold cx-tfold">
+              <summary><span class="t">구간별 — 연평균 / 최대 낙폭</span><span class="h">2000~09 · 2010~18 · 2019~ · 2025~</span></summary>
+              <p class="cx-legend">위: 연평균 · 아래: 최대 낙폭</p>
+              <div class="cx-scroll"><table class="cx-wide">
+                <thead><tr><th scope="col">매매법</th><th scope="col">2000~2009</th><th scope="col">2010~2018</th><th scope="col">2019~</th><th scope="col">2025~</th></tr></thead>
+                <tbody>
+                <tr class="is-ghost"><th scope="row"><strong>Ghost.AI V0.4</strong></th><td>+8.9%<span class="dd"><strong>−46.7%</strong></span></td><td>+38.0%<span class="dd">−33.5%</span></td><td>+73.0%<span class="dd"><strong>−33.9%</strong></span></td><td><strong>+69.2%</strong><span class="dd"><strong>−23.4%</strong></span></td></tr>
+                <tr><th scope="row">TQQQ For The Long Term</th><td><strong>+34.2%</strong><span class="dd">−92.2%</span></td><td>+35.1%<span class="dd">−63.1%</span></td><td><strong>+99.9%</strong><span class="dd">−64.8%</span></td><td>+27.2%<span class="dd">−39.5%</span></td></tr>
+                <tr><th scope="row">VR 5.0</th><td>−47.4%<span class="dd">−100%</span></td><td>+39.3%<span class="dd">−55.0%</span></td><td>+43.3%<span class="dd">−80.3%</span></td><td>+42.6%<span class="dd">−55.3%</span></td></tr>
+                <tr><th scope="row">9Sig</th><td>−44.1%<span class="dd">−99.9%</span></td><td>+36.1%<span class="dd">−35.1%</span></td><td>+40.5%<span class="dd">−72.0%</span></td><td>+40.0%<span class="dd">−42.4%</span></td></tr>
+                <tr><th scope="row">SPY 200일선 4/3</th><td>−10.0%<span class="dd">−89.6%</span></td><td>+37.3%<span class="dd">−52.6%</span></td><td>+35.8%<span class="dd">−55.8%</span></td><td>+4.7%<span class="dd">−36.1%</span></td></tr>
+                <tr><th scope="row">HFEA</th><td>−2.4%<span class="dd">−67.8%</span></td><td>+29.6%<span class="dd"><strong>−26.5%</strong></span></td><td>+13.4%<span class="dd">−71.2%</span></td><td>+12.6%<span class="dd">−31.4%</span></td></tr>
+                <tr><th scope="row">무한매수법 V4.0</th><td>−34.9%<span class="dd">−99.4%</span></td><td>+15.8%<span class="dd">−32.5%</span></td><td>+18.3%<span class="dd">−55.5%</span></td><td>+20.3%<span class="dd">−33.9%</span></td></tr>
+                <tr class="is-base"><th scope="row">TQQQ 그냥 보유</th><td>−48.6%<span class="dd">−100%</span></td><td><strong>+41.9%</strong><span class="dd">−58.1%</span></td><td>+41.8%<span class="dd">−81.8%</span></td><td>+37.9%<span class="dd">−57.0%</span></td></tr>
+                </tbody>
+              </table></div>
+              <p class="cx-swipe" aria-hidden="true">← 옆으로 밀어 다른 매매법 보기</p>
+            </details>
+            <details class="cx-fold cx-tfold">
+              <summary><span class="t">연도별 수익률</span><span class="h">닷컴 붕괴부터 2026년까지 10개 해</span></summary>
+              
+              <div class="cx-scroll"><table class="cx-wide">
+                <thead><tr><th scope="col">연도</th><th scope="col" class="g"><strong>V0.4</strong></th><th scope="col">TQQQ FTLT</th><th scope="col">VR 5.0</th><th scope="col">9Sig</th><th scope="col">SPY 4/3</th><th scope="col">HFEA</th><th scope="col">무한매수</th><th scope="col">TQQQ 보유</th></tr></thead>
+                <tbody>
+                <tr><th scope="row"><b>2001</b><small>닷컴 붕괴</small></th><td class="g"><strong>+45%</strong></td><td>+283%</td><td>−89%</td><td>−88%</td><td>−28%</td><td>−19%</td><td>−80%</td><td>−89%</td></tr>
+                <tr><th scope="row"><b>2008</b><small>금융위기</small></th><td class="g"><strong>+8%</strong></td><td>+156%</td><td>−88%</td><td>−88%</td><td>−36%</td><td>−32%</td><td>−73%</td><td>−88%</td></tr>
+                <tr><th scope="row"><b>2011</b><small>횡보</small></th><td class="g">+10%</td><td>−36%</td><td>−2%</td><td>−1%</td><td>−2%</td><td><strong>+63%</strong></td><td>+18%</td><td>−8%</td></tr>
+                <tr><th scope="row"><b>2013</b><small>상승장</small></th><td class="g">+84%</td><td><strong>+226%</strong></td><td>+111%</td><td>+107%</td><td>+140%</td><td>+28%</td><td>+32%</td><td>+140%</td></tr>
+                <tr><th scope="row"><b>2015</b><small>횡보</small></th><td class="g">−7%</td><td>−35%</td><td><strong>+22%</strong></td><td>+17%</td><td>−22%</td><td>−4%</td><td>+15%</td><td>+17%</td></tr>
+                <tr><th scope="row"><b>2018</b><small>4분기 급락</small></th><td class="g">+1%</td><td>−13%</td><td>−16%</td><td>−6%</td><td><strong>+8%</strong></td><td>−14%</td><td>−1%</td><td>−20%</td></tr>
+                <tr><th scope="row"><b>2020</b><small>코로나</small></th><td class="g">+198%</td><td><strong>+490%</strong></td><td>+104%</td><td>+123%</td><td>+98%</td><td>+77%</td><td>+42%</td><td>+110%</td></tr>
+                <tr><th scope="row"><b>2022</b><small>약세장</small></th><td class="g">+4%</td><td><strong>+8%</strong></td><td>−78%</td><td>−69%</td><td>−49%</td><td>−64%</td><td>−46%</td><td>−79%</td></tr>
+                <tr><th scope="row"><b>2025</b><small>관세 충격</small></th><td class="g"><strong>+85%</strong></td><td>+63%</td><td>+35%</td><td>+31%</td><td>+9%</td><td>+16%</td><td>+20%</td><td>+33%</td></tr>
+                <tr><th scope="row"><b>2026</b><small>(10/27까지)</small></th><td class="g"><strong>+41%</strong></td><td>−5%</td><td><strong>+41%</strong></td><td><strong>+41%</strong></td><td>0%</td><td>+7%</td><td>+17%</td><td>+35%</td></tr>
+                </tbody>
+              </table></div>
+              <p class="cx-swipe" aria-hidden="true">← 옆으로 밀어 다른 매매법 보기</p>
+              <p class="cx-fine">VR·9Sig·HFEA·무한매수법은 2010년 이후 해는 2010년 새 출발 기준입니다. 2000년에 시작하면 닷컴 붕괴 뒤 현금이 바닥나 TQQQ 보유와 거의 같아집니다.</p>
+            </details>
+            <details class="cx-fold cx-tfold">
+              <summary><span class="t">큰 하락 구간 — TQQQ 고점에서 저점까지</span><span class="h">닷컴 붕괴부터 2025년 관세 충격까지 8번</span></summary>
+              
+              <div class="cx-scroll"><table class="cx-wide">
+                <thead><tr><th scope="col">사건 (기간)</th><th scope="col" class="g"><strong>V0.4</strong></th><th scope="col">TQQQ FTLT</th><th scope="col">VR 5.0</th><th scope="col">9Sig</th><th scope="col">SPY 4/3</th><th scope="col">HFEA</th><th scope="col">무한매수</th><th scope="col">TQQQ 보유</th></tr></thead>
+                <tbody>
+                <tr><th scope="row"><b>닷컴 붕괴</b><small>00.3~02.10</small></th><td class="g">+48%</td><td><strong>+50%</strong></td><td>−100%</td><td>−100%</td><td>−90%</td><td>−53%</td><td>−99%</td><td>−100%</td></tr>
+                <tr><th scope="row"><b>금융위기</b><small>07.10~09.3</small></th><td class="g">+6%</td><td><strong>+34%</strong></td><td>−95%</td><td>−94%</td><td>−61%</td><td>−68%</td><td>−83%</td><td>−95%</td></tr>
+                <tr><th scope="row"><b>2011 신용등급 강등</b><small>11.7~8</small></th><td class="g">−32%</td><td>−30%</td><td>−40%</td><td>−32%</td><td>−24%</td><td><strong>−1%</strong></td><td>−22%</td><td>−44%</td></tr>
+                <tr><th scope="row"><b>중국 쇼크</b><small>15.7~16.2</small></th><td class="g">−17%</td><td>−42%</td><td>−40%</td><td>−30%</td><td>−47%</td><td><strong>−4%</strong></td><td>−20%</td><td>−45%</td></tr>
+                <tr><th scope="row"><b>2018 4분기</b><small>18.8~12</small></th><td class="g"><strong>−20%</strong></td><td>−63%</td><td>−55%</td><td>−35%</td><td>−33%</td><td>−24%</td><td>−32%</td><td>−58%</td></tr>
+                <tr><th scope="row"><b>코로나</b><small>20.2~3</small></th><td class="g"><strong>−31%</strong></td><td>−60%</td><td>−64%</td><td>−47%</td><td>−43%</td><td><strong>−31%</strong></td><td>−33%</td><td>−70%</td></tr>
+                <tr><th scope="row"><b>2022 약세장</b><small>21.11~22.12</small></th><td class="g">−20%</td><td><strong>+2%</strong></td><td>−80%</td><td>−72%</td><td>−53%</td><td>−65%</td><td>−48%</td><td>−82%</td></tr>
+                <tr><th scope="row"><b>2025 관세 충격</b><small>24.12~25.4</small></th><td class="g"><strong>−23%</strong></td><td>−38%</td><td>−56%</td><td>−44%</td><td>−37%</td><td>−32%</td><td>−31%</td><td>−58%</td></tr>
+                </tbody>
+              </table></div>
+              <p class="cx-swipe" aria-hidden="true">← 옆으로 밀어 다른 매매법 보기</p>
+            </details>
+          </div>
+        </section>
+
+        <section class="cx-sec" id="c-list" aria-labelledby="c-list-h">
+          <h2 id="c-list-h"><span class="cx-eyebrow">매매법 소개</span>비교한 매매법 10가지</h2>
+          <p class="cx-sub">이름을 누르면 어떻게 운용하는지와 출처가 나옵니다.</p>
+          <div class="cx-folds cx-grid">
+            <details class="cx-fold cx-st">
+              <summary><span class="t">무한매수법 V4.0</span></summary>
+              <p>원금을 40번으로 나눠 매일 조금씩 사고, 평단보다 일정 수준 오르면 팔아 처음부터 다시 시작</p>
+              <p class="cx-from">출처 · 라오어, 책 「라오어의 미국주식 무한매수법」(2021)·네이버 카페</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">VR(밸류 리밸런싱) 5.0</span></summary>
+              <p>2주마다 목표 평가금을 조금씩 올리고, 평가금이 목표의 ±15% 밖으로 나가면 사고팔아 되돌림</p>
+              <p class="cx-from">출처 · 라오어, 책 「라오어의 미국주식 밸류 리밸런싱」</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">QQQ 200일선</span></summary>
+              <p>나스닥 100(QQQ)이 200일 이동평균 위면 TQQQ 보유, 아래면 현금</p>
+              <p class="cx-from">출처 · 이동평균 추세 추종의 기본형, 레딧 r/LETFs</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">SPY 200일선 4/3</span></summary>
+              <p>S&amp;P 500이 200일선보다 4% 위로 오르면 TQQQ, 3% 아래로 내리면 팔고 QQQ로 천천히 분할 매수</p>
+              <p class="cx-from">출처 · 레딧 r/LETFs 인기 글</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">Leverage for the Long Run</span></summary>
+              <p>S&amp;P 500이 200일선 위면 S&amp;P 500 3배(UPRO), 아래면 현금</p>
+              <p class="cx-from">출처 · Gayed·Bilello 논문(2016, 미국 기술분석가협회 Dow Award)</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">9Sig</span></summary>
+              <p>TQQQ 60 : 채권 40으로 시작해, 분기마다 TQQQ 몫이 9% 성장 목표보다 많으면 팔고 적으면 채움</p>
+              <p class="cx-from">출처 · 미국 투자 작가 Jason Kelly</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">HFEA</span></summary>
+              <p>S&amp;P 500 3배(UPRO) 55% + 미국 장기국채 3배(TMF) 45%, 분기마다 비율 재조정</p>
+              <p class="cx-from">출처 · 미국 투자 커뮤니티 Bogleheads (2019)</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">TQQQ For The Long Term</span></summary>
+              <p>평소엔 TQQQ, 단기 과열이면 변동성 ETF(UVXY), 약세장에선 3배 인버스(SQQQ)나 채권으로 매일 바꿔 탐</p>
+              <p class="cx-from">출처 · 레딧 r/LETFs, 자동매매 플랫폼 Composer</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">CCI 0선</span></summary>
+              <p>나스닥 100의 CCI 지표가 0을 위로 넘으면 사고 아래로 내려가면 팜</p>
+              <p class="cx-from">출처 · 국내 보조지표 매매 해설</p>
+            </details>
+            <details class="cx-fold cx-st">
+              <summary><span class="t">RSI 30/80</span></summary>
+              <p>나스닥 100의 RSI가 30을 위로 넘으면 사고 80에서 꺾이면 팜</p>
+              <p class="cx-from">출처 · 국내 SNS TQQQ 지표 매매 글</p>
+            </details>
+          </div>
+          <p class="cx-fine">각 매매법은 공개된 원문·해설을 바탕으로 재현했으며, 원래 규칙·실제 성과와 다를 수 있습니다.</p>
+          <details class="cx-fold cx-basis" id="c-basis">
+            <summary><span class="t">비교 기준 — 모두 같은 조건</span><span class="h">원금 · 비용 · 체결 · 기간</span></summary>
+            <ul>
+              <li><strong>같은 원금을 한 번 넣고</strong>, 매수·매도 때마다 거래 금액의 0.25%를 비용으로 뺐습니다. 세금은 빼고, 현금 구간 수익은 0으로 계산했습니다.</li>
+              <li>모든 매매법을 <strong>장 마감 가격으로 판단하고 다음 날 시가에 체결</strong>했습니다. 무한매수법과 VR은 원래 규칙대로 그날 종가에 체결했습니다.</li>
+              <li><strong>기간</strong>은 2000년 3월 ~ 2026년 10월 27일입니다. 각 ETF가 상장하기 전 구간은 기초 지수 하루 등락의 3배에서 보수·차입 비용을 뺀 가상 가격을 썼습니다. 2010년 이후는 실제 ETF 가격입니다.</li>
+            </ul>
+          </details>
+        </section>
+
+        <section class="cx-sec cx-notes" id="c-notes" aria-labelledby="c-notes-h">
+          <h2 id="c-notes-h">참고 사항</h2>
+          <p><strong>Ghost.AI V0.4는 2026년 11월 2일부터 Ghost.AI의 공식 전략입니다.</strong> 그 전 구간의 V0.4 숫자는 같은 규칙을 과거에 적용한 백테스트입니다.</p>
+          <details class="cx-fold">
+            <summary><span class="t">재현 방법과 참고 자료</span></summary>
+            <p><strong>다른 매매법은 공개된 원문·해설을 바탕으로 재현했습니다.</strong> 주식을 정수 단위로 사는 점과 장중 지정가 체결은 반영하지 않았습니다. 9Sig·VR·무한매수법은 원래 매달 돈을 넣는 적립식이나 원금 일부 운용을 함께 쓰는 경우가 많은데, 비교를 위해 원금을 한 번만 넣는 방식으로 계산했습니다. TQQQ For The Long Term은 공개된 여러 변형 가운데 원형을 썼고, 일부 ETF는 비슷한 ETF로 바꿨습니다.</p>
+            <p class="cx-ref"><strong>참고</strong>: 라오어, 「라오어의 미국주식 무한매수법」(2021)·「라오어의 미국주식 밸류 리밸런싱」 · 무한매수법 V4.0·VR 5.0 해설 — <a href="https://quantstack.app/">quantstack</a> · Gayed &amp; Bilello, 「Leverage for the Long Run」(2016) · Jason Kelly, 9Sig — <a href="https://bestfolio.app/blog/kelly-signal-danger">bestfolio 정리</a> · HEDGEFUNDIE's Excellent Adventure — <a href="https://www.bogleheads.org/forum/viewtopic.php?t=326588&amp;start=300">Bogleheads</a> · TQQQ For The Long Term — <a href="https://www.composer.trade/trading-strategies/reddit-tqqq-for-the-long-term-60-rsi-mod-nWP8uLmaVHGfBS7vh4fx">Composer</a></p>
+          </details>
+        </section>
+
         <hr />
         <p><strong>백테스트만 믿지 마시고, 실시간 기록을 직접 확인하세요.</strong> Ghost.AI는 전략의 신호를 매일 장 마감 후 공개하고,
         지난 신호는 고치거나 지우지 않고 그대로 쌓아 둡니다. → <a href="signal.html">오늘의 시그널</a> · <a href="backtest.html">백테스트 성과</a> ·
@@ -741,5 +585,28 @@
   <script src="assets/js/main.js" defer></script>
   <script src="assets/js/ref.js?v=20261029" defer></script>
   <script src="assets/js/share.js?v=20261106" defer></script>
+  <script>
+  (function () {
+    var rank = document.querySelector(".cx-rank"), seg = document.querySelector(".cx-seg");
+    if (rank && seg) {
+      rank.setAttribute("data-v", "10"); seg.hidden = false;
+      seg.addEventListener("click", function (e) {
+        var b = e.target.closest("button"); if (!b) return;
+        rank.setAttribute("data-v", b.getAttribute("data-v"));
+        seg.querySelectorAll("button").forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      });
+    }
+    /* 넓은 화면에서는 자세한 표를 처음부터 펼쳐 둔다 */
+    if (window.matchMedia && window.matchMedia("(min-width: 900px)").matches) {
+      document.querySelectorAll(".cx-tfold").forEach(function (d) { d.open = true; });
+    }
+    /* 바로가기로 접힌 칸에 오면 연다 */
+    function openTarget() {
+      var t = location.hash && document.getElementById(location.hash.slice(1));
+      if (t && t.tagName === "DETAILS") t.open = true;
+    }
+    window.addEventListener("hashchange", openTarget); openTarget();
+  })();
+  </script>
 </body>
 </html>
