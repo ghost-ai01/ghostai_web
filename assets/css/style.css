@@ -51,26 +51,26 @@ img { max-width: 100%; display: block; }
 button { font-family: inherit; }
 
 /* ---------- Ambient background ---------- */
+/* 2026-11-12 분위기 조정: 위쪽 가운데 남청빛을 주광원으로, 금빛·청록빛은 양 끝에 옅게.
+   격자무늬 대신 아주 옅은 종이 질감(노이즈) — 덜 차갑고 덜 "대시보드" 같게. */
 .bg {
   position: fixed;
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(900px 600px at 12% -8%, rgba(214,174,96,0.14), transparent 60%),
-    radial-gradient(1000px 700px at 100% 110%, rgba(86,204,222,0.10), transparent 60%),
-    linear-gradient(180deg, #0a0e17 0%, #070a11 100%);
+    radial-gradient(1100px 640px at 50% -14%, rgba(112,122,255,0.15), transparent 62%),
+    radial-gradient(760px 480px at 4% 6%, rgba(214,174,96,0.08), transparent 60%),
+    radial-gradient(900px 620px at 100% 108%, rgba(86,204,222,0.07), transparent 60%),
+    linear-gradient(180deg, #0a0e18 0%, #070a11 100%);
 }
 .bg::after {
-  /* faint grid texture */
+  /* faint paper grain */
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(80% 70% at 50% 35%, #000 40%, transparent 100%);
-  -webkit-mask-image: radial-gradient(80% 70% at 50% 35%, #000 40%, transparent 100%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  opacity: 0.045;
 }
 
 /* ---------- Layout helpers ---------- */
@@ -283,7 +283,7 @@ button { font-family: inherit; }
 .perf-banner:hover, .perf-banner:focus-visible {
   transform: translateY(-4px);
   border-color: rgba(214,174,96,0.55);
-  box-shadow: 0 28px 64px -30px rgba(214,174,96,0.5);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 28px 64px -30px rgba(214,174,96,0.5);
 }
 .perf-copy .kicker {
   font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase;
@@ -368,7 +368,7 @@ button { font-family: inherit; }
   transition: opacity 0.35s var(--ease);
   pointer-events: none;
 }
-.card:hover { transform: translateY(-6px); border-color: var(--edge); box-shadow: 0 26px 60px -28px var(--glow); }
+.card:hover { transform: translateY(-6px); border-color: var(--edge); box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 26px 60px -28px var(--glow); }
 .card:hover::before { opacity: 1; }
 .card.blog  { --glow: rgba(214,174,96,0.30); --edge: rgba(214,174,96,0.5); }
 .card.video { --glow: rgba(255,61,61,0.26);  --edge: rgba(255,61,61,0.5); }
@@ -1469,7 +1469,13 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   background:
     radial-gradient(420px 200px at 100% 0%, rgba(86,204,222,0.10), transparent 70%),
     linear-gradient(180deg, var(--ink-3), var(--ink-2));
-  box-shadow: 0 30px 80px -40px rgba(0,0,0,0.85);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 30px 80px -40px rgba(0,0,0,0.85);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.today-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(86,204,222,0.4);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.07), 0 34px 80px -36px rgba(86,204,222,0.35);
 }
 .tc-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .tc-k {
@@ -1774,4 +1780,19 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
   .cs-row { padding: 16px; }
   .cs-bar { grid-template-columns: 86px 1fr 54px; gap: 8px; }
   .cs-k { font-size: .74rem; }
+}
+
+/* =========================================================================
+   2026-11-12 분위기 조정 — 패널 윗면 하이라이트 + 클릭되는 줄의 반응.
+   빛이 위에서 비치는 것처럼 패널 윗변만 살짝 밝게 한다. 클릭되지 않는 패널은
+   움직이지 않는다 (떠오르면 눌러 보고 싶어진다).
+   ========================================================================= */
+.card, .perf-banner, .status-panel, .sig-cta, .bt-card, .bt-table-wrap,
+.ex-card, .mdd-compare, .zl-card, .latest-col {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.055);
+}
+.latest-list a { transition: transform .2s var(--ease); }
+.latest-list a:hover, .latest-list a:focus-visible { transform: translateX(3px); }
+@media (prefers-reduced-motion: reduce) {
+  .today-card:hover, .latest-list a:hover, .latest-list a:focus-visible { transform: none; }
 }
