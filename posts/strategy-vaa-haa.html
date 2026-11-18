@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>VAA·HAA 동적 자산배분을 TQQQ로 바꾸면? 25년 백테스트 · Ghost.AI</title>
+  <meta name="description" content="동적 자산배분 VAA·HAA 의 신호로 TQQQ 를 사고팔면? 같은 조건 백테스트에서 2010년 이후 VAA → TQQQ 연평균 +9.6%·HAA → TQQQ +26.2%로 TQQQ 그냥 보유(+41.8%)보다 낮았고, 최대 낙폭은 둘 다 −70% 안팎이었습니다." />
+  <meta name="author" content="고스트에이아이 주식회사" />
+  <meta name="naver-site-verification" content="eeaad327c6c18df3fdcdd2fba6c85007d1da6e06" />
+  <link rel="canonical" href="https://www.ghostai.co.kr/posts/strategy-vaa-haa.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="VAA·HAA 동적 자산배분을 TQQQ로 바꾸면? 25년 백테스트" />
+  <meta property="og:description" content="동적 자산배분 VAA·HAA 의 신호로 TQQQ 를 사고팔면? 같은 조건 백테스트에서 2010년 이후 VAA → TQQQ 연평균 +9.6%·HAA → TQQQ +26.2%로 TQQQ 그냥 보유(+41.8%)보다 낮았고, 최대 낙폭은 둘 다 −70% 안팎이었습니다." />
+  <meta property="og:url" content="https://www.ghostai.co.kr/posts/strategy-vaa-haa.html" />
+  <meta property="og:image" content="https://www.ghostai.co.kr/assets/img/og-image.png" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting",
+   "headline":"VAA·HAA 동적 자산배분을 TQQQ로 바꾸면? 25년 백테스트","datePublished":"2026-11-16","dateModified":"2026-11-16",
+   "url":"https://www.ghostai.co.kr/posts/strategy-vaa-haa.html","inLanguage":"ko-KR",
+   "author":{"@type":"Organization","name":"고스트에이아이 주식회사"},
+   "publisher":{"@type":"Organization","name":"고스트에이아이 주식회사",
+                 "logo":{"@type":"ImageObject","url":"https://www.ghostai.co.kr/assets/img/logo.png"}}}
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261118" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VAA·HAA 동적 자산배분을 TQQQ로 바꾸면? 25년 백테스트" />
+  <meta name="twitter:description" content="동적 자산배분 VAA·HAA 의 신호로 TQQQ 를 사고팔면? 같은 조건 백테스트에서 2010년 이후 VAA → TQQQ 연평균 +9.6%·HAA → TQQQ +26.2%로 TQQQ 그냥 보유(+41.8%)보다 낮았고, 최대 낙폭은 둘 다 −70% 안팎이었습니다." />
+  <meta name="twitter:image" content="https://www.ghostai.co.kr/assets/img/og-image.png" />
+  <style>
+    /* 4열 비교표 — 휴대폰에서도 Ghost.AI 열까지 한 화면에 보이게 칸 안에서 줄바꿈한다 (가로 밀기는 안전장치) */
+    .post .tbl { overflow-x: auto; margin: 18px 0; -webkit-overflow-scrolling: touch; }
+    .post .tbl table { margin: 0; }
+    .post .tbl th, .post .tbl td { word-break: keep-all; }  /* 「318만 달/러」처럼 낱말 중간에서 끊기지 않게 */
+    .post .chart-link { border-bottom: 0; display: block; }
+    .post .chart-link img { width: 100%; height: auto; }
+    .post .chart-hint { margin: -12px 0 0; font-size: .82rem; color: var(--muted-2); }
+    @media (max-width: 640px) {
+      .post .tbl table { font-size: .8rem; }
+      .post .tbl th, .post .tbl td { padding: 8px 6px; line-height: 1.45; }
+      .post .tbl td:first-child { min-width: 84px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Ghost.AI 홈">
+        <img src="../assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="/">홈</a>
+        <a class="nav-compare" href="../compare.html">매매법 비교</a>
+        <a class="nav-signal" href="../signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
+        <a href="../backtest.html">백테스트 성과</a>
+        <a class="nav-posts" href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>
+          데일리 리포트
+        </a>
+        <a class="nav-premium" href="https://www.ghostai.co.kr/login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
+          회원 페이지<span class="soon">베타</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <article class="section-pad post">
+      <div class="wrap">
+        <div class="post-head">
+          <h1>VAA·HAA 동적 자산배분을 TQQQ로 바꾸면? 25년 백테스트</h1>
+          <p class="post-date"><time datetime="2026-11-16">2026-11-16</time> · Ghost.AI 매매법 백테스트 3편</p>
+        </div>
+        <p><strong>👻 매일 시그널과 히스토리를 홈페이지에서 한눈에 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <p>&nbsp;</p>
+        <blockquote class="q-lede">
+        <p>많이 따라 하는 TQQQ 매매법을 같은 조건으로 백테스트하는 시리즈의 세 번째 편입니다. 이번에는 동적 자산배분의 대표 전략 <strong>VAA</strong>와 <strong>HAA</strong>를 다룹니다. 원래는 레버리지를 쓰지 않는 전략인데, 「신호는 그대로 두고 주식 자리에 TQQQ를 넣으면 어떨까?」라는 질문이 자주 나옵니다. 그래서 두 전략을 TQQQ 버전으로 바꿔 <strong>TQQQ 그냥 보유</strong>·<strong>Ghost.AI V0.4</strong>와 같은 조건으로 비교했습니다.</p>
+        </blockquote>
+        <hr />
+        <h2>요약</h2>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th></th>
+        <th><strong>VAA → TQQQ</strong></th>
+        <th><strong>HAA → TQQQ</strong></th>
+        <th>TQQQ 그냥 보유</th>
+        <th><strong>Ghost.AI V0.4</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>연평균 수익률 (2010~)</td>
+        <td>+9.6%</td>
+        <td>+26.2%</td>
+        <td>+41.8%</td>
+        <td><strong>+53.4%</strong></td>
+        </tr>
+        <tr>
+        <td>최대 낙폭 (2010~)</td>
+        <td>−70.1%</td>
+        <td>−69.9%</td>
+        <td>−81.8%</td>
+        <td><strong>−33.9%</strong></td>
+        </tr>
+        <tr>
+        <td>연평균 수익률 (2001.7~)</td>
+        <td>+17.1%</td>
+        <td>+20.1%</td>
+        <td>+13.9%</td>
+        <td><strong>+35.4%</strong></td>
+        </tr>
+        <tr>
+        <td>1만 달러 → (2010~)</td>
+        <td>4만 6천 달러</td>
+        <td>48만 9천 달러</td>
+        <td>343만 달러</td>
+        <td><strong>1,270만 달러</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <ul>
+        <li><strong>TQQQ버전은 둘 다 TQQQ 그냥 보유보다 수익이 낮았습니다</strong> (2010년 이후). 낙폭은 −70% 안팎으로, TQQQ 그냥 보유(−81.8%)보다 조금 작은 정도였습니다.</li>
+        <li><strong>HAA → TQQQ는 코로나 때 4주 만에 −69.9%</strong> — 한 달에 한 번만 판단하기 때문에, 2월 말 판단에서 「위험 없음」이 나와 3월 폭락을 그대로 맞았습니다.</li>
+        <li><strong>VAA → TQQQ는 2000년대에는 강했지만</strong> (2001년 7월에 시작하면 2020년 9월까지는 V0.4보다 자산이 많았음), <strong>2020년 9월 고점 이후 한때 −70.1%</strong> 까지 빠졌고 지금도 고점보다 −66% 낮습니다.</li>
+        <li><strong>원래 버전(1배)의 장점은 얕은 낙폭</strong> — HAA 원조는 2010년 이후 최대 낙폭 −13.8%입니다. 대신 연평균은 +8.4%였습니다.</li>
+        </ul>
+        <hr />
+        <h2>VAA와 HAA는 어떤 방법인가</h2>
+        <p>네덜란드의 볼터 켈러(Wouter Keller)가 만든 동적 자산배분 전략입니다. VAA는 2017년, HAA는 2023년에 논문으로 공개됐고, 국내에서는 강환국 작가 등이 소개해 널리 알려졌습니다. <strong>매달 말 한 번</strong> 판단해 다음 달에 들고 갈 자산을 정합니다. 둘 다 원래는 레버리지를 쓰지 않습니다.</p>
+        <h3>VAA (Vigilant Asset Allocation)</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>단계</th>
+        <th>내용</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>모멘텀 계산</td>
+        <td>최근 1·3·6·12개월 수익률에 12 : 4 : 2 : 1 가중치를 줘서 더합니다 (최근 한 달을 가장 크게 봄)</td>
+        </tr>
+        <tr>
+        <td>공격</td>
+        <td>미국 주식(SPY)·선진국 주식(EFA)·신흥국 주식(EEM)·미국 채권(AGG) <strong>4개가 모두 플러스</strong>면 그중 1위 하나를 100%</td>
+        </tr>
+        <tr>
+        <td>방어</td>
+        <td>하나라도 마이너스면 회사채(LQD)·중기 국채(IEF)·단기 국채(SHY) 중 1위 하나를 100%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h3>HAA (Hybrid Asset Allocation)</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>단계</th>
+        <th>내용</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>모멘텀 계산</td>
+        <td>최근 1·3·6·12개월 수익률의 평균</td>
+        </tr>
+        <tr>
+        <td>카나리아</td>
+        <td>물가연동국채(TIP)의 모멘텀으로 위험 여부를 판단합니다 (탄광의 카나리아처럼 먼저 경고를 보낸다는 뜻)</td>
+        </tr>
+        <tr>
+        <td>공격</td>
+        <td>TIP이 플러스면 주식·리츠·원자재·채권 8개 중 상위 4개를 25%씩. 고른 것 중 마이너스인 칸은 현금성 자산으로 바꿉니다</td>
+        </tr>
+        <tr>
+        <td>방어</td>
+        <td>TIP이 마이너스면 중기 국채(IEF)·초단기 국채(BIL) 중 강한 쪽 100%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h3>이번에 비교한 TQQQ판</h3>
+        <p>원래 규칙에는 레버리지가 없어서, <strong>Ghost.AI가 아래처럼 정해</strong> 계산했습니다.</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th></th>
+        <th>공격일 때</th>
+        <th>방어일 때</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>VAA → TQQQ</strong></td>
+        <td>공격 자산 4개가 모두 플러스면 <strong>TQQQ 100%</strong></td>
+        <td>원래 VAA 방어 자산 그대로</td>
+        </tr>
+        <tr>
+        <td><strong>HAA → TQQQ</strong></td>
+        <td>TIP과 나스닥 100(QQQ)이 모두 플러스면 <strong>TQQQ 100%</strong></td>
+        <td>원래 HAA 방어 자산 그대로</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p>→ 한줄 정리 : <strong>원래 전략의 「지금 위험한가」 신호만 빌려, 안전하다고 나올 때 TQQQ를 들고 갑니다.</strong> 1년에 VAA판은 6번, HAA판은 3번 정도 바꿉니다.</p>
+        <p><em>원래 포트폴리오에서 미국 주식 칸만 3배 상품(UPRO·TQQQ)으로 바꾼 버전도 계산했습니다. 결과는 아래 「원래 버전과 비교」에 있습니다.</em></p>
+        <hr />
+        <h2>비교 기준</h2>
+        <p>원금 한 번 투입 · 매수·매도 비용 각 0.25% · 세금 제외 · 현금 수익 0 · 매달 마지막 거래일 종가로 판단 → 다음 날 시가 체결 · 채권·해외 ETF는 배당 포함 · 기간 2001.7 ~ 2026.10.27 (TQQQ 상장 전은 나스닥 100 등락과 금리로 만든 가상 가격, ETF 상장 전은 같은 자산의 뱅가드 펀드로 대체, 2010~ 수치는 2010년 2월부터 다시 계산함.) · HAA는 TIP을 대신한 펀드의 12개월 기록이 생기는 2001년 7월부터 계산할 수 있어, 두 전략의 출발을 2001년 7월로 맞췄습니다 · Ghost.AI 매매 규칙은 <a href="https://www.ghostai.co.kr/join">무료 회원</a> 페이지에서 볼 수 있습니다.</p>
+        <hr />
+        <h2>백테스트 결과</h2>
+        <p><a class="chart-link" href="../assets/img/posts/series_vaa_haa_2026-11-12.png" target="_blank" rel="noopener"><img alt="VAA·HAA TQQQ 버전 vs Ghost.AI V0.4 vs TQQQ 보유" src="../assets/img/posts/series_vaa_haa_2026-11-12.png" loading="lazy" /></a></p>
+        <p class="chart-hint">차트를 누르면 원본 크기로 볼 수 있습니다.</p>
+        <p><em>위: 1만 달러로 시작했을 때의 자산(로그 눈금, 비용 반영). 왼쪽은 2001년 7월 출발, 오른쪽은 2010년 2월 출발입니다. 점선은 HAA 원래 버전(1배, 2007년 3월부터)입니다. 아래: 큰 하락 구간에서 TQQQ 고점부터 저점까지의 수익률. 초록 = Ghost.AI V0.4, 파랑 = VAA → TQQQ, 주황 = HAA → TQQQ, 빗금 = HAA 원래 버전, 회색 = TQQQ 그냥 보유.</em></p>
+        <h3>총정리</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th></th>
+        <th><strong>VAA → TQQQ</strong></th>
+        <th><strong>HAA → TQQQ</strong></th>
+        <th>TQQQ 그냥 보유</th>
+        <th><strong>Ghost.AI V0.4</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>2010년 2월 ~</strong> 연평균 수익률</td>
+        <td>+9.6%</td>
+        <td>+26.2%</td>
+        <td>+41.8%</td>
+        <td><strong>+53.4%</strong></td>
+        </tr>
+        <tr>
+        <td>최대 낙폭</td>
+        <td>−70.1%</td>
+        <td>−69.9%</td>
+        <td>−81.8%</td>
+        <td><strong>−33.9%</strong></td>
+        </tr>
+        <tr>
+        <td>칼마 비율</td>
+        <td>0.14</td>
+        <td>0.37</td>
+        <td>0.51</td>
+        <td><strong>1.57</strong></td>
+        </tr>
+        <tr>
+        <td>최악 연도</td>
+        <td>−36.5% (2022)</td>
+        <td>−28.0% (2011)</td>
+        <td>−79.2% (2022)</td>
+        <td><strong>−7.1%</strong> (2015)</td>
+        </tr>
+        <tr>
+        <td>1만 달러 →</td>
+        <td>4만 6천 달러</td>
+        <td>48만 9천 달러</td>
+        <td>343만 달러</td>
+        <td><strong>1,270만 달러</strong></td>
+        </tr>
+        <tr>
+        <td><strong>2001년 7월 ~</strong> 연평균 수익률</td>
+        <td>+17.1%</td>
+        <td>+20.1%</td>
+        <td>+13.9%</td>
+        <td><strong>+35.4%</strong></td>
+        </tr>
+        <tr>
+        <td>최대 낙폭</td>
+        <td>−70.1%</td>
+        <td>−69.9%</td>
+        <td>−98.1%</td>
+        <td><strong>−46.7%</strong></td>
+        </tr>
+        <tr>
+        <td>칼마 비율</td>
+        <td>0.24</td>
+        <td>0.29</td>
+        <td>0.14</td>
+        <td><strong>0.76</strong></td>
+        </tr>
+        <tr>
+        <td>최악 연도</td>
+        <td>−36.7% (2002)</td>
+        <td>−36.4% (2008)</td>
+        <td>−88.2% (2008)</td>
+        <td><strong>−9.5%</strong> (2005)</td>
+        </tr>
+        <tr>
+        <td>1만 달러 →</td>
+        <td>54만 7천 달러</td>
+        <td>약 100만 달러</td>
+        <td>26만 8천 달러</td>
+        <td><strong>2,160만 달러</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p><em>칼마 비율 = 연평균 수익률 ÷ 최대 낙폭 (클수록 낙폭 대비 수익이 큼). 최악 연도는 달력 연도 기준(2001년은 7월부터)입니다.</em></p>
+        <h3>구간별 — 연평균 / 최대 낙폭</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>구간</th>
+        <th><strong>VAA → TQQQ</strong></th>
+        <th><strong>HAA → TQQQ</strong></th>
+        <th>TQQQ 그냥 보유</th>
+        <th><strong>Ghost.AI V0.4</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2000.4~2009 (가상 상품)</td>
+        <td><strong>+13.4%</strong> / −80.6%</td>
+        <td>(계산 불가)</td>
+        <td>−48.5% / −100%</td>
+        <td>+9.5% / <strong>−46.7%</strong></td>
+        </tr>
+        <tr>
+        <td>2010~2018</td>
+        <td>+20.8% / −48.2%</td>
+        <td>+21.0% / −60.2%</td>
+        <td><strong>+41.9%</strong> / −58.1%</td>
+        <td>+38.0% / <strong>−33.5%</strong></td>
+        </tr>
+        <tr>
+        <td>2019~</td>
+        <td>−1.9% / −70.1%</td>
+        <td>+32.4% / −69.9%</td>
+        <td>+41.8% / −81.8%</td>
+        <td><strong>+73.0% / −33.9%</strong></td>
+        </tr>
+        <tr>
+        <td>2025~</td>
+        <td>−15.7% / −43.1%</td>
+        <td>+35.4% / −38.6%</td>
+        <td>+37.9% / −57.0%</td>
+        <td><strong>+69.2% / −23.4%</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p><em>VAA는 2000년 3월 말 판단부터 계산할 수 있어 2000년대 구간은 2000년 4월부터입니다. 닷컴 붕괴 때 VAA → TQQQ의 최대 낙폭은 −80.6%(2000.4 → 2002.12)였습니다.</em></p>
+        <h3>연도별 수익률</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>연도</th>
+        <th><strong>VAA → TQQQ</strong></th>
+        <th><strong>HAA → TQQQ</strong></th>
+        <th>TQQQ 그냥 보유</th>
+        <th><strong>Ghost.AI V0.4</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2002 닷컴 붕괴</td>
+        <td>−37%</td>
+        <td>−26%</td>
+        <td>−86%</td>
+        <td><strong>+5%</strong></td>
+        </tr>
+        <tr>
+        <td>2003 반등</td>
+        <td>+124%</td>
+        <td>+112%</td>
+        <td><strong>+174%</strong></td>
+        <td>−7%</td>
+        </tr>
+        <tr>
+        <td>2008 금융위기</td>
+        <td><strong>+29%</strong></td>
+        <td>−36%</td>
+        <td>−88%</td>
+        <td>+8%</td>
+        </tr>
+        <tr>
+        <td>2011 횡보</td>
+        <td>−3%</td>
+        <td>−28%</td>
+        <td>−8%</td>
+        <td><strong>+10%</strong></td>
+        </tr>
+        <tr>
+        <td>2013 상승장</td>
+        <td>+84%</td>
+        <td>+39%</td>
+        <td><strong>+140%</strong></td>
+        <td>+85%</td>
+        </tr>
+        <tr>
+        <td>2015 횡보</td>
+        <td>−4%</td>
+        <td>+16%</td>
+        <td><strong>+17%</strong></td>
+        <td>−7%</td>
+        </tr>
+        <tr>
+        <td>2018 4분기 급락</td>
+        <td>+40%</td>
+        <td><strong>+53%</strong></td>
+        <td>−20%</td>
+        <td>+1%</td>
+        </tr>
+        <tr>
+        <td>2020 코로나</td>
+        <td>+57%</td>
+        <td>+39%</td>
+        <td>+110%</td>
+        <td><strong>+198%</strong></td>
+        </tr>
+        <tr>
+        <td>2021</td>
+        <td>−8%</td>
+        <td><strong>+83%</strong></td>
+        <td><strong>+83%</strong></td>
+        <td>+36%</td>
+        </tr>
+        <tr>
+        <td>2022 약세장</td>
+        <td>−37%</td>
+        <td>−24%</td>
+        <td>−79%</td>
+        <td><strong>+4%</strong></td>
+        </tr>
+        <tr>
+        <td>2023 반등</td>
+        <td>+14%</td>
+        <td>+50%</td>
+        <td><strong>+193%</strong></td>
+        <td>+88%</td>
+        </tr>
+        <tr>
+        <td>2025 관세 충격</td>
+        <td>−9%</td>
+        <td>+33%</td>
+        <td>+33%</td>
+        <td><strong>+85%</strong></td>
+        </tr>
+        <tr>
+        <td>2026 (10/27까지)</td>
+        <td>−19%</td>
+        <td>+31%</td>
+        <td>+35%</td>
+        <td><strong>+41%</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h3>큰 하락 구간 — TQQQ 고점에서 저점까지</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>사건 (기간)</th>
+        <th><strong>VAA → TQQQ</strong></th>
+        <th><strong>HAA → TQQQ</strong></th>
+        <th>HAA 원래 (1배)</th>
+        <th>TQQQ 그냥 보유</th>
+        <th><strong>Ghost.AI V0.4</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>금융위기 (07.10~09.3)</td>
+        <td>−7%</td>
+        <td>−53%</td>
+        <td>−4%</td>
+        <td>−95%</td>
+        <td><strong>+6%</strong></td>
+        </tr>
+        <tr>
+        <td>2011 미국 신용등급 강등 (11.7~10)</td>
+        <td><strong>+4%</strong></td>
+        <td>−37%</td>
+        <td>−4%</td>
+        <td>−41%</td>
+        <td>−23%</td>
+        </tr>
+        <tr>
+        <td>2018 4분기 (18.8~12)</td>
+        <td>−4%</td>
+        <td><strong>0%</strong></td>
+        <td><strong>0%</strong></td>
+        <td>−58%</td>
+        <td>−20%</td>
+        </tr>
+        <tr>
+        <td>코로나 (20.2~3)</td>
+        <td><strong>+2%</strong></td>
+        <td>−70%</td>
+        <td>−2%</td>
+        <td>−70%</td>
+        <td>−31%</td>
+        </tr>
+        <tr>
+        <td>2022 약세장 (21.11~22.12)</td>
+        <td>−41%</td>
+        <td>−29%</td>
+        <td><strong>+2%</strong></td>
+        <td>−82%</td>
+        <td>−20%</td>
+        </tr>
+        <tr>
+        <td>2025 관세 충격 (24.12~25.4)</td>
+        <td>−30%</td>
+        <td>−38%</td>
+        <td><strong>−12%</strong></td>
+        <td>−58%</td>
+        <td>−23%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <hr />
+        <h2>VAA·HAA가 앞선 곳</h2>
+        <ul>
+        <li><strong>VAA → TQQQ는 짧은 급락을 잘 피했습니다.</strong> 2011년·2018년 4분기·코로나 때 손실이 거의 없었고, 세 번 모두 Ghost.AI V0.4보다 덜 빠졌습니다. 최근 한 달 수익률을 12배로 크게 보는 계산이라, 한 달 사이 급하게 떨어지면 바로 방어로 돌아섭니다.</li>
+        <li><strong>2000년대는 VAA → TQQQ가 더 나았습니다.</strong> 2000.4~2009 연평균 +13.4%로 V0.4(+9.5%)보다 높았고, 2003년 반등(+124%)과 2008년 금융위기(+29%)에서 크게 앞섰습니다. 2001년 7월에 함께 출발하면 <strong>2020년 9월까지는 VAA → TQQQ 계좌가 더 높았습니다</strong> (그 기간의 71%).</li>
+        <li><strong>HAA → TQQQ는 2018년과 2021년에 강했습니다.</strong> 2018년 +53%(TQQQ 그냥 보유 −20%), 2021년 +83%.</li>
+        <li><strong>원래 버전(1배)은 낙폭이 아주 적습니다.</strong> HAA 원조는 2010년 이후 최대 낙폭 −13.8%, 2022년 약세장에서도 +2%였습니다. VAA 원조는 2000.4~2009에 연평균 +19.4%·최대 낙폭 −15.3%였습니다.</li>
+        <li><strong>규칙이 단순하고 매매가 적습니다.</strong> 한 달에 한 번만 보면 되고, TQQQ버전은 1년에 3~6번 정도 종목을 바꿉니다.</li>
+        </ul>
+        <hr />
+        <h2>TQQQ 버전이 약했던 이유</h2>
+        <h3>① 한 달에 한 번 판단 — 코로나 4주 −69.9% (HAA → TQQQ)</h3>
+        <p>2020년 2월 28일(월말 판단일) HAA의 신호는 TIP 모멘텀 +4.3%, 나스닥 100 모멘텀 +6.1%로 <strong>둘 다 플러스</strong>였습니다. 그래서 3월 한 달 내내 TQQQ를 들고 있었습니다.</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>날짜</th>
+        <th>HAA → TQQQ 계좌</th>
+        <th>무슨 일이 있었나</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2020.2.19</td>
+        <td><strong>1억 원</strong></td>
+        <td>나스닥 100 고점</td>
+        </tr>
+        <tr>
+        <td>2020.2.28</td>
+        <td>↓ 6,520만 원 (−34.8%)</td>
+        <td>월말 판단 — 신호는 여전히 플러스, TQQQ 유지</td>
+        </tr>
+        <tr>
+        <td>2020.3.20</td>
+        <td>↓ <strong>3,010만 원</strong> (−69.9%)</td>
+        <td>다음 판단일(3월 말)까지 그대로</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p>→ 고점부터 저점까지 TQQQ 그냥 보유와 <strong>똑같이</strong> 빠졌습니다. 3배 상품은 한 달이면 반 토막 이상이 날 수 있어, 한 달 단위 판단으로는 막기 어렵습니다.</p>
+        <h3>② 「4개 모두 플러스」 조건 — 상승장을 자주 놓쳤습니다 (VAA → TQQQ)</h3>
+        <p>VAA는 미국 주식·선진국 주식·신흥국 주식·미국 채권 <strong>4개가 모두</strong> 플러스여야 공격합니다. 나스닥이 올라도 채권이나 신흥국이 약하면 TQQQ를 쉽니다.</p>
+        <ul>
+        <li>2010년 이후 TQQQ를 들고 있던 날은 <strong>45%</strong> 뿐이었습니다 (HAA → TQQQ는 68%).</li>
+        <li>2023년 나스닥 반등: TQQQ 그냥 보유 <strong>+193%</strong> vs VAA → TQQQ <strong>+14%</strong>.</li>
+        <li>2020년 9월 고점 이후 <strong>−70.1%</strong> 까지 빠졌고, 2026년 10월 27일에도 고점보다 −66.4% 낮습니다. 2022년(−37%)·2024년(−10%)·2025년(−9%)·2026년(−19%)이 모두 마이너스였습니다.</li>
+        </ul>
+        <h3>③ 원래 전략은 레버리지를 위해 만든 게 아닙니다</h3>
+        <p>VAA·HAA는 주식·채권·원자재를 오가며 <strong>낙폭을 줄이는 것</strong>이 목적입니다. 신호만 빌려 TQQQ에 쓰면, 그 신호가 판단하는 대상(여러 자산)과 실제로 들고 있는 것(나스닥 3배)이 달라집니다.</p>
+        <hr />
+        <h2>원래 버전과 비교</h2>
+        <p>원래 포트폴리오를 그대로 두거나, 매매 종목만 3배 상품으로 바꾼 경우입니다 (2010년 2월 ~, 연평균 / 최대 낙폭).</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th></th>
+        <th>VAA</th>
+        <th>HAA</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>원래 버전 (1배)</strong></td>
+        <td>+1.9% / −26.7%</td>
+        <td>+8.4% / <strong>−13.8%</strong></td>
+        </tr>
+        <tr>
+        <td>종목 (SPY → UPRO)</td>
+        <td>+1.8% / −46.3%</td>
+        <td>+12.2% / −18.5%</td>
+        </tr>
+        <tr>
+        <td>종목 (SPY → QQQ로 바꾸고 TQQQ 보유)</td>
+        <td>+6.4% / −51.2%</td>
+        <td>+12.8% / −23.4%</td>
+        </tr>
+        <tr>
+        <td>신호만 빌려 TQQQ 100% (위 본문)</td>
+        <td>+9.6% / −70.1%</td>
+        <td>+26.2% / −69.9%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <ul>
+        <li><strong>HAA는 3배를 하나만 넣어도 낙폭이 −18~−23%에 머물렀습니다.</strong> 3배 상품이 전체의 25% 뿐이라 수익도 연 12%대입니다.</li>
+        <li><strong>VAA 원래 버전이 2010년 이후 +1.9%로 낮은 데는 비용 탓도 큽니다.</strong> 매달 자산을 통째로 바꿔 1년에 8번 가까이 매매하기 때문에, 매수·매도 각 0.25%면 1년에 4%p 가까이 깎입니다. 비용을 0.1%로 낮추면 +4.3%, 비용이 없으면 +6.0%입니다.</li>
+        <li><strong>비용을 0.1%로 낮춰도 결론은 같습니다.</strong> VAA → TQQQ +11.7%, HAA → TQQQ +27.3% (2010년 이후).</li>
+        </ul>
+        <hr />
+        <h2>시사점</h2>
+        <ul>
+        <li><strong>「안전할 때만 TQQQ」는 판단 주기가 길면 지키기 어렵습니다.</strong> 한 달 단위 판단으로는 코로나처럼 몇 주 만에 끝나는 폭락을 피할 수 없었고(HAA → TQQQ −69.9%), 반대로 빨리 피하는 신호(VAA)는 상승장도 자주 놓쳤습니다.</li>
+        <li><strong>원래 버전의 장점은 레버리지 버전에 유효하지 않았습니다.</strong> 1배 HAA의 최대 낙폭은 −13.8%였지만, 같은 신호로 TQQQ를 들면 −69.9%가 됐습니다.</li>
+        <li><strong>VAA → TQQQ의 2000년대 성과는 인정할 만합니다.</strong> 2001년 7월 출발 기준으로 2020년 9월까지는 V0.4보다 자산이 많았습니다. 다만 그 뒤 6년 넘게 고점을 회복하지 못하고 있습니다.</li>
+        <li><strong>Ghost.AI V0.4는 매일 신호를 확인하고, 비중을 단계적으로 조절합니다.</strong> 2010년 이후 연평균 +53.4%·최대 낙폭 −33.9%로 이번 비교에서 두 지표 모두 가장 좋았습니다. 짧은 급락(2011·2018·코로나)에서는 VAA → TQQQ보다 더 빠졌습니다.</li>
+        </ul>
+        <hr />
+        <h2>꼭 함께 봐야 할 점</h2>
+        <ul>
+        <li><strong>백테스트는 실제 수익이 아닙니다.</strong> 세금은 넣지 않았습니다.</li>
+        <li><strong>TQQQ판은 원래 VAA·HAA에 없는 방식입니다.</strong> Ghost.AI가 정한 두 가지 방식(신호만 빌리기 · 미국 주식 종목만 3배)으로 계산했습니다. 다른 방식으로 바꾸면 결과가 달라질 수 있습니다.</li>
+        <li><strong>상장 전 구간은 대체 자료입니다.</strong> 2010년 이전 TQQQ·UPRO는 지수 등락으로 만든 가상 가격입니다. 선진국 주식(EFA)·채권·TIP 등은 ETF 상장 전 구간을 같은 자산의 뱅가드 펀드로 이었습니다(선진국 주식은 신흥국이 섞인 해외 주식 펀드로 대체). HAA 원래 버전은 원자재 ETF(DBC) 상장 전 자료가 없어 2007년 3월부터 계산했습니다.</li>
+        <li><strong>비용에 민감합니다.</strong> 원래 버전(1배)은 매매가 잦아 비용 가정에 따라 연평균이 크게 바뀝니다(위 「원래 버전과 비교」).</li>
+        <li><strong>Ghost.AI V0.4는 2026년 11월 2일부터 Ghost.AI의 공식 전략입니다.</strong> 그 전 구간의 V0.4 숫자는 같은 규칙을 과거에 적용한 백테스트입니다.</li>
+        </ul>
+        <p><strong>참고</strong>: Keller &amp; Keuning, 「Breadth Momentum and Vigilant Asset Allocation (VAA)」(2017) · Keller, 「Dual and Canary Momentum with Rising Yields/Inflation: Hybrid Asset Allocation (HAA)」(2023)</p>
+        <p>&nbsp;</p>
+        <h2>백테스트만 믿지 마시고, 실시간 기록을 직접 확인하세요</h2>
+        <p>Ghost.AI는 전략의 신호를 매일 장 마감 후 홈페이지에 공개하고, 지난 신호는 고치거나 지우지 않고 그대로 쌓아 둡니다. 오늘의 신호, 지금까지의 모든 신호 기록, 다른 매매법 비교와 특집까지 전부 홈페이지에서 무료로 볼 수 있습니다. <a href="https://www.ghostai.co.kr/join">회원 가입</a>하시면 매일의 분석 레포트도 확인하실 수 있습니다. 이메일과 필명만으로 가입하실 수 있고, 서비스 사용료는 받지 않습니다.</p>
+        <p><strong>👻 모든 신호 기록이 공개된 Ghost.AI 홈페이지 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <hr />
+        <p><em>Ghost.AI — Quantitative AI Investment</em><br />
+        <em>Model: DeepGhost v0.4 | Transformer-Based Deep Learning</em><br />
+        <em>Coverage: 14 tickers | Updated every trading day after US market close</em></p>
+        <blockquote>
+        <p>⚠️ 본 자료는 정보 제공 목적으로만 작성되었으며 투자 권유가 아닙니다. 모든 투자의 책임은 투자자 본인에게 있습니다. 과거 성과가 미래 수익을 보장하지 않습니다.</p>
+        </blockquote>
+        <hr />
+        <p><strong>[유의사항]</strong></p>
+        <ul>
+        <li>본 서비스는 불특정 다수를 대상으로 발행되는 <strong>단방향 정보 제공</strong> 서비스이며, 투자자 개인의 재산 상황·투자 목적·위험 선호도를 반영한 개별 투자 조언이 아닙니다.</li>
+        <li>고스트에이아이 주식회사는 고객과 <strong>쌍방향 의사소통(개별 상담, 맞춤형 자문 등)을 제공하지 않습니다.</strong></li>
+        <li>본 콘텐츠는 투자 권유 또는 매매 주문의 청약·청약의 권유에 해당하지 않으며, 최종 투자 판단 및 그에 따른 손익의 책임은 전적으로 투자자 본인에게 있습니다.</li>
+        </ul>
+        <p>고스트에이아이 주식회사</p>
+      </div>
+    </article>
+
+    <section class="section-pad">
+      <div class="wrap">
+        <div data-share hidden></div>
+        <div class="sig-cta reveal">
+          <h2>다른 매매법도 같은 조건으로 비교했습니다</h2>
+          <p>무한매수법·200일선·9Sig·HFEA 등 많이 따라 하는 레버리지 매매법을 2000년부터 같은 조건으로 재현한 결과를 한 페이지에 모았습니다.</p>
+          <div class="cta-row">
+            <a class="btn btn-premium" data-link="join" href="https://www.ghostai.co.kr/join">베타 회원 가입하기</a>
+            <a class="btn btn-secondary" href="../compare.html">매매법 비교 전체 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="legal">
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <p class="company"><b>고스트에이아이 주식회사</b> <span>이메일 <a href="mailto:contact@ghostai.co.kr">contact@ghostai.co.kr</a></span></p>
+      </div>
+      <div class="copyright"><span>© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/ref.js?v=20261029" defer></script>
+  <script src="../assets/js/share.js?v=20261106b" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

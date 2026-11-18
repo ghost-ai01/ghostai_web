@@ -29,6 +29,11 @@
    "url": "compare.html"
   },
   {
+   "label": "매매법 백테스트 3편",
+   "title": "VAA·HAA 동적 자산배분을 TQQQ로 바꾸면? 25년 백테스트",
+   "url": "posts/strategy-vaa-haa.html"
+  },
+  {
    "label": "매매법 백테스트 2편",
    "title": "레딧 TQQQ For The Long Term(FTLT) 백테스트: 수익률 1위, 그 절반은 인버스에서 나왔습니다",
    "url": "posts/strategy-ftlt.html"
@@ -37,11 +42,6 @@
    "label": "매매법 백테스트 1편",
    "title": "라오어 VR 5.0 백테스트: TQQQ 밸류 리밸런싱을 닷컴버블부터 26년 돌려 봤습니다",
    "url": "posts/strategy-vr.html"
-  },
-  {
-   "label": "특집",
-   "title": "레딧에서 유행하는 TQQQ 200일선 전략, Ghost.AI와 26년 백테스트 비교",
-   "url": "posts/sma200-vs-ghost.html"
   }
  ]
 }
