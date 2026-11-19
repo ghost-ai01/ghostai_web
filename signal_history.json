@@ -1003,7 +1003,7 @@
   {
     "date": "2026-11-05",
     "action": "CASH",
-    "close": 50.46500015258789,
+    "close": 50.470001220703125,
     "entry_date": null,
     "entry_price": null,
     "pnl_pct": null,
@@ -1102,7 +1102,7 @@
   {
     "date": "2026-11-18",
     "action": "CASH",
-    "close": 51.584999084472656,
+    "close": 52.439998626708984,
     "entry_date": null,
     "entry_price": null,
     "pnl_pct": null,
