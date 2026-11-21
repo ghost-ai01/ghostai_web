@@ -93,9 +93,9 @@ button { font-family: inherit; }
   display: flex; align-items: center; justify-content: space-between;
   height: 68px;
 }
-.brand { display: flex; align-items: center; gap: 16px; }
-.brand img { width: 58px; height: 58px; }
-.brand b { font-size: 2.04rem; font-weight: 800; letter-spacing: -0.01em; }
+.brand { display: flex; align-items: center; gap: 14px; }
+.brand img { width: 52px; height: 52px; }
+.brand b { font-size: 1.82rem; font-weight: 800; letter-spacing: -0.01em; }
 .brand b span { color: var(--gold); }
 .nav-links { display: flex; align-items: center; gap: 8px; }
 .nav-links a {
@@ -1585,9 +1585,9 @@ table.sig-hist { width: 100%; border-collapse: collapse; min-width: 560px; font-
      첫 줄 = 로고 + 회원 알약, 둘째 줄 = 가로로 밀어 보는 메뉴 줄.
      회원 알약은 .nav 기준 절대 위치라 메뉴 줄의 가로 스크롤에 잘리지 않는다. */
   .site-header .nav { position: relative; flex-wrap: wrap; height: auto; }
-  .site-header .brand { height: 56px; gap: 10px; }
-  .site-header .brand img { width: 40px; height: 40px; }
-  .site-header .brand b { font-size: 1.5rem; }
+  .site-header .brand { height: 56px; gap: 9px; }
+  .site-header .brand img { width: 37px; height: 37px; }
+  .site-header .brand b { font-size: 1.375rem; }
   .nav-links {
     display: flex; flex-wrap: nowrap; gap: 6px; width: 100%;
     overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none;
