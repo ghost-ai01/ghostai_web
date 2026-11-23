@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#080b12" />
+
+  <title>마삼룰(나스닥 −3% 룰) 과거 버전 vs 업그레이드 버전, 26년 백테스트로 비교했습니다 · Ghost.AI</title>
+  <meta name="description" content="세계 1등주를 들고 있다가 나스닥이 하루 −3% 떨어지면 파는 마삼룰을 과거 버전·업그레이드 버전으로 나눠 백테스트했습니다. 2000년 이후 연평균 +9.6%·+6.3%, 최대 낙폭 −46.6%·−71.3%였고, 같은 기간 Ghost.AI V0.4는 +37.9%·−41.5%였습니다." />
+  <meta name="author" content="고스트에이아이 주식회사" />
+  <meta name="naver-site-verification" content="eeaad327c6c18df3fdcdd2fba6c85007d1da6e06" />
+  <link rel="canonical" href="https://www.ghostai.co.kr/posts/strategy-jordan-m3.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Ghost.AI" />
+  <meta property="og:title" content="마삼룰(나스닥 −3% 룰) 과거 버전 vs 업그레이드 버전, 26년 백테스트로 비교했습니다" />
+  <meta property="og:description" content="세계 1등주를 들고 있다가 나스닥이 하루 −3% 떨어지면 파는 마삼룰을 과거 버전·업그레이드 버전으로 나눠 백테스트했습니다. 2000년 이후 연평균 +9.6%·+6.3%, 최대 낙폭 −46.6%·−71.3%였고, 같은 기간 Ghost.AI V0.4는 +37.9%·−41.5%였습니다." />
+  <meta property="og:url" content="https://www.ghostai.co.kr/posts/strategy-jordan-m3.html" />
+  <meta property="og:image" content="https://www.ghostai.co.kr/assets/img/og-image.png" />
+  <meta property="og:locale" content="ko_KR" />
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BlogPosting",
+   "headline":"마삼룰(나스닥 −3% 룰) 과거 버전 vs 업그레이드 버전, 26년 백테스트로 비교했습니다","datePublished":"2026-11-23","dateModified":"2026-11-23",
+   "url":"https://www.ghostai.co.kr/posts/strategy-jordan-m3.html","inLanguage":"ko-KR",
+   "author":{"@type":"Organization","name":"고스트에이아이 주식회사"},
+   "publisher":{"@type":"Organization","name":"고스트에이아이 주식회사",
+                 "logo":{"@type":"ImageObject","url":"https://www.ghostai.co.kr/assets/img/logo.png"}}}
+  </script>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/style.css?v=20261123" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="마삼룰(나스닥 −3% 룰) 과거 버전 vs 업그레이드 버전, 26년 백테스트로 비교했습니다" />
+  <meta name="twitter:description" content="세계 1등주를 들고 있다가 나스닥이 하루 −3% 떨어지면 파는 마삼룰을 과거 버전·업그레이드 버전으로 나눠 백테스트했습니다. 2000년 이후 연평균 +9.6%·+6.3%, 최대 낙폭 −46.6%·−71.3%였고, 같은 기간 Ghost.AI V0.4는 +37.9%·−41.5%였습니다." />
+  <meta name="twitter:image" content="https://www.ghostai.co.kr/assets/img/og-image.png" />
+  <style>
+    /* 4열 비교표 — 휴대폰에서도 Ghost.AI 열까지 한 화면에 보이게 칸 안에서 줄바꿈한다 (가로 밀기는 안전장치) */
+    .post .tbl { overflow-x: auto; margin: 18px 0; -webkit-overflow-scrolling: touch; }
+    .post .tbl table { margin: 0; }
+    .post .tbl th, .post .tbl td { word-break: keep-all; }  /* 「318만 달/러」처럼 낱말 중간에서 끊기지 않게 */
+    .post .chart-link { border-bottom: 0; display: block; }
+    .post .chart-link img { width: 100%; height: auto; }
+    .post .chart-hint { margin: -12px 0 0; font-size: .82rem; color: var(--muted-2); }
+    @media (max-width: 640px) {
+      .post .tbl table { font-size: .8rem; }
+      .post .tbl th, .post .tbl td { padding: 8px 6px; line-height: 1.45; }
+      .post .tbl td:first-child { min-width: 84px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="/" aria-label="Ghost.AI 홈">
+        <img src="../assets/img/logo.png" alt="" aria-hidden="true" />
+        <b>Ghost<span>.AI</span></b>
+      </a>
+      <nav class="nav-links" aria-label="사이트 내비게이션">
+        <a href="/">홈</a>
+        <a class="nav-compare" href="../compare.html">매매법 비교</a>
+        <a class="nav-signal" href="../signal.html"><span class="live-dot" aria-hidden="true"></span>오늘의 시그널</a>
+        <a href="../backtest.html">백테스트 성과</a>
+        <a class="nav-posts" href="./">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h11l5 5v11H4z" /><path d="M15 4v5h5" /><path d="M8 13h8" /><path d="M8 17h5" /></svg>
+          데일리 리포트
+        </a>
+        <a class="nav-premium" href="https://www.ghostai.co.kr/login">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7.5 7 11l5-6 5 6 4-3.5-2 11.5H5L3 7.5Z" /><path d="M5 21h14" /></svg>
+          회원 페이지<span class="soon">베타</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <article class="section-pad post">
+      <div class="wrap">
+        <div class="post-head">
+          <h1>마삼룰(나스닥 −3% 룰) 과거 버전 vs 업그레이드 버전, 26년 백테스트로 비교했습니다</h1>
+          <p class="post-date"><time datetime="2026-11-23">2026-11-23</time> · Ghost.AI 매매법 백테스트 4편</p>
+        </div>
+        <p><strong>👻 매일 시그널과 히스토리를 홈페이지에서 한눈에 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <p>&nbsp;</p>
+        <blockquote class="q-lede">
+        <p>많이 따라 하는 매매법을 같은 조건으로 백테스트하는 시리즈의 네 번째 편입니다. 이번에는 국내에서 널리 알려진 <strong>마삼룰(나스닥 −3% 룰)</strong>을 다룹니다.<br />
+        「세계 1등 주식을 들고 있다가 나스닥이 하루 −3% 떨어지면 전량 매도하고 일정기간을 기다린다.」는 방법입니다. 책에 소개된 <strong>과거 버전</strong>과 이후 바뀐 <strong>업그레이드 버전</strong>을 <strong>Ghost.AI V0.4</strong>와 같은 기간·같은 비용으로 비교했습니다.</p>
+        </blockquote>
+        <hr />
+        <h2>요약</h2>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th></th>
+        <th><strong>마삼룰 과거 버전</strong></th>
+        <th><strong>마삼룰 업그레이드 버전</strong></th>
+        <th><strong>Ghost.AI V0.4</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>투자 대상</td>
+        <td>세계 1등주 (1배)</td>
+        <td>세계 1등주 (1배)</td>
+        <td>TQQQ (3배)</td>
+        </tr>
+        <tr>
+        <td>연평균 수익률 (2000.3~)</td>
+        <td>+9.6%</td>
+        <td>+6.3%</td>
+        <td><strong>+37.9%</strong></td>
+        </tr>
+        <tr>
+        <td>최대 낙폭 (2000.3~)</td>
+        <td>−46.6%</td>
+        <td>−71.3%</td>
+        <td><strong>−41.5%</strong></td>
+        </tr>
+        <tr>
+        <td>연평균 수익률 (2010.2~)</td>
+        <td>+11.3%</td>
+        <td>+15.9%</td>
+        <td><strong>+56.1%</strong></td>
+        </tr>
+        <tr>
+        <td>최대 낙폭 (2010.2~)</td>
+        <td>−46.6%</td>
+        <td>−44.4%</td>
+        <td><strong>−33.2%</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <ul>
+        <li><strong>과거 버전은 2000년대에 강했습니다.</strong> 닷컴 붕괴 3년 동안 주식을 거의 들지 않고 미국 장기채(TLT)에 있었습니다. 그래서 2000~2009년을 연 +7.4%로 지났습니다. 같은 기간 업그레이드 버전은 연 −7.8%였습니다.</li>
+        <li><strong>업그레이드 버전은 2010년 이후에 더 나았습니다(연 +15.9%).</strong> 떨어지면 나눠 팔고 사지만, 두 칸 반등하면 다시 전부 사는 규칙 때문에 거의 늘 주식을 들고 있었습니다(평균 주식 비중 88%). 그래서 하락도 그만큼 함께 맞았습니다.</li>
+        <li><strong>투자 대상이 다릅니다.</strong> 마삼룰은 1배 주식, Ghost.AI V0.4는 3배 상품이라 위험의 크기가 다릅니다. 같은 TQQQ에 적용한 결과도 아래에 함께 실었습니다.</li>
+        </ul>
+        <hr />
+        <h2>마삼룰은 어떤 방법인가</h2>
+        <p>JD부자연구소 조던(김장섭) 님이 책과 카페에서 소개한 방법입니다. 「나스닥 마이너스 3%」를 줄여 마삼룰이라고 부릅니다. 이 글은 책과 카페에 소개된 규칙을 공개된 설명 기준으로 재현했습니다.</p>
+        <p>기본 전략은 단순합니다. <strong>평소에는 세계 시가총액 1등 주식을 들고, 나스닥이 하루에 −3% 이상 떨어지는 날을 위기 신호로 봅니다.</strong> 1등과 2등의 시가총액 차이가 10% 이내면 두 종목을 반반씩 들고, 순위가 바뀌면 갈아탑니다.</p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th></th>
+        <th><strong>과거 버전</strong> (책 『내일의 부』, 2020)</th>
+        <th><strong>업그레이드 버전</strong> (2021)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>평소</td>
+        <td>1등주 100%</td>
+        <td>1등주가 고점에서 2.5% 내릴 때마다 10%씩 현금으로 바꿉니다 (−25%면 전부 현금)</td>
+        </tr>
+        <tr>
+        <td>나스닥 −3% 날</td>
+        <td><strong>전부 팔고 미국 장기채(TLT)로</strong></td>
+        <td><strong>「말뚝박기」 시작</strong> — 그날의 하락 폭에 맞춰 주식 비중을 정하고, 더 떨어질 때마다 정해 둔 가격에서 나눠 삽니다</td>
+        </tr>
+        <tr>
+        <td>반등할 때</td>
+        <td>—</td>
+        <td><strong>「V자 반등」</strong> — 가장 많이 떨어졌던 구간에서 두 구간 위로 올라오면 남은 현금을 모두 1등주에 넣습니다. 그 뒤 가장 낮았던 구간보다 한 구간 더 내려가면 그 몫을 다시 팝니다</td>
+        </tr>
+        <tr>
+        <td>다시 사는 때</td>
+        <td>마지막 −3% 날 뒤 <strong>한 달</strong>(공황이면 두 달) 동안 −3%가 없으면 전부 매수</td>
+        <td>같은 대기 기간이 지나거나, <strong>나스닥이 8거래일 연속 오르면</strong> 위기 끝</td>
+        </tr>
+        <tr>
+        <td>공황 판단</td>
+        <td>한 달에 −3%가 4번</td>
+        <td>같음</td>
+        </tr>
+        <tr>
+        <td>주식을 매도한 돈을 둘 곳</td>
+        <td>미국 장기채(TLT)</td>
+        <td>현금 (RP·MMF 등 단기 금리)</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p><em>구간 = 고점 대비 하락 폭을 일정한 간격으로 나눈 단계입니다. 평소에는 2.5%, 말뚝박기 때는 5%(금리가 0%대면 2.5%) 간격입니다.</em></p>
+        <p>→ 한줄 정리 : <strong>과거 버전은 「위기면 일단 피한다」, 업그레이드 버전은 「미리 조금씩 팔고, 떨어지면 나눠 사고, 반등하면 다시 다 산다」입니다.</strong></p>
+        <hr />
+        <h2>마삼룰의 장점</h2>
+        <ul>
+        <li><strong>규칙이 단순합니다.</strong> 나스닥 지수 하나만 매일 확인하면 됩니다. 과거 버전은 1년에 2~3번 정도만 사고팝니다.</li>
+        <li><strong>큰 위기의 첫 충격을 빨리 피합니다.</strong> 폭락은 대개 −3% 날로 시작합니다. 과거 버전은 2000년 닷컴 붕괴, 2020년 코로나 급락에서 거의 손실 없이 빠져나왔습니다.</li>
+        <li><strong>업그레이드 버전은 위기 전에 현금을 미리 만들어 둡니다.</strong> −3% 날이 오기 전부터 고점 대비 하락에 맞춰 조금씩 팔아 둡니다.</li>
+        <li><strong>「놓칠까 두려운 마음」을 줄여 줍니다.</strong> 과거 버전은 한 번 팔면 한 달 넘게 시장 밖에 있어야 해서 반등을 지켜보기만 하는 일이 잦았습니다. 업그레이드 버전은 떨어질 때 나눠 사고, V자로 반등하면 남은 현금을 바로 넣습니다.</li>
+        <li><strong>세계 1등주라는 대상이 분명합니다.</strong> 기업을 분석하지 않아도 무엇을 살지 정해집니다.</li>
+        </ul>
+        <hr />
+        <h2>비교 기준</h2>
+        <p>원금 한 번 투입 · 매매 비용 매매 금액의 0.1% · 세금 제외 · 기간 2000.3.13 ~ 2026.11.17 (2010년 2월 출발 수치는 그날부터 다시 계산)</p>
+        <ul>
+        <li><strong>마삼룰</strong>: 그날 종가로 판단해 그날 종가에 매매합니다. 말뚝박기 매수는 미리 정한 가격에 걸어 두고, 장중에 그 가격까지 내려오면 체결한 것으로 계산했습니다.</li>
+        <li><strong>세계 1등주</strong>: 미국 상장 기업 중 시가총액 1등입니다. 공개된 시가총액 자료로 날짜별 순위를 근사해 다시 만들었습니다. 2000년 이후 마이크로소프트 → GE → 엑손모빌 → 애플 → 마이크로소프트·애플 → 엔비디아 순입니다. 배당은 포함했습니다.</li>
+        <li><strong>피난처</strong>: 원래 업그레이드 버전은 장기채(TLT)와 금을 쓰지만, 같은 조건에서 현금이 같거나 더 나아서(2000년 이후 연 +6.3% vs +6.2%, 2021년 4월 이후 +13.9% vs +9.8%) 현금으로 계산했습니다. 현금은 RP·MMF처럼 단기 국채 금리만큼 이자를 받는다고 봤습니다. 과거 버전은 TLT가 수익이 더 높아서(2000년 이후 연 +9.6% vs 현금 +8.5%) 책 그대로 두었습니다.</li>
+        <li><strong>TLT</strong>: 배당을 포함했습니다. 상장(2002년 7월) 전은 30년 국채 금리로 만든 가상 가격입니다.</li>
+        <li><strong>Ghost.AI V0.4</strong>: 다음 날 시가에 매매합니다. 현금 수익은 0으로 계산했습니다. TQQQ 상장 전(2010년 2월 이전)은 나스닥 100 등락과 금리로 만든 가상 가격입니다. 매매 규칙은 <a href="https://www.ghostai.co.kr/join">무료 회원</a> 페이지에서 볼 수 있습니다.</li>
+        </ul>
+        <hr />
+        <h2>백테스트 결과</h2>
+        <p><a class="chart-link" href="../assets/img/posts/series_jordan_m3_2026-11-23.png" target="_blank" rel="noopener"><img alt="마삼룰 과거·업그레이드 버전 vs Ghost.AI V0.4" src="../assets/img/posts/series_jordan_m3_2026-11-23.png" loading="lazy" /></a></p>
+        <p class="chart-hint">차트를 누르면 원본 크기로 볼 수 있습니다.</p>
+        <p><em>위: 1로 시작했을 때의 자산(로그 눈금, 비용 반영). 왼쪽은 2000년 3월 출발, 오른쪽은 2010년 2월 출발입니다. 아래: 큰 하락 구간에서 나스닥 100 고점부터 저점까지의 수익률. 초록 = Ghost.AI V0.4(TQQQ 3배), 주황 = 업그레이드 버전(피난처 현금), 파랑 = 과거 버전(피난처 TLT, 둘 다 1등주 1배).</em></p>
+        <h3>전체 성과</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th></th>
+        <th><strong>과거 버전</strong> [1등주 1배]</th>
+        <th><strong>업그레이드 버전</strong> [1등주 1배]</th>
+        <th><strong>Ghost.AI V0.4</strong> [TQQQ 3배]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td><strong>2000년 3월 ~</strong> 연평균 수익률</td>
+        <td>+9.6%</td>
+        <td>+6.3%</td>
+        <td><strong>+37.9%</strong></td>
+        </tr>
+        <tr>
+        <td>최대 낙폭</td>
+        <td>−46.6%</td>
+        <td>−71.3%</td>
+        <td><strong>−41.5%</strong></td>
+        </tr>
+        <tr>
+        <td>1억 원 →</td>
+        <td>11억 6천만 원</td>
+        <td>5억 1천만 원</td>
+        <td><strong>약 5,285억 원</strong></td>
+        </tr>
+        <tr>
+        <td><strong>2010년 2월 ~</strong> 연평균 수익률</td>
+        <td>+11.3%</td>
+        <td>+15.9%</td>
+        <td><strong>+56.1%</strong></td>
+        </tr>
+        <tr>
+        <td>최대 낙폭</td>
+        <td>−46.6%</td>
+        <td>−44.4%</td>
+        <td><strong>−33.2%</strong></td>
+        </tr>
+        <tr>
+        <td>1억 원 →</td>
+        <td>6억 원</td>
+        <td>11억 8천만 원</td>
+        <td><strong>약 1,745억 원</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <p><em>금액은 달러 기준 수익률을 그대로 옮긴 것입니다(환율 변화 제외).</em></p>
+        <h3>구간별 — 연평균 / 최대 낙폭</h3>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>구간</th>
+        <th><strong>과거 버전</strong> [1배]</th>
+        <th><strong>업그레이드 버전</strong> [1배]</th>
+        <th><strong>Ghost.AI V0.4</strong> [3배]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2000.3~2009</td>
+        <td>+7.4% / <strong>−31.8%</strong></td>
+        <td>−7.8% / −71.3%</td>
+        <td><strong>+11.6%</strong> / −41.5%</td>
+        </tr>
+        <tr>
+        <td>2010~2018</td>
+        <td>+12.4% / −43.5%</td>
+        <td>+12.5% / −44.4%</td>
+        <td><strong>+40.6% / −33.1%</strong></td>
+        </tr>
+        <tr>
+        <td>2019~</td>
+        <td>+10.1% / −46.6%</td>
+        <td>+19.7% / <strong>−32.1%</strong></td>
+        <td><strong>+75.6%</strong> / −33.2%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <h3>같은 TQQQ에 적용하면</h3>
+        <p>투자 대상을 맞추기 위해, 같은 규칙을 TQQQ에 적용해 봤습니다. </p>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>[TQQQ 3배]</th>
+        <th>과거 버전</th>
+        <th>업그레이드 버전</th>
+        <th><strong>Ghost.AI V0.4</strong></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2000.3~ 연평균 / 최대 낙폭</td>
+        <td>+21.8% / −72.2%</td>
+        <td>−1.9% / −100%</td>
+        <td><strong>+37.9% / −41.5%</strong></td>
+        </tr>
+        <tr>
+        <td>2000.3~2009</td>
+        <td><strong>+17.2%</strong> / −48.5%</td>
+        <td>−47.1% / −100%</td>
+        <td>+11.6% / <strong>−41.5%</strong></td>
+        </tr>
+        <tr>
+        <td>2010.2~</td>
+        <td>+26.3% / −72.2%</td>
+        <td>+42.3% / −72.4%</td>
+        <td><strong>+56.1% / −33.2%</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <ul>
+        <li><strong>2000년대는 과거 버전 TQQQ가 연평균이 가장 높았습니다</strong> (+17.2%).</li>
+        <li><strong>업그레이드 버전은 닷컴 붕괴에서 전부를 잃었습니다</strong> (−100%). 떨어질 때 나눠 사고, 반등하면 다시 다 사는 방식은 3배 상품이 −90% 넘게 빠지는 하락을 견디지 못했습니다. 2010년 이후에는 연 +42.3%였습니다.</li>
+        </ul>
+        <hr />
+        <h2>연도별 비교</h2>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>연도</th>
+        <th><strong>과거 버전</strong> [1배]</th>
+        <th><strong>업그레이드 버전</strong> [1배]</th>
+        <th><strong>Ghost.AI V0.4</strong> [3배]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>2000 (3월~)</td>
+        <td><strong>+17%</strong></td>
+        <td>−30%</td>
+        <td>−1%</td>
+        </tr>
+        <tr>
+        <td>2001</td>
+        <td>+4%</td>
+        <td>−15%</td>
+        <td><strong>+47%</strong></td>
+        </tr>
+        <tr>
+        <td>2002</td>
+        <td><strong>+16%</strong></td>
+        <td>−40%</td>
+        <td>+6%</td>
+        </tr>
+        <tr>
+        <td>2008</td>
+        <td><strong>+18%</strong></td>
+        <td>−5%</td>
+        <td>+11%</td>
+        </tr>
+        <tr>
+        <td>2009</td>
+        <td>−30%</td>
+        <td>−14%</td>
+        <td><strong>+16%</strong></td>
+        </tr>
+        <tr>
+        <td>2013</td>
+        <td>+4%</td>
+        <td>−6%</td>
+        <td><strong>+87%</strong></td>
+        </tr>
+        <tr>
+        <td>2015</td>
+        <td>−21%</td>
+        <td><strong>0%</strong></td>
+        <td>−5%</td>
+        </tr>
+        <tr>
+        <td>2018</td>
+        <td><strong>+8%</strong></td>
+        <td>−1%</td>
+        <td>+4%</td>
+        </tr>
+        <tr>
+        <td>2020</td>
+        <td>+28%</td>
+        <td>+57%</td>
+        <td><strong>+204%</strong></td>
+        </tr>
+        <tr>
+        <td>2022</td>
+        <td>−45%</td>
+        <td>−2%</td>
+        <td><strong>+6%</strong></td>
+        </tr>
+        <tr>
+        <td>2023</td>
+        <td>+51%</td>
+        <td>+35%</td>
+        <td><strong>+92%</strong></td>
+        </tr>
+        <tr>
+        <td>2025</td>
+        <td>+8%</td>
+        <td>+20%</td>
+        <td><strong>+89%</strong></td>
+        </tr>
+        <tr>
+        <td>2026 (11/17까지)</td>
+        <td>−1%</td>
+        <td>−8%</td>
+        <td><strong>+41%</strong></td>
+        </tr>
+        </tbody>
+        </table></div>
+        <ul>
+        <li><strong>2022년은 과거 버전에게 가장 어려운 해였습니다(−45%).</strong> 주식이 떨어진 해에 피난처인 TLT도 함께 떨어졌기 때문입니다. 업그레이드 버전은 고점부터 조금씩 현금으로 바꿔 두어 −2%였습니다.</li>
+        <li><strong>2009년 과거 버전 −30%</strong>: 8월 말까지 TLT에 있었는데, 그해 TLT가 −22% 떨어졌습니다. 8월에 다시 산 1등주(엑손모빌)도 약했습니다.</li>
+        </ul>
+        <hr />
+        <h2>이벤트별 비교 — 나스닥 100 고점에서 저점까지</h2>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>사건 (기간)</th>
+        <th><strong>과거 버전</strong> [1배]</th>
+        <th><strong>업그레이드 버전</strong> [1배]</th>
+        <th><strong>Ghost.AI V0.4</strong> [3배]</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>닷컴 붕괴 (00.3~02.10)</td>
+        <td>+37%</td>
+        <td>−69%</td>
+        <td><strong>+55%</strong></td>
+        </tr>
+        <tr>
+        <td>금융위기 (07.10~09.3)</td>
+        <td>+6%</td>
+        <td>−23%</td>
+        <td><strong>+10%</strong></td>
+        </tr>
+        <tr>
+        <td>2011 미국 신용등급 강등 (11.7~10)</td>
+        <td><strong>+4%</strong></td>
+        <td>−12%</td>
+        <td>−24%</td>
+        </tr>
+        <tr>
+        <td>2015~16 중국 쇼크 (15.7~16.2)</td>
+        <td>−35%</td>
+        <td>−21%</td>
+        <td><strong>−15%</strong></td>
+        </tr>
+        <tr>
+        <td>2018 4분기 (18.8~12)</td>
+        <td><strong>+4%</strong></td>
+        <td>−16%</td>
+        <td>−19%</td>
+        </tr>
+        <tr>
+        <td>코로나 (20.2~3)</td>
+        <td><strong>−3%</strong></td>
+        <td>−32%</td>
+        <td>−30%</td>
+        </tr>
+        <tr>
+        <td>2022 금리인상 (21.11~22.12)</td>
+        <td>−43%</td>
+        <td><strong>0%</strong></td>
+        <td>−18%</td>
+        </tr>
+        <tr>
+        <td>2025 관세 충격 (24.12~25.4)</td>
+        <td><strong>−5%</strong></td>
+        <td>−16%</td>
+        <td>−22%</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <ul>
+        <li><strong>짧고 급한 하락에서는 과거 버전이 가장 강했습니다.</strong> 2011년·2018년 4분기·코로나·2025년 관세 충격 모두 손실이 거의 없었습니다. 첫 −3% 날 바로 팔았기 때문입니다.</li>
+        <li><strong>과거 버전은 길게 오르내리는 하락에서는 약했습니다.</strong> 2015~16년과 2022년에는 한 달 쉬고 다시 산 뒤 또 −3%가 나오는 일이 되풀이됐습니다. 그래서 크게 빠졌습니다.</li>
+        <li><strong>업그레이드 버전은 2022년에 손실이 없었습니다(0%).</strong> 고점부터 조금씩 현금으로 바꿔 둔 덕입니다. 반대로 코로나(−32%)와 닷컴 붕괴(−69%)에서는 중간 반등에 다시 다 샀다가 또 떨어져 크게 빠졌습니다.</li>
+        <li><strong>Ghost.AI V0.4는 3배 상품이라 짧은 급락에서 더 크게 움직였습니다.</strong> 대신 닷컴 붕괴·금융위기처럼 긴 하락에서는 수익이 났습니다.</li>
+        </ul>
+        <hr />
+        <h2>마삼룰이 말하는 장점, 실제로 있을까</h2>
+        <div class="tbl"><table>
+        <thead>
+        <tr>
+        <th>주장</th>
+        <th>판정</th>
+        <th>근거</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>위기 전에 현금을 미리 만들어 둔다</td>
+        <td><strong>맞다</strong></td>
+        <td>−3% 날이 온 34번 동안, 업그레이드 버전은 그날 이미 평균 22%를 현금으로 들고 있었습니다(34번 중 17번은 10% 이상). 과거 버전은 −3% 날까지 현금이 0%입니다</td>
+        </tr>
+        <tr>
+        <td>놓칠까 두려운 마음이 줄어든다</td>
+        <td><strong>맞다</strong></td>
+        <td>주식이 0%인 날이 과거 버전 34% → 업그레이드 버전 1%로 줄었습니다. 1등주가 오른 날의 상승을 86% 따라갔습니다(과거 버전 53%). 다만 내린 날의 하락도 86%를 함께 맞았습니다(과거 버전 51%)</td>
+        </tr>
+        <tr>
+        <td>큰 위기를 피한다</td>
+        <td><strong>일부 맞다</strong></td>
+        <td>과거 버전은 닷컴(+37%)·코로나(−3%)·2018년 4분기(+4%)를 피했습니다. 2022년(−43%)과 2015~16년(−35%)은 크게 빠졌습니다. 업그레이드 버전은 2022년(0%)은 피했지만, 닷컴(−69%)·금융위기(−23%)·코로나(−32%)는 피하지 못했습니다</td>
+        </tr>
+        </tbody>
+        </table></div>
+        <hr />
+        <h2>시사점</h2>
+        <ul>
+        <li><strong>마삼룰 과거 버전의 강점은 진짜입니다.</strong> 2000년대 두 번의 큰 약세장을 손실 없이 지났고, 짧은 급락도 잘 피했습니다. 대신 2010년 이후에는 업그레이드 버전보다 수익이 낮았습니다(연 +11.3% vs +15.9%).</li>
+        <li><strong>업그레이드 버전은 시장에 더 오래 머무는 방향으로 바뀌었습니다.</strong> 카페에서 말하는 「미리 현금화」와 「포모 감소」는 숫자로 확인됩니다. 그 결과 2010년 이후 수익은 과거 버전보다 높았지만, 2000년 이후 최대 낙폭은 −71%로 컸습니다. 2022년처럼 천천히 내리는 하락에는 강했고, 반등과 하락이 번갈아 오는 폭락에는 약했습니다.</li>
+        </ul>
+        <h3>Ghost.AI V0.4와 무엇이 다른가</h3>
+        <ul>
+        <li><strong>판단 근거가 다릅니다.</strong> 마삼룰은 나스닥의 하루 하락 폭과 1등주의 고점 대비 하락 폭을 봅니다. Ghost.AI V0.4는 매일 장 마감 후 AI 모델의 신호를 확인합니다.</li>
+        <li><strong>비중을 나눠 조절합니다.</strong> TQQQ를 0%에서 100% 사이에서 단계적으로 늘리고 줄입니다.</li>
+        <li>이번 비교에서는 2000년 이후·2010년 이후 모두 연평균과 최대 낙폭이 가장 좋았습니다. 다만 3배 상품이라 짧은 급락(2011·2018·코로나·2025)에서는 마삼룰 과거 버전보다 더 빠졌습니다.</li>
+        </ul>
+        <hr />
+        <h2>꼭 함께 봐야 할 점</h2>
+        <ul>
+        <li><strong>백테스트는 실제 수익이 아닙니다.</strong> 세금은 넣지 않았습니다.</li>
+        <li><strong>마삼룰은 공개된 설명을 기준으로 재현했습니다.</strong> 카페 글의 예시 숫자와 조금 다를 수 있습니다. </li>
+        <li><strong>투자 대상이 다릅니다.</strong> 마삼룰은 1배 주식, Ghost.AI V0.4는 3배 상품입니다. 같은 TQQQ에 적용한 결과는 위 표를 참고해 주세요.</li>
+        <li><strong>2010년 이전 TQQQ와 2002년 이전 TLT는 가상 가격입니다.</strong></li>
+        <li><strong>Ghost.AI V0.4는 2026년 11월 2일부터 Ghost.AI의 공식 전략입니다.</strong> 그 전 구간의 V0.4 숫자는 같은 규칙을 과거에 적용한 백테스트입니다.</li>
+        </ul>
+        <p><strong>참고</strong>: 김장섭(조던), 『내일의 부』(2020) · 『부의 체인저 2』(2021) · JD부자연구소 카페</p>
+        <p>&nbsp;</p>
+        <h2>백테스트만 믿지 마시고, 실시간 기록을 직접 확인하세요</h2>
+        <p>Ghost.AI는 전략의 신호를 매일 장 마감 후 홈페이지에 공개하고, 지난 신호는 고치거나 지우지 않고 그대로 쌓아 둡니다. 오늘의 신호, 지금까지의 모든 신호 기록, 다른 매매법 비교와 특집까지 전부 홈페이지에서 무료로 볼 수 있습니다. <a href="https://www.ghostai.co.kr/join">회원 가입</a>하시면 매일의 분석 레포트도 확인하실 수 있습니다. 이메일과 필명만으로 가입하실 수 있고, 서비스 사용료는 받지 않습니다.</p>
+        <p><strong>👻 모든 신호 기록이 공개된 Ghost.AI 홈페이지 → <a href="https://www.ghostai.co.kr">www.ghostai.co.kr</a></strong></p>
+        <hr />
+        <p><em>Ghost.AI — Quantitative AI Investment</em><br />
+        <em>Model: DeepGhost v0.4 | Transformer-Based Deep Learning</em><br />
+        <em>Coverage: 14 tickers | Updated every trading day after US market close</em></p>
+        <blockquote>
+        <p>⚠️ 본 자료는 정보 제공 목적으로만 작성되었으며 투자 권유가 아닙니다. 모든 투자의 책임은 투자자 본인에게 있습니다. 과거 성과가 미래 수익을 보장하지 않습니다.</p>
+        </blockquote>
+        <hr />
+        <p><strong>[유의사항]</strong></p>
+        <ul>
+        <li>본 서비스는 불특정 다수를 대상으로 발행되는 <strong>단방향 정보 제공</strong> 서비스이며, 투자자 개인의 재산 상황·투자 목적·위험 선호도를 반영한 개별 투자 조언이 아닙니다.</li>
+        <li>고스트에이아이 주식회사는 고객과 <strong>쌍방향 의사소통(개별 상담, 맞춤형 자문 등)을 제공하지 않습니다.</strong></li>
+        <li>본 콘텐츠는 투자 권유 또는 매매 주문의 청약·청약의 권유에 해당하지 않으며, 최종 투자 판단 및 그에 따른 손익의 책임은 전적으로 투자자 본인에게 있습니다.</li>
+        </ul>
+        <p>고스트에이아이 주식회사</p>
+      </div>
+    </article>
+
+    <section class="section-pad">
+      <div class="wrap">
+        <div data-share hidden></div>
+        <div class="sig-cta reveal">
+          <h2>다른 매매법도 같은 조건으로 비교했습니다</h2>
+          <p>무한매수법·200일선·9Sig·HFEA 등 많이 따라 하는 레버리지 매매법을 2000년부터 같은 조건으로 재현한 결과를 한 페이지에 모았습니다.</p>
+          <div class="cta-row">
+            <a class="btn btn-premium" data-link="join" href="https://www.ghostai.co.kr/join">베타 회원 가입하기</a>
+            <a class="btn btn-secondary" href="../compare.html">매매법 비교 전체 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="legal">
+        <p><strong>투자 유의사항</strong> &middot; 본 자료는 정보 제공 목적이며 투자 권유가 아닙니다. 투자에 대한 최종 판단과 책임은 본인에게 있습니다. 과거의 성과가 미래의 수익을 보장하지 않습니다.</p>
+        <p class="company"><b>고스트에이아이 주식회사</b> <span>이메일 <a href="mailto:contact@ghostai.co.kr">contact@ghostai.co.kr</a></span></p>
+      </div>
+      <div class="copyright"><span>© 2026 고스트에이아이 주식회사 (Ghost.AI Inc.). All rights reserved.</span></div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+  <script src="../assets/js/ref.js?v=20261029" defer></script>
+  <script src="../assets/js/share.js?v=20261106b" defer></script>
+  <script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
